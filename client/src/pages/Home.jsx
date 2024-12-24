@@ -1,10 +1,12 @@
 import React from 'react'
-
+import Navbar from '../components/Admin-navbar'
 function Home() {
   return (
-    <div>
-      <h1>is this is admin home page</h1>
-    </div>
+    <>
+    <Navbar/>
+
+      
+    </>
   )
 }
 

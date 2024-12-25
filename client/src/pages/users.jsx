@@ -1,11 +1,13 @@
 import React from 'react'
-import Navbar from '../components/Admin-navbar'
+
 function users() {
   return (
-    <div>
-      <Navbar/>
-      <h1>this is users page</h1>
-    </div>
+    <>
+      
+      <div className="navbar-right flex-1 p-1 overflow-auto ">
+        <h1>users</h1>
+      </div>
+    </>
   )
 }
 

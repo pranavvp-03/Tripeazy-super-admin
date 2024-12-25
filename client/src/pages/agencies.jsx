@@ -2,10 +2,10 @@ import React from 'react'
 import Navbar from '../components/Admin-navbar'
 function people() {
   return (
-    <div>
-      <Navbar/>
-      <h1>this is people</h1>
-    </div>
+    <>
+    
+      <h1>this is agencies</h1>
+    </>
   )
 }
 

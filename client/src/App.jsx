@@ -9,12 +9,14 @@ import Blogs from './pages/Blogs'
 import CreateAdmin from './pages/createAdmin'
 import Advertisements from './pages/Advertisements'
 import Notifications from './pages/Notifications'
+import AdminDashboardLayout from './components/Admin-layout'
 function App() {
 
   return (
    <Router>
     <Routes>
       {/* <Route path = "/admin/login" element = {<AdminLogin/>}/> */}
+      <Route element={<AdminDashboardLayout/>}>
       <Route path = "/" element = {<Login/>}/>
       <Route path = "/home" element = {<Home/>}/>
       <Route path = "/agencies" element = {<Agencies/>}/>
@@ -24,6 +26,8 @@ function App() {
       <Route path = "/create-admin" element ={<CreateAdmin/>} />
       <Route path = "/advertisments" element = {<Advertisements/>} />
       <Route path = "/notifications" element ={<Notifications/>} />
+      </Route>
+
     </Routes>
    </Router>
   )

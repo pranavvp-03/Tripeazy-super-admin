@@ -3,7 +3,7 @@ import Navbar from '../components/Admin-navbar'
 function Home() {
   return (
     <>
-    <Navbar/>
+  <h1>home page</h1>
 
       
     </>

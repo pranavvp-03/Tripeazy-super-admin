@@ -15,7 +15,7 @@ app.use("/api",authRouter)
  
 mongoose
 .connect(process.env.MONGO_URI)
-.then(()=>console.log(`mongodb connected successfully...😎}`))
+.then(()=>console.log(`mongodb connected successfully...😎`))
 .catch((error)=>console.log("mongodb connection error",error))
 
 

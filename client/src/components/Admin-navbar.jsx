@@ -30,7 +30,7 @@ const UserNavbar = () => {
           <NavLink
             to="/home"
             className={({ isActive }) =>
-              `flex items-center gap-4 p-3 rounded-xl ${isActive ? "bg-blue-600 text-white" : ""}`
+              `flex items-center gap-4 p-3 rounded-xl ${isActive ? "bg-custom-purple text-white" : ""}`
             }
           >
             <FaHome />
@@ -39,7 +39,7 @@ const UserNavbar = () => {
           <NavLink
             to="/agencies"
             className={({ isActive }) =>
-              `flex items-center gap-4 p-3 rounded-xl ${isActive ? "bg-blue-600 text-white" : ""}`
+              `flex items-center gap-4 p-3 rounded-xl ${isActive ? "bg-custom-purple text-white" : ""}`
             }
           >
             <FaUsers />
@@ -48,7 +48,7 @@ const UserNavbar = () => {
           <NavLink
             to="/users"
             className={({ isActive }) =>
-              `flex items-center gap-4 p-3 rounded-xl ${isActive ? "bg-blue-600 text-white" : ""}`
+              `flex items-center gap-4 p-3 rounded-xl ${isActive ? "bg-custom-purple text-white" : ""}`
             }
           >
             <FaHome />
@@ -57,7 +57,7 @@ const UserNavbar = () => {
           <NavLink
             to="/packages"
             className={({ isActive }) =>
-              `flex items-center gap-4 p-3 rounded-xl ${isActive ? "bg-blue-600 text-white" : ""}`
+              `flex items-center gap-4 p-3 rounded-xl ${isActive ? "bg-custom-purple text-white" : ""}`
             }
           > 
             <FaRegCalendarAlt />
@@ -66,7 +66,7 @@ const UserNavbar = () => {
           <NavLink
             to="/blogs"
             className={({ isActive }) =>
-              `flex items-center gap-4 p-3 rounded-xl ${isActive ? "bg-blue-600 text-white" : ""}`
+              `flex items-center gap-4 p-3 rounded-xl ${isActive ? "bg-custom-purple text-white" : ""}`
             }
           >
             <FaEnvelope />
@@ -75,7 +75,7 @@ const UserNavbar = () => {
           <NavLink
             to="/create-admin"
             className={({ isActive }) =>
-              `flex items-center gap-4 p-3 rounded-xl ${isActive ? "bg-blue-600 text-white" : ""}`
+              `flex items-center gap-4 p-3 rounded-xl ${isActive ? "bg-custom-purple text-white" : ""}`
             }
           >
             <FaBell />
@@ -84,7 +84,7 @@ const UserNavbar = () => {
           <NavLink
             to="/advertisments"
             className={({ isActive }) =>
-              `flex items-center gap-4 p-3 rounded-xl ${isActive ? "bg-blue-600 text-white" : ""}`
+              `flex items-center gap-4 p-3 rounded-xl ${isActive ? "bg-custom-purple text-white" : ""}`
             }
           >
             <FaPlus />
@@ -93,7 +93,7 @@ const UserNavbar = () => {
           <NavLink
             to="/notifications"
             className={({ isActive }) =>
-              `flex items-center gap-4 p-3 rounded-xl ${isActive ? "bg-blue-600 text-white" : ""}`
+              `flex items-center gap-4 p-3 rounded-xl ${isActive ? "bg-custom-purple text-white" : ""}`
             }
           >
             <FaUser />

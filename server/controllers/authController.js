@@ -2,7 +2,7 @@ const express = require("express")
 const Admin = require("../model/Admin")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
-const Role = require("../model/role")
+const Role = require("../model/Role")
 const JWT_SECRET = process.env.JWT_SECRET || "your_secret_key"
 
 // Register Super Admin
@@ -112,14 +112,28 @@ exports.createUser = async (req,res)=>{
         }
 
         const hashedPassword =  await bcrypt.hash(password,10);
-        const newAdmin = new Admin({
+        const newUser = new Admin({
             name,
             email,
             password: hashedPassword,
             role: role._id
         })
-        await new newAdmin.save();
+        await  newUser.save();
+        res.status(201).json({messages: "user created successfully",user:{
+            _id: newUser._id,
+            name: newUser.name,
+            email: newUser.email,
+            role:{
+                _id: role._id,
+                roleName: role.roleName,
+                description: role.description,
+                permissions: role.permissions
+            }
+
+        }})
     } catch (error) {
+        console.log("error in creating user",error);
+        res.status(400).json({message: "Failed to create user", error: error.message})
         
     }
 }

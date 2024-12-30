@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const { registerSuperAdmin, loginSuperAdmin, createRole, createUser } = require("../controllers/controll")
+const { registerSuperAdmin, loginSuperAdmin, createRole, createUser } = require("../controllers/authcontroller")
 
 
 router.post("/register",registerSuperAdmin);

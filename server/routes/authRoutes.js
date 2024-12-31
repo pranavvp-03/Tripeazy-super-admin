@@ -5,7 +5,6 @@ const { registerSuperAdmin, loginSuperAdmin } = require("../controllers/authcont
 
 router.post("/register",registerSuperAdmin);
 router.post("/login", loginSuperAdmin);
-
 router.post("/logout")
 
 

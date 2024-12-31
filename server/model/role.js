@@ -8,15 +8,15 @@ const roleSchema = new mongoose.Schema({
       tabName: {
         type: String,
         enum: [
-          "Dashboard",
+          "Home",
+          "Agencies",
           "Users",
           "Packages",
-          "Bookings",
-          "Agencies",
-          "Reports",
-          "Settings",
+          "Blogs",
           "CreateAdmin",
-          "Notifications"
+          "Advertisements",
+          "Notifications",
+          "Profile"
         ],
         required: true
       },

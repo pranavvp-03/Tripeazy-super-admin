@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
 const roleSchema = new mongoose.Schema({
-  roleName: { type: String, required: true, unique: true },  // Name of the role
-  description: { type: String, required: true },  // Role description
+  roleName: { type: String, required: true, unique: true },
+  description: { type: String, required: true },
   permissions: [
     {
-      tabName: { 
-        type: String, 
+      tabName: {
+        type: String,
         enum: [
           "Dashboard",
           "Users",
@@ -15,19 +15,20 @@ const roleSchema = new mongoose.Schema({
           "Agencies",
           "Reports",
           "Settings",
+          "CreateAdmin",
           "Notifications"
-        ], 
-        required: true 
-      },  // Tab name from the 8 available tabs
-      permissions: [
-        { 
-          type: String, 
-          enum: ["view", "edit", "delete"], 
-          required: true 
-        },  // Possible permissions for each tab
-      ],
-    },
-  ],
+        ],
+        required: true
+      },
+      actions: [
+        {
+          type: String,
+          enum: ["view", "edit", "delete"], // Define what actions are allowed on the tab
+          required: true
+        }
+      ]
+    }
+  ]
 });
 
 module.exports = mongoose.model("Role", roleSchema);

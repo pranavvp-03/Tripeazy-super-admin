@@ -1,15 +1,15 @@
 const mongoose = require("mongoose");
+const Role = require("./Role");
 
-// Admin Schema
 const adminSchema = new mongoose.Schema({
     name: { type: String, required: true },
     email: { type: String, unique: true, required: true },
     password: { type: String, required: true },
     role: { 
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: 'Role', // References the Role model 
-        required: true, 
-        default: 'superAdmin' // Default role for the first user
+
+        type: mongoose.Schema.Types.ObjectId, // Reference Role model
+        ref: "Role", 
+        required: true 
     }
 });
 

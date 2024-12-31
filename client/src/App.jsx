@@ -18,7 +18,6 @@ function App() {
     <Route path = "/" element = {<Login/>}/>
       {/* <Route path = "/admin/login" element = {<AdminLogin/>}/> */}
       <Route element={<AdminDashboardLayout/>}>
-     
       <Route path = "/home" element = {<Home/>}/>
       <Route path = "/agencies" element = {<Agencies/>}/>
       <Route path = "/users" element ={<Users/>} />

@@ -4,6 +4,6 @@ const { createRole } = require("../controllers/roleController");
 const { verifyToken } = require("../middleware/authMiddleware");
 
 // Create a new role (Super Admin only)
-router.post("/create-role", verifyToken, createRole);
+router.post("/create-role",createRole);
 
 module.exports = router;

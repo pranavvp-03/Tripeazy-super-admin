@@ -8,7 +8,6 @@ function Home() {
 
   const token = localStorage.getItem('token');
   useEffect(()=>{
-    console.log("token",token);
     if(!token){
       navigate('/');
     }

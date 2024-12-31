@@ -6,70 +6,69 @@ const Role = require("../model/Role")
 const JWT_SECRET = process.env.JWT_SECRET || "your_secret_key"
 
 // Register Super Admin
-exports.registerSuperAdmin = async (req, res) => {
-    const { name, email, password } = req.body
-    try {
-        console.log(name, email, password)
+exports.createAdmin = async (req, res) => {
+    const { name, email, password, roleName } = req.body;
 
-        // Check if the super admin already exists
-        const existingAdmin = await Admin.findOne({ role: "super-admin" })
+    try {
+        console.log(name, email, roleName);
+
+        // Fetch the role by roleName
+        const role = await Role.findOne({ roleName });
+        if (!role) {
+            return res.status(404).json({ message: `Role '${roleName}' not found` });
+        }
+
+        // Check if an admin with the same email already exists
+        const existingAdmin = await Admin.findOne({ email });
         if (existingAdmin) {
-            return res.status(400).json({ message: "Super admin already exists" })
+            return res.status(400).json({ message: "Admin with this email already exists" });
         }
 
         // Hash the password
-        const hashedPassword = await bcrypt.hash(password, 10)
+        const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Create and save the new super admin
-        const superAdmin = new Admin({
+        // Create and save the new admin
+        const admin = new Admin({
             name,
             email,
             password: hashedPassword,
-            role: "super-admin"
-        })
-        
-        await superAdmin.save()
-        res.status(201).json({ message: "Super admin registered successfully" })
+            role: role._id, // Save role as ObjectId
+        });
+
+        await admin.save();
+        res.status(201).json({ message: "Admin created successfully", admin });
     } catch (error) {
-        res.status(500).json({ message: "Registration failed", error: error.message })
+        res.status(500).json({ message: "Admin creation failed", error: error.message });
     }
-}
+};
 
 // Login Super Admin
-exports.loginSuperAdmin = async (req, res) => {
-    const { email, password } = req.body
+exports.loginAdmin = async (req,res)=>{
+    const {email,password} = req.body;
     try {
-        console.log(email,password);
-        
-        // Fetch super admin by role, ensure it's a string, not ObjectId
-        const superAdmin = await Admin.findOne({ role: "super-admin" })
-
-        if (!superAdmin) {
-            return res.status(404).json({ message: "Super admin not found" })
+        const admin = await Admin.findOne({email}).populate("role");
+        console.log(admin,"admin");
+        if(!admin){
+            return res.status(404).json({message:"Admin not found"})
         }
 
-        // Check if email matches
-        if (superAdmin.email !== email) {
-            return res.status(401).json({ message: "Email does not match" })
+        const isPasswordValid = await bcrypt.compare(password,admin.password);
+        if(!isPasswordValid){
+            return res.status(401).json({message: "invalid credentials"})
         }
 
-        // Compare the password
-        const isPasswordValid = await bcrypt.compare(password, superAdmin.password)
-        if (!isPasswordValid) {
-            return res.status(401).json({ message: "Password does not match" })
-        }
-
-        // Generate JWT token
         const token = jwt.sign(
-            { id: superAdmin._id, role: superAdmin.role },
+            {id:admin._id, role:admin.role.roleName},
             JWT_SECRET,
-            { expiresIn: "1h" }
+            {expiresIn:"1h"}
         )
 
-        // Respond with token and role
-        res.status(200).json({ message: "Login successful", token, role: superAdmin.role })
+        res.status(200).json({message:"Login successful",token,
+            role: admin.role.roleName,
+            permissions: admin.role.permissions,})
+            console.log(admin.role.roleName,"role");
     } catch (error) {
-        console.log(error, "Error during login")
-        res.status(500).json({ message: "Login failed. Please try again later." })
+        console.log(error,"error in login admin");
+        res.status(500).json({message:"Login failed please try again later."})
     }
 }

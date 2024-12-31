@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
-
+// import { useNavigate } from 'react-router-dom';
+// const navigate=useNavigate()
 function CreateAdmin() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   // Function to toggle dropdown visibility
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
-  };
+  }
+  // const newAdminPage=()=>{
+  //   navigate("/createNewAdmin")
+  // }
+
 
   return (
     <>
-      <div>
+      
         <nav className="bg-white border-gray-200 dark:bg-gray-900 ">
           <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
@@ -148,9 +153,9 @@ function CreateAdmin() {
             </div>
           </div>
         </nav>
-        <div className='text-right mt-10 mr-10'>
+        {/* <div className='text-right mt-10 mr-10'>
         <button type="button" class="flex-justify-end text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Create New admin</button>
-        </div>
+        </div> */}
 
 
         <div className="w-full max-w-xs bg-white border border-gray-200 rounded-lg shadow dark:bg-white-800 dark:border-gray-300 ml-20 mt-20">
@@ -229,7 +234,7 @@ function CreateAdmin() {
             </div>
           </div>
         </div>
-      </div>
+     
     </>
   );
 }

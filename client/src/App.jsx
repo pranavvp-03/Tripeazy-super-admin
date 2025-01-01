@@ -11,6 +11,7 @@ import Advertisements from './pages/Advertisements'
 import Notifications from './pages/Notifications'
 import AdminDashboardLayout from './components/Admin-layout'
 import CreateNewAdmin from "./pages/createAdminTab/CreateNewAdmin"
+import Addrole from "./pages/createAdminTab/Addrole"
 function App() {
 
   return (
@@ -28,6 +29,7 @@ function App() {
       <Route path = "/advertisments" element = {<Advertisements/>} />
       <Route path = "/notifications" element ={<Notifications/>} />
       <Route path ="/createNewAdmin" element ={<CreateNewAdmin/>}/>
+      <Route path ="/addrole" element={<Addrole/>}/>
       </Route>
 
     </Routes>

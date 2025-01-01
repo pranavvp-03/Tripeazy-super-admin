@@ -3,7 +3,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'custom-purple': '#271A4B'
+        'custom-purple': '#271A4B',
+         'customGray': '#F5F6FA'
+
       },
     },
   },

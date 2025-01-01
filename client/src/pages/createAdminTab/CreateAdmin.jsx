@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
-
+import { NavLink } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
+// const navigate=useNavigate()
 function CreateAdmin() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   // Function to toggle dropdown visibility
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
-  };
+  }
+  // const newAdminPage=()=>{
+  //   navigate("/createNewAdmin")
+  // }
+
 
   return (
     <>
-      <div>
+      
         <nav className="bg-white border-gray-200 dark:bg-gray-900 ">
           <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
@@ -126,21 +132,31 @@ function CreateAdmin() {
   <h1 className="text-white text-2xl mb-4">Manage Admin</h1>
   <ul className="flex p-4 md:p-0 space-x-4">
     <li>
-      <a
+      {/* <a
         href="#"
         className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
         aria-current="page"
       >
         Members
-      </a>
+      </a> */}
+     <NavLink
+          to="/create-admin"
+          className={({ isActive }) =>
+            `p-2 rounded-lg ${isActive ? "bg-blue-500 text-white" : "text-gray-600"}`
+          }
+        >
+          Members
+        </NavLink>
     </li>
     <li>
-      <a
-        href="#"
-        className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-      >
-        New
-      </a>
+    <NavLink
+          to="/createNewAdmin"
+          className={({ isActive }) =>
+            `p-2 rounded-lg ${isActive ? "bg-blue-500 text-white" : "text-gray-600"}`
+          }
+        >
+          New
+        </NavLink>
     </li>
   </ul>
 </div>
@@ -148,10 +164,7 @@ function CreateAdmin() {
             </div>
           </div>
         </nav>
-        <div className='text-right mt-10 mr-10'>
-        <button type="button" class="flex-justify-end text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Create New admin</button>
-        </div>
-
+       
 
         <div className="w-full max-w-xs bg-white border border-gray-200 rounded-lg shadow dark:bg-white-800 dark:border-gray-300 ml-20 mt-20">
           <div className="flex justify-end px-4 pt-4">
@@ -229,7 +242,7 @@ function CreateAdmin() {
             </div>
           </div>
         </div>
-      </div>
+     
     </>
   );
 }

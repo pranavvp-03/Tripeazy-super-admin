@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-
-function PermissionList() {
+import axios from 'axios'
+function PermissionList({roleName,description}) {
   const [selectedValues,setSelectedValues]=useState({
     Home:[],
     Agencies:[],
@@ -9,6 +9,8 @@ function PermissionList() {
     Blogs:[],
     CreateAdmin:[]
   })
+  
+
   const handleCheckbox=(e,parent)=>{
        const {checked,value}=e.target
        
@@ -23,7 +25,28 @@ function PermissionList() {
        })
        
   }
-  console.log(selectedValues)
+  // console.log(selectedValues)
+ 
+  // const {roleName,description}=props
+  const permissions=selectedValues
+  console.log(roleName,description,permissions)
+  const handleSubmit=async ()=>{
+  
+    try{
+     const response= await axios.post("http://localhost:3001/api/roles/create-role",{roleName,description,permissions})
+     
+     if(!response){
+       console.log("There is no responce to recieve ")
+     }
+     console.log(response,"successfully recieved")
+
+    }catch(error){
+     console.log(error.message);
+     
+     
+
+    }
+}
   return (
     <div>
           <div className="items-center mt-10">
@@ -37,7 +60,7 @@ function PermissionList() {
               id="vue-checkbox-list"
               type="checkbox"
               value="view"
-             onClick={(e)=>{handleCheckbox(e, "Home")}}
+             onChange={(e)=>{handleCheckbox(e, "Home")}}
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -54,7 +77,7 @@ function PermissionList() {
               id="react-checkbox-list"
               type="checkbox"
               value="Edit"
-              onClick={(e)=>{handleCheckbox(e, "Home")}}
+              onChange={(e)=>{handleCheckbox(e, "Home")}}
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -71,7 +94,7 @@ function PermissionList() {
               id="angular-checkbox-list"
               type="checkbox"
               value="Delete"
-              onClick={(e)=>{handleCheckbox(e, "Home")}}
+              onChange={(e)=>{handleCheckbox(e, "Home")}}
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -108,7 +131,7 @@ function PermissionList() {
               id="vue-checkbox-list"
               type="checkbox"
               value="view"
-              onClick={(e)=>{handleCheckbox(e, "Agencies")}}
+              onChange={(e)=>{handleCheckbox(e, "Agencies")}}
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -125,7 +148,7 @@ function PermissionList() {
               id="react-checkbox-list"
               type="checkbox"
               value="Edit"
-              onClick={(e)=>{handleCheckbox(e, "Agencies")}}
+              onChange={(e)=>{handleCheckbox(e, "Agencies")}}
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -142,7 +165,7 @@ function PermissionList() {
               id="angular-checkbox-list"
               type="checkbox"
               value="Delete"
-              onClick={(e)=>{handleCheckbox(e, "Agencies")}}
+              onChange={(e)=>{handleCheckbox(e, "Agencies")}}
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -178,7 +201,7 @@ function PermissionList() {
               id="vue-checkbox-list"
               type="checkbox"
               value="view"
-              onClick={(e)=>{handleCheckbox(e, "Users")}}
+              onChange={(e)=>{handleCheckbox(e, "Users")}}
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -195,7 +218,7 @@ function PermissionList() {
               id="react-checkbox-list"
               type="checkbox"
               value="Edit"
-              onClick={(e)=>{handleCheckbox(e, "Users")}}
+              onChange={(e)=>{handleCheckbox(e, "Users")}}
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -212,7 +235,7 @@ function PermissionList() {
               id="angular-checkbox-list"
               type="checkbox"
               value="Delete"
-              onClick={(e)=>{handleCheckbox(e, "Users")}}
+              onChange={(e)=>{handleCheckbox(e, "Users")}}
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -248,7 +271,7 @@ function PermissionList() {
               id="vue-checkbox-list"
               type="checkbox"
               value="View"
-              onClick={(e)=>{handleCheckbox(e, "Packages")}}
+              onChange={(e)=>{handleCheckbox(e, "Packages")}}
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -265,7 +288,7 @@ function PermissionList() {
               id="react-checkbox-list"
               type="checkbox"
               value="Edit"
-              onClick={(e)=>{handleCheckbox(e, "Packages")}}
+              onChange={(e)=>{handleCheckbox(e, "Packages")}}
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -282,7 +305,7 @@ function PermissionList() {
               id="angular-checkbox-list"
               type="checkbox"
               value="Delete"
-              onClick={(e)=>{handleCheckbox(e, "Packages")}}
+              onChange={(e)=>{handleCheckbox(e, "Packages")}}
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -318,7 +341,7 @@ function PermissionList() {
               id="vue-checkbox-list"
               type="checkbox"
               value="View"
-              onClick={(e)=>{handleCheckbox(e, "Blogs")}}
+              onChange={(e)=>{handleCheckbox(e, "Blogs")}}
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -335,7 +358,7 @@ function PermissionList() {
               id="react-checkbox-list"
               type="checkbox"
               value="Edit"
-              onClick={(e)=>{handleCheckbox(e, "Blogs")}}
+              onChange={(e)=>{handleCheckbox(e, "Blogs")}}
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -352,7 +375,7 @@ function PermissionList() {
               id="angular-checkbox-list"
               type="checkbox"
               value="Delete"
-              onClick={(e)=>{handleCheckbox(e, "Blogs")}}
+              onChange={(e)=>{handleCheckbox(e, "Blogs")}}
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -388,7 +411,7 @@ function PermissionList() {
               id="vue-checkbox-list"
               type="checkbox"
               value="View"
-              onClick={(e)=>{handleCheckbox(e, "Create Admin")}}
+              onChange={(e)=>{handleCheckbox(e, "Create Admin")}}
               className=" ml-10 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -405,7 +428,7 @@ function PermissionList() {
               id="react-checkbox-list"
               type="checkbox"
               value="Edit"
-              onClick={(e)=>{handleCheckbox(e, "Create Admin")}}
+              onChange={(e)=>{handleCheckbox(e, "Create Admin")}}
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -422,7 +445,7 @@ function PermissionList() {
               id="angular-checkbox-list"
               type="checkbox"
               value="Delete"
-              onClick={(e)=>{handleCheckbox(e, "Create Admin")}}
+              onChange={(e)=>{handleCheckbox(e, "Create Admin")}}
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -451,10 +474,13 @@ function PermissionList() {
         </li>
       </ul>
     </div>
-  </div>
-  <div className='text-center mt-10 mr-10'>
-        <button type="button" className="flex-justify-end text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Add New</button>
+    <div className='text-center mt-10 mr-10'>
+        <button type="button" 
+        onClick={handleSubmit}
+        className="flex-justify-end text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Add New</button>
         </div>
+  </div>
+  
     </div>
   )
 }

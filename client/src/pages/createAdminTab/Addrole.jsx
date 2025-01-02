@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import PermissionList from './PermissionList'
+// import axios from 'axios'
 function Addrole() {
+const [role,setRole]=useState("")
+const [description,setDescription]=useState("")
+
+
+console.log(role)
+console.log(description)
+//  const props={role,description}
+//  console.log(props)
+
   return (
 
 
@@ -50,18 +60,23 @@ function Addrole() {
           <input
             type="text"
             id="input-2"
+            value={role}
+            onChange={(e)=>setRole(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-F5F6FA dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
         </div>
         <h2 className='mt-5 font-bold'>Description</h2>
-        <div class="mb-6">
-    <label for="large-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Large input</label>
-    <input type="text" id="large-input" class="block w-4/5 p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500bg-F5F6FA dark:border-gray-600 dark:placeholder-dark-400 dark:text-dark dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <div className="mb-6">
+    <label htmlFor="large-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Large input</label>
+    <input type="text" id="large-input" 
+    value={description}
+    onChange={(e)=>setDescription(e.target.value)}
+    className="block w-4/5 p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500bg-F5F6FA dark:border-gray-600 dark:placeholder-dark-400 dark:text-dark dark:focus:ring-blue-500 dark:focus:border-blue-500">
     </input>
 </div>
         </div>
-      <PermissionList/>
-      
+      <PermissionList roleName={role} description={description}/>
+     
       
      </div>
   )

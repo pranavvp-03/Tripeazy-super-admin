@@ -12,8 +12,11 @@ import {
   FaEnvelope,
   FaRegCalendarAlt 
 } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 const UserNavbar = () => {
+  const permissions = useSelector((state)=>state.role.permissions);
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
@@ -140,7 +143,7 @@ const UserNavbar = () => {
           ></div>
           <div className="fixed inset-y-0 left-0 bg-white w-64 z-50 shadow-lg flex flex-col">
             <div className="flex items-center justify-center h-20 border-b">
-              <h1 className="text-2xl font-bold">User Dashboard</h1>
+              <h1 className="text-2xl font-bold">Super Admin</h1>
             </div>
             <nav className="flex-1 p-4 space-y-4">
               <NavLink
@@ -161,7 +164,7 @@ const UserNavbar = () => {
                 }
               >
                 <FaUsers />
-                People
+                Agencies
               </NavLink>
           <NavLink
             to="/messages"
@@ -170,7 +173,7 @@ const UserNavbar = () => {
             }
           >
             <FaEnvelope />
-            Messages
+            Users
           </NavLink>
               <NavLink
                 to="/housing"
@@ -180,7 +183,7 @@ const UserNavbar = () => {
                 }
               >
                 <FaHome />
-                Housing
+                Packages
               </NavLink>
               <NavLink
                 to="/events"
@@ -190,7 +193,7 @@ const UserNavbar = () => {
                 }
               >
                 <FaHome />
-                Events
+                Blogs
               </NavLink>
               <NavLink
                 to="/notifications"
@@ -200,7 +203,7 @@ const UserNavbar = () => {
                 }
               >
                 <FaBell />
-                Notifications
+                Create Admin
               </NavLink>
               <NavLink
                 to="/create-post"
@@ -210,7 +213,7 @@ const UserNavbar = () => {
                 }
               >
                 <FaPlus />
-                Create Post
+                Advertisments
               </NavLink>
               <NavLink
                 to="/profile-settings"
@@ -220,7 +223,7 @@ const UserNavbar = () => {
                 }
               >
                 <FaUser />
-                Profile & Settings
+                Notifications
               </NavLink>
             </nav>
           </div>

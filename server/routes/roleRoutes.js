@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const { createRole } = require("../controllers/roleController");
-const { verifyToken } = require("../middleware/authMiddleware");
+const { createRole, getRole } = require("../controllers/roleController");
+const { verifyToken, authorize } = require("../middleware/authMiddleware");
 
 // Create a new role (Super Admin only)
-router.post("/create-role",createRole);
+router.post("/create-role",verifyToken,authorize([{tabName:"createAdmin",action:"create"}]),createRole);
+router.get("/get-role",verifyToken,getRole)
 
 module.exports = router;

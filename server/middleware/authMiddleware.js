@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const Role = require("../model/Role");
 const JWT_SECRET = process.env.JWT_SECRET || "your_secret_key";
 
 // Verify Token Middleware
@@ -16,3 +17,32 @@ exports.verifyToken = (req, res, next) => {
         return res.status(401).json({ message: "Invalid or expired token" });
     }
 };
+
+exports.authorize = (requiredPermissions) =>{
+    return async (req,res,next)=>{
+        try {
+            const role = await Role.findOne({roleName: req.user.role});
+            if(!role){
+                return res.status(403).json({message:"Role not found"})
+            }
+
+            const userPermission = role.permissions;
+
+            const hashPermission = requiredPermissions.every((required)=>
+            userPermission.some((permission)=>
+                permission.tabName === required.tabName &&
+                permission.actions.includes(required.actions)
+            )
+        )
+        if(!hashPermission){
+            return res.status(403).json({message:"Access denied. Insufficient permissions."})
+        }
+        next();
+        } catch (error) {
+            console.log("error in authorize middleware",error.message);
+            res.status(500).json({message:"Failed to authorize user",error:error.message})
+            
+        }
+    }
+
+}

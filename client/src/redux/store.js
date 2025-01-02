@@ -1,13 +1,10 @@
-import { combineReducers, createStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./reducers/authReducer";
-import roleReducers from "./reducers/roleReducer";
+import roleReducer from "./reducers/roleReducer";
 
-const rootReducer = combineReducers({
+export const store = configureStore({
+  reducer: {
     auth: authReducer,
-    role: roleReducers,
-})
-
-const store = createStore(rootReducer)
-
-export default store;
-
+    role: roleReducer,
+  },
+});

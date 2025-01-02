@@ -3,10 +3,10 @@ const mongoose = require("mongoose");
 const roleSchema = new mongoose.Schema({
   roleName: { type: String, required: true, unique: true },
   description: { type: String, required: true },
-  permissions: { 
+  permissions: {
     type: Map,
     of: [String],
-    required: true
+    required: true,
   }
 });
 

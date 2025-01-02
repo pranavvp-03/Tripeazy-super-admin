@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { loginSuccess } from '../redux/actions/authAction';
+import { setPermissions } from '../redux/actions/roleAction';
 import axios from 'axios';
 
 const Login = () => {
@@ -8,6 +11,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({ email: '', password: '', global: '' });
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const token = localStorage.getItem('token');
 
@@ -65,10 +69,15 @@ const Login = () => {
         password,
       });
           // console.log(response.data)
-      const { token } = response.data;
+      const { token,user,permissions } = response.data;
 
       if (token) {
         localStorage.setItem('token', token);
+        localStorage.setItem('user',JSON.stringify(user));
+        localStorage.setItem('permissions',JSON.stringify(permissions));
+
+        dispatch(loginSuccess(user, token));
+        dispatch(setPermissions(permissions));
         navigate('/home');
        
       }

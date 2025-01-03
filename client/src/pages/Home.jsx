@@ -14,9 +14,9 @@ function Home() {
   },[token])
   return (
     <>
-  <h1>home page</h1>
 
-      
+  <h1>home page</h1>
+  
     </>
   )
 }

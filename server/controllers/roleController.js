@@ -2,6 +2,7 @@ const Role = require("../model/Role");
 // Create Role
 exports.createRole = async (req, res) => {
     const { roleName, description, permissions } = req.body;
+    console.log(roleName, description, permissions,"no any response");
     try {
         const existingRole = await Role.findOne({ roleName });
         if (existingRole) {

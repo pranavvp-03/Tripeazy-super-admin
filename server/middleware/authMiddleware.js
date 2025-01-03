@@ -4,12 +4,16 @@ const JWT_SECRET = process.env.JWT_SECRET || "your_secret_key";
 
 // Verify Token Middleware
 exports.verifyToken = (req, res, next) => {
+    
     const token = req.headers.authorization?.split(" ")[1];
     if (!token) {
+        console.log("no token found");
+        
         return res.status(401).json({ message: "Access denied. No token provided." });
     }
 
     try {
+        
         const decoded = jwt.verify(token, JWT_SECRET);
         req.user = decoded; // Attach decoded user to request
         next();
@@ -22,6 +26,7 @@ exports.authorize = (requiredPermissions) =>{
     return async (req,res,next)=>{
         try {
             const role = await Role.findOne({roleName: req.user.role});
+            console.log(role,"role");
             if(!role){
                 return res.status(403).json({message:"Role not found"})
             }
@@ -32,7 +37,9 @@ exports.authorize = (requiredPermissions) =>{
             userPermission.some((permission)=>
                 permission.tabName === required.tabName &&
                 permission.actions.includes(required.actions)
+               
             )
+            
         )
         if(!hashPermission){
             return res.status(403).json({message:"Access denied. Insufficient permissions."})

@@ -7,7 +7,7 @@ function PermissionList({roleName,description}) {
     Users:[],
     Packages:[],
     Blogs:[],
-    CreateAdmin:[]
+    CreateAdmin:[],
   })
   
 
@@ -23,27 +23,26 @@ function PermissionList({roleName,description}) {
         [parent]:updatedValue
        }
        })
-       
   }
+
   // console.log(selectedValues)
- 
   // const {roleName,description}=props
-  const permissions=selectedValues
+
+  const permissions = selectedValues
   console.log(roleName,description,permissions)
   const handleSubmit=async ()=>{
+    const token = localStorage.getItem('token');
   
     try{
-     const response= await axios.post("http://localhost:3001/api/roles/create-role",{roleName,description,permissions})
-     
+     const response= await axios.post("http://localhost:3001/api/roles/create-role",{roleName,description,permissions},{headers:{Authorization:`Bearer ${token}`}})
+     console.log(response,"from recieved");
      if(!response){
        console.log("There is no responce to recieve ")
      }
      console.log(response,"successfully recieved")
 
     }catch(error){
-     console.log(error.message);
-     
-     
+     console.log(error.message,"faied frm server");
 
     }
 }

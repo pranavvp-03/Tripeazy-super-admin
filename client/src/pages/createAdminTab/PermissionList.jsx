@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import SuccessTost from './SuccessTost'
+import RejectTost from './RejectTost'
 function PermissionList({roleName,description}) {
   const [selectedValues,setSelectedValues]=useState({
     Home:[],
@@ -30,17 +32,27 @@ function PermissionList({roleName,description}) {
   // const {roleName,description}=props
   const permissions=selectedValues
   console.log(roleName,description,permissions)
+  const token =localStorage.getItem("token")
+  if(!token){
+    console.log("no token ");
+    
+  }
+  console.log(token)
   const handleSubmit=async ()=>{
   
     try{
-     const response= await axios.post("http://localhost:3001/api/roles/create-role",{roleName,description,permissions})
+     const response= await axios.post("http://localhost:3001/api/roles/create-role", {roleName,description,permissions})
      
-     if(!response){
-       console.log("There is no responce to recieve ")
-     }
-     console.log(response,"successfully recieved")
-
-    }catch(error){
+    //  if(!response){
+    //    console.log("There is no responce to recieve ")
+    //  }
+    // else{ console.log(response,"successfully recieved")
+    //   <SuccessTost/>
+    // }
+     
+      response.status === 200 ? <SuccessTost/> : <RejectTost/>
+    } 
+    catch(error){
      console.log(error.message);
      
      
@@ -51,17 +63,33 @@ function PermissionList({roleName,description}) {
     <div>
           <div className="items-center mt-10">
     <h1 className="mb-4 font-bold text-gray-900 dark:text-dark">Tabs and Permissions</h1>
-    <div className="w-1/2 items-center">
-      <ul className="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-        <span className="ml-5">Home</span>
-        <li className="w-1/2 ml-10 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+    <div className=" w-1/2 items-center">
+    {/* <input type="text" 
+       className='bg--custom-purple -w-4 h-4 text-blue-600  border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 bg-custom-purple dark:border-gray-500" '
+       placeholder='Home' /> */}
+      <ul className=" items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 bg-271A4B dark:text-white">
+      <li className=" bg-custom-purple w-1/2  border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+          <div className="flex items-center ps-3 ml-5">
+            
+            <label
+              htmlFor="vue-checkbox-list"
+              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 "
+            >
+              Home
+            </label>
+          </div>
+        </li>
+
+
+        <li className=" bg-custom-purple w-1/2  border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
           <div className="flex items-center ps-3 ml-5">
             <input
               id="vue-checkbox-list"
               type="checkbox"
               value="view"
              onChange={(e)=>{handleCheckbox(e, "Home")}}
-              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+           
+              className=" bg--custom-purple -w-4 h-4 text-blue-600  border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 bg-custom-purple dark:border-gray-500"
             />
             <label
               htmlFor="vue-checkbox-list"
@@ -71,7 +99,7 @@ function PermissionList({roleName,description}) {
             </label>
           </div>
         </li>
-        <li className="w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+        <li className=" bg-custom-purple w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
           <div className="flex items-center ps-3">
             <input
               id="react-checkbox-list"
@@ -88,7 +116,7 @@ function PermissionList({roleName,description}) {
             </label>
           </div>
         </li>
-        <li className="w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+        <li className=" bg-custom-purple w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
           <div className="flex items-center ps-3">
             <input
               id="angular-checkbox-list"
@@ -105,7 +133,7 @@ function PermissionList({roleName,description}) {
             </label>
           </div>
         </li>
-        <li className="w-1/2 dark:border-gray-600">
+        <li className=" bg-custom-purple w-1/2 dark:border-gray-600">
           <div className="flex items-center ps-3 ">
             <input
               id="laravel-checkbox-list"
@@ -124,8 +152,21 @@ function PermissionList({roleName,description}) {
         </li>
       </ul>
       <ul className=" mt-3 items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-        <span className="ml-5">Agencies</span>
-        <li className="w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+        
+      <li className=" bg-custom-purple w-1/2  border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+          <div className="flex items-center ps-3 ml-5">
+            
+            <label
+              htmlFor="vue-checkbox-list"
+              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 "
+            >
+              Agencies
+            </label>
+          </div>
+        </li>
+        
+
+        <li className=" bg-custom-purple w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
           <div className="flex items-center ps-3 ml-10">
             <input
               id="vue-checkbox-list"
@@ -142,7 +183,7 @@ function PermissionList({roleName,description}) {
             </label>
           </div>
         </li>
-        <li className="w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+        <li className=" bg-custom-purple w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
           <div className="flex items-center ps-3">
             <input
               id="react-checkbox-list"
@@ -159,7 +200,7 @@ function PermissionList({roleName,description}) {
             </label>
           </div>
         </li>
-        <li className="w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+        <li className=" bg-custom-purple w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
           <div className="flex items-center ps-3">
             <input
               id="angular-checkbox-list"
@@ -176,7 +217,7 @@ function PermissionList({roleName,description}) {
             </label>
           </div>
         </li>
-        <li className="w-1/2 dark:border-gray-600">
+        <li className=" bg-custom-purple w-1/2 dark:border-gray-600">
           <div className="flex items-center ps-3">
             <input
               id="laravel-checkbox-list"
@@ -194,8 +235,20 @@ function PermissionList({roleName,description}) {
         </li>
       </ul>
       <ul className=" mt-3 items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-        <span className="ml-5">Users</span>
-        <li className="w-1/2 ml-5 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+       
+      <li className=" bg-custom-purple w-1/2  border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+          <div className="flex items-center ps-3 ml-5">
+            
+            <label
+              htmlFor="vue-checkbox-list"
+              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 "
+            >
+              Users
+            </label>
+          </div>
+        </li>
+
+        <li className=" bg-custom-purple w-1/2  border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
           <div className="flex items-center ps-3 ml-10">
             <input
               id="vue-checkbox-list"
@@ -212,7 +265,7 @@ function PermissionList({roleName,description}) {
             </label>
           </div>
         </li>
-        <li className="w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+        <li className=" bg-custom-purple w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
           <div className="flex items-center ps-3">
             <input
               id="react-checkbox-list"
@@ -229,7 +282,7 @@ function PermissionList({roleName,description}) {
             </label>
           </div>
         </li>
-        <li className="w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+        <li className=" bg-custom-purple w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
           <div className="flex items-center ps-3">
             <input
               id="angular-checkbox-list"
@@ -246,7 +299,7 @@ function PermissionList({roleName,description}) {
             </label>
           </div>
         </li>
-        <li className="w-1/2 dark:border-gray-600">
+        <li className=" bg-custom-purple w-1/2 dark:border-gray-600">
           <div className="flex items-center ps-3">
             <input
               id="laravel-checkbox-list"
@@ -264,8 +317,20 @@ function PermissionList({roleName,description}) {
         </li>
       </ul>
       <ul className=" mt-3 items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-        <span className="ml-5">Packages</span>
-        <li className="w-1/2 ml-10 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+       
+      <li className=" bg-custom-purple w-1/2  border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+          <div className="flex items-center ps-3 ml-5">
+            
+            <label
+              htmlFor="vue-checkbox-list"
+              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 "
+            >
+              Packages
+            </label>
+          </div>
+        </li>
+
+        <li className=" bg-custom-purple w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
           <div className="flex items-center ps-3">
             <input
               id="vue-checkbox-list"
@@ -282,7 +347,7 @@ function PermissionList({roleName,description}) {
             </label>
           </div>
         </li>
-        <li className="w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+        <li className=" bg-custom-purple w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
           <div className="flex items-center ps-3">
             <input
               id="react-checkbox-list"
@@ -299,7 +364,7 @@ function PermissionList({roleName,description}) {
             </label>
           </div>
         </li>
-        <li className="w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+        <li className=" bg-custom-purple w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
           <div className="flex items-center ps-3">
             <input
               id="angular-checkbox-list"
@@ -316,7 +381,7 @@ function PermissionList({roleName,description}) {
             </label>
           </div>
         </li>
-        <li className="w-1/2 dark:border-gray-600">
+        <li className=" bg-custom-purple w-1/2 dark:border-gray-600">
           <div className="flex items-center ps-3">
             <input
               id="laravel-checkbox-list"
@@ -334,8 +399,20 @@ function PermissionList({roleName,description}) {
         </li>
       </ul>
       <ul className=" mt-3 items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-        <span className="ml-5">Blogs</span>
-        <li className="w-1/2 ml-10 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+      
+      <li className=" bg-custom-purple w-1/2  border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+          <div className="flex items-center ps-3 ml-5">
+            
+            <label
+              htmlFor="vue-checkbox-list"
+              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 "
+            >
+              Blogs
+            </label>
+          </div>
+        </li>
+
+        <li className=" bg-custom-purple w-1/2  border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
           <div className="flex items-center ps-3">
             <input
               id="vue-checkbox-list"
@@ -352,7 +429,7 @@ function PermissionList({roleName,description}) {
             </label>
           </div>
         </li>
-        <li className="w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+        <li className=" bg-custom-purple w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
           <div className="flex items-center ps-3">
             <input
               id="react-checkbox-list"
@@ -369,7 +446,7 @@ function PermissionList({roleName,description}) {
             </label>
           </div>
         </li>
-        <li className="w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+        <li className=" bg-custom-purple w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
           <div className="flex items-center ps-3">
             <input
               id="angular-checkbox-list"
@@ -386,7 +463,7 @@ function PermissionList({roleName,description}) {
             </label>
           </div>
         </li>
-        <li className="w-1/2 dark:border-gray-600">
+        <li className=" bg-custom-purple w-1/2 dark:border-gray-600">
           <div className="flex items-center ps-3">
             <input
               id="laravel-checkbox-list"
@@ -404,8 +481,20 @@ function PermissionList({roleName,description}) {
         </li>
       </ul>
       <ul className="  mt-3 flex items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-        <span className="ml-5  whitespace-nowrap">Create Admin</span>
-        <li className="w-1/2  border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+        
+      <li className=" bg-custom-purple w-1/2  border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+          <div className="flex items-center ps-3 ml-5">
+            
+            <label
+              htmlFor="vue-checkbox-list"
+              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 "
+            >
+              Creating 
+            </label>
+          </div>
+        </li>
+
+        <li className=" bg-custom-purple w-1/2  border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
           <div className="flex items-center ps-3">
             <input
               id="vue-checkbox-list"
@@ -422,7 +511,7 @@ function PermissionList({roleName,description}) {
             </label>
           </div>
         </li>
-        <li className="w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+        <li className=" bg-custom-purple w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
           <div className="flex items-center ps-3">
             <input
               id="react-checkbox-list"
@@ -439,7 +528,7 @@ function PermissionList({roleName,description}) {
             </label>
           </div>
         </li>
-        <li className="w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+        <li className=" bg-custom-purple w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
           <div className="flex items-center ps-3">
             <input
               id="angular-checkbox-list"
@@ -456,7 +545,7 @@ function PermissionList({roleName,description}) {
             </label>
           </div>
         </li>
-        <li className="w-1/2 dark:border-gray-600">
+        <li className=" bg-custom-purple w-1/2 dark:border-gray-600">
           <div className="flex items-center ps-3">
             <input
               id="laravel-checkbox-list"

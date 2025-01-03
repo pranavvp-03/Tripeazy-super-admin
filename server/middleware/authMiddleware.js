@@ -1,11 +1,14 @@
 const jwt = require("jsonwebtoken");
-const Role = require("../model/Role");
+// const Role = require("../model/role");
+const Role= require("../model/role")
 const JWT_SECRET = process.env.JWT_SECRET || "your_secret_key";
 
 // Verify Token Middleware
 exports.verifyToken = (req, res, next) => {
     const token = req.headers.authorization?.split(" ")[1];
     if (!token) {
+        console.log("no token provided");
+        
         return res.status(401).json({ message: "Access denied. No token provided." });
     }
 

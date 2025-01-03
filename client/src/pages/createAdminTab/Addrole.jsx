@@ -16,7 +16,7 @@ console.log(description)
 
 
     <div>
-      <nav className="bg-white border-gray-200 dark:bg-gray-900 ">
+      <nav className="bg-white border-gray-200 dark:bg-gray-900 -mt-1 ">
           <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
            
             <div className="flex md:order-2">
@@ -30,9 +30,20 @@ console.log(description)
              
             </div>
             <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-search">
+            <div class="flex justify-between gap-2">
+    <a href="/createNewAdmin"
+        class="inline-flex items-center border border-indigo-300 px-3 py-1.5 rounded-md text-indigo-500 hover:bg-indigo-50">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18">
+            </path>
+        </svg>
+        
+    </a>
+    </div>
             
               <div className="flex flex-col items-start">
-  <h1 className="text-white text-2xl mb-4">Manage Admin</h1>
+             
+  <h1 className=" ml-5 text-white text-3xl mb-4">Manage Admin</h1>
   <ul className="flex p-4 md:p-0 space-x-4">
     <li>
     

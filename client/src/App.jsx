@@ -1,4 +1,8 @@
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom"
+import { ToastContainer } from "react-toastify";  // Import ToastContainer
+import "react-toastify/dist/ReactToastify.css";
+
+
 import Login from './pages/Login'
 import Home from './pages/Home'
 import Agencies from './pages/agencies'
@@ -15,6 +19,9 @@ function App() {
 
   return (
    <Router>
+
+   
+    <ToastContainer/>
     <Routes>
     <Route path = "/" element = {<Login/>}/>
       <Route element={<AdminDashboardLayout/>}>

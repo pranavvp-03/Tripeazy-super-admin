@@ -8,11 +8,10 @@ exports.verifyToken = (req, res, next) => {
     
     const token = req.headers.authorization?.split(" ")[1];
     if (!token) {
-<<<<<<< HEAD
-        console.log("no token provided");
-=======
+
+
         console.log("no token found");
->>>>>>> 01836ed7c01097e7b90208063747eaea6485ca4d
+
         
         return res.status(401).json({ message: "Access denied. No token provided." });
     }

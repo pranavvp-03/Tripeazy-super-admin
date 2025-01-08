@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Role = require("./Role");
+const Role = require("./role");
 
 const adminSchema = new mongoose.Schema({
     name: { type: String, required: true },

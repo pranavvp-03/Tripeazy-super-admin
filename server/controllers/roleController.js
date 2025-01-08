@@ -19,6 +19,8 @@ exports.createRole = async (req, res) => {
 };
 
 exports.getRole = async (req,res)=>{
+
+    
     try {
         const roles = await Role.find();
         res.status(200).json({roles})

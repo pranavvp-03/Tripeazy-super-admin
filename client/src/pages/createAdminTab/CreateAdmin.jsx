@@ -9,9 +9,7 @@ function CreateAdmin() {
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   }
-  // const newAdminPage=()=>{
-  //   navigate("/createNewAdmin")
-  // }
+ 
 
 
   return (
@@ -132,13 +130,7 @@ function CreateAdmin() {
   <h1 className="text-white text-2xl mb-4">Manage Admin</h1>
   <ul className="flex p-4 md:p-0 space-x-4">
     <li>
-      {/* <a
-        href="#"
-        className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
-        aria-current="page"
-      >
-        Members
-      </a> */}
+     
      <NavLink
           to="/create-admin"
           className={({ isActive }) =>
@@ -198,22 +190,7 @@ function CreateAdmin() {
                       More Info
                     </a>
                   </li>
-                  {/* <li>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                    >
-                      Export Data
-                    </a>
-                  </li> */}
-                  {/* <li>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                    >
-                      Delete
-                    </a>
-                  </li> */}
+                
                 </ul>
               </div>
             )}
@@ -227,18 +204,7 @@ function CreateAdmin() {
             <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-dark">Bonnie Green</h5>
             <span className="text-sm text-gray-500 dark:text-gray-400">Chief Admin</span>
             <div className="flex mt-4 md:mt-6 space-x-3 md:space-x-4">
-              {/* <button
-                type="button"
-                className="inline-block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Message
-              </button>
-              <button
-                type="button"
-                className="inline-block text-gray-900 bg-gray-200 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-700"
-              >
-                Edit Profile
-              </button> */}
+              
             </div>
           </div>
         </div>

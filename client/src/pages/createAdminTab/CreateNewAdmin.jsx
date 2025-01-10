@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import CheckBox from './CheckBox';
 
 function CreateNewAdmin() {
+  
   return (
     <>
     <div>
@@ -120,13 +122,7 @@ function CreateNewAdmin() {
   <h1 className="text-white text-2xl mb-4">Manage Admin</h1>
   <ul className="flex p-4 md:p-0 space-x-4">
     <li>
-      {/* <a
-        href="#"
-        className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
-        aria-current="page"
-      >
-        Members
-      </a> */}
+      
      <NavLink
           to="/create-admin"
           className={({ isActive }) =>
@@ -155,7 +151,7 @@ function CreateNewAdmin() {
     
         <div className='flex justify-end text-right mt-10 mr-10'>
       <NavLink
-        to="/addrole"  // Change this to your desired route
+        to="/addrole"  
         className="  w-1/7 flex justify-end text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
       >
         Create New role
@@ -164,8 +160,8 @@ function CreateNewAdmin() {
 
       
     </div>
-    <div>
-      <div className="flex items-center justify-center h-[300px] h-1/4">
+    <div className=''>
+      <div className="flex items-center justify-center h-[300px] h-1/4 -mt-5">
         <span className="inline-block w-[62px] h-[62px] bg-gray-100 rounded-full overflow-hidden">
           <svg
             className="w-full h-full text-gray-300"
@@ -195,8 +191,8 @@ function CreateNewAdmin() {
         </span>
       </div>
 
-      <div className="grid grid-cols-12 gap-4 mb-5 mt-10">
-        {/* First Input (6 columns) */}
+      <div className="grid grid-cols-12 gap-4 mb-5">
+      
         <div className=" w-3/4 col-span-6 ml-20 ">
           <label
             htmlFor="input-6"
@@ -211,7 +207,7 @@ function CreateNewAdmin() {
           />
         </div>
 
-        {/* Second Input (2 columns) */}
+        
         <div className=" w-3/4 col-span-6 ">
           <label
             htmlFor="input-2"
@@ -252,7 +248,7 @@ function CreateNewAdmin() {
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-F5F6FA dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
         </div>
-        <div className=" w-3/4 col-span-6 ml-20">
+        {/* <div className=" w-3/4 col-span-6 ml-20">
           <label
             htmlFor="input-2"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark "
@@ -264,6 +260,9 @@ function CreateNewAdmin() {
             id="input-2"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
+        </div> */}
+        <div className='w-3/4 col-span-6 ml-20'>
+        <CheckBox/>
         </div>
         <div className=" w-3/4 col-span-6 ">
           <label

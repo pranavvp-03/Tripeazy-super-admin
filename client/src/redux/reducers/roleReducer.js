@@ -1,5 +1,6 @@
 const initialState = {
-    Permissions: [],   //aray of permissions for the current users
+    Permissions: [], 
+      Roles:[]
 }
 
 const roleReducers = (state= initialState, action)=>{
@@ -9,8 +10,14 @@ const roleReducers = (state= initialState, action)=>{
                 ...state,
                 Permissions: action.payload.Permissions
             };
+         case 'Roles':
+            return{
+                ...state,
+                Roles:action.payload.Roles
+            }   
             default :
                 return state
     }
+
 }
 export default roleReducers

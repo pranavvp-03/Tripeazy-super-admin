@@ -55,6 +55,7 @@ const Login = () => {
 
       dispatch(loginSuccess(user, token));
       dispatch(setPermissions(permissions));
+    
 
       navigate('/home');
     } catch (err) {

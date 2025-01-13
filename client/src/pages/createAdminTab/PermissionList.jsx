@@ -60,7 +60,7 @@ function PermissionList({roleName,description}) {
      if(response.status===201){
      console.log("response successfully recieved")
      dispatch(setPermissions(response.data))
-     console.log(role);
+    //  console.log(role);
      toast.success('Successfully toasted!')
     
     

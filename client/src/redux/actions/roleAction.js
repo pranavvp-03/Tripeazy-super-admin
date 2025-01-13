@@ -3,3 +3,8 @@ export const setPermissions = (permissions) => ({
     payload: { permissions },
     
 })
+
+export const getRoles=(Roles)=>({
+    type:"Roles",
+    payload:{Roles}
+})

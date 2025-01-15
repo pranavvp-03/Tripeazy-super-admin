@@ -26,9 +26,9 @@ function CheckBox() {
                 console.log("no response for getting role")
               }
               const data= await response.data
-              // console.log(data)
+              
               dispatch(getRoles(response.data))
-              // setRoles(Getroles)
+            
               console.log(Getroles)
              
 

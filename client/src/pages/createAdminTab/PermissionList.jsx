@@ -89,13 +89,13 @@ function PermissionList({roleName,description}) {
           <div className="items-center mt-10">
     <h1 className="mb-4 font-bold text-gray-900 dark:text-dark">Tabs and Permissions</h1>
     <div className="w-1/2 items-center">
-      <ul className="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-      <li className=" bg-custom-purple w-1/2  border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-          <div className="flex items-center ps-3 ml-5">
+      <ul className=" items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+      <li className="  bg-custom-purple w-1/2  border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+          <div className="flex items-center ps-3 ml-5  ">
             
             <label
               htmlFor="vue-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 "
+              className="   w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 "
             >
               Home
             </label>

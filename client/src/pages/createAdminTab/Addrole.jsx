@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import PermissionList from './PermissionList'
+import PermissionList from "../PermissionList"
 // import axios from 'axios'
 function Addrole() {
 const [role,setRole]=useState("")

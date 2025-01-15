@@ -2,7 +2,7 @@ const express = require("express")
 const Admin = require("../model/Admin")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
-const Role = require("../model/Role")
+const Role = require("../model/role")
 const JWT_SECRET = process.env.JWT_SECRET || "your_secret_key"
 
 // Register Super Admin

@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
-import { setPermissions } from '../../redux/actions/roleAction'
-import toast from "react-hot-toast";
+import { setPermissions } from '../redux/actions/roleAction'
+import Toaster from "react-hot-toast";
 
 
 function PermissionList({roleName,description}) {

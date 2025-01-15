@@ -4,7 +4,7 @@ import axios from 'axios'
  import { useSelector } from 'react-redux'
  import { getRoles } from '../../redux/actions/roleAction'
 
-function CheckBox() {
+function CheckBox({onSelect}) {
     const [selectedOption,setSelectedOption]=useState("General manager")
     const [roles,setRoles]=useState([])
 
@@ -42,7 +42,10 @@ function CheckBox() {
 
 
      const handleChange=(e)=>{
+      const value=e.target.value
         setSelectedOption(e.target.value)
+      onSelect(value)
+
      }
   return (
     <div>

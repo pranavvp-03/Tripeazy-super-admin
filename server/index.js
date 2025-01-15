@@ -15,7 +15,7 @@ app.use(cors({
 }))
 app.use("/api",authRouter)
 app.use("/api/roles", roleRoutes);
-app.use("/api/createNewAdmin",newAdminRouter)
+// app.use("/api/createNewAdmin",newAdminRouter)
  
 mongoose
 .connect(process.env.MONGO_URI)

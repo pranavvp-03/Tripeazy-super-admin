@@ -7,6 +7,18 @@ import { useRef } from 'react';
 function CreateNewAdmin() {
   const inputRef=useRef(null)
   const [image,setImage]=useState(null)
+  const [position,setPosition]=useState("")
+  const [name,setName]=useState("")
+  const [password,setPassword]=useState("")
+  const [email,setEmail]=useState("")
+  const [phoneNumber,setPhoneNumber]=useState("")
+  const [gender,setGender]=useState("")
+   
+  const handlePosition=(role)=>{
+    setPosition(role)
+    console.log(position)
+  }
+  console.log(name,password,email,phoneNumber,gender)
   const handleClick=(e)=>{
    inputRef.current.click()
   }
@@ -20,6 +32,27 @@ function CreateNewAdmin() {
     console.log("Is it a File object?", file instanceof File);
     
   }
+
+  const handleSubmission= async (e)=>{
+    e.preventDefault()
+    const formData= new formData()
+    formData.append("image",image)
+    formData.append("position",position)
+    formData.append("name",name)
+    formData.append("password",password)
+    formData.append("email",email)
+    formData.append("phoneNumber",phoneNumber)
+    formData.append("gender",gender)
+  try{
+    const response =  await ("http://localhost:3001/api/createNewAdmin",formData)
+    const data= response.data
+    console.log(data)
+
+  }catch(error){
+     console.log({error:error.message})
+  }
+}
+
   
   return (
     <>
@@ -212,6 +245,8 @@ function CreateNewAdmin() {
           <input
             type="text"
             id="input-6"
+            value={name}
+            onChange={(e)=>setName(e.target.value)}
             className=" bg-customGray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-customGray dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
         </div>
@@ -227,6 +262,8 @@ function CreateNewAdmin() {
           <input
             type="text"
             id="input-2"
+            value={password}
+            onChange={(e)=>setPassword(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-F5F6FA dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
         </div>
@@ -241,6 +278,8 @@ function CreateNewAdmin() {
           <input
             type="text"
             id="input-2"
+            value={email}
+            onChange={(e)=>setEmail(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-F5F6FA dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
         </div>
@@ -254,12 +293,14 @@ function CreateNewAdmin() {
           <input
             type="text"
             id="input-2"
+            value={phoneNumber}
+            onChange={(e)=>setPhoneNumber(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-F5F6FA dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
         </div>
        
         <div className='w-3/4 col-span-6 ml-20'>
-        <CheckBox/>
+        <CheckBox onSelect={handlePosition}/>
         </div>
         <div className=" w-3/4 col-span-6 ">
           <label
@@ -271,12 +312,16 @@ function CreateNewAdmin() {
           <input
             type="text"
             id="input-2"
+            value={gender}
+            onChange={(e)=>setGender(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-F5F6FA dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
         </div>
       </div>
       <div className='text-center mt-10 mr-10'>
-        <button type="button" class="flex-justify-end text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Add New</button>
+        <button type="sumbit" 
+        onClick={handleSubmission}
+        class="flex-justify-end text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Add New</button>
         </div>
        
     </div>

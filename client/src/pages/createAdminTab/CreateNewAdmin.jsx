@@ -14,11 +14,11 @@ function CreateNewAdmin() {
     const file=e.target.files[0]
     if (file) {
       const imageUrl = URL.createObjectURL(file);
-      setImage(imageUrl); // Update the state with the new image URL
+      setImage(imageUrl); 
     }
-    // console.log(file)
+    
     console.log("Is it a File object?", file instanceof File);
-    //  setImage(e.target.files)
+    
   }
   
   return (

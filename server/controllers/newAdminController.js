@@ -1,20 +1,25 @@
- import newAdmin from "../model/CreateNewAdmin"
+const express= require("express")
+const newAdmin = require("../model/CreateNewAdmin")
 
- export const createNewAdmin= async (req,res)=>{
-    file= req.file
+ exports.createNewAdmin = async (req,res)=>{
+   console.log("hy iam ")
+   //  file= req.file
     const {name,password,email,phoneNumber,gender,role}=req.body
+    console.log(name)
     try{
-     const newAdmin= new newAdmin({
+     const createNewAdmin = new newAdmin({
       name,
       password,
       email,
       phoneNumber,
       gender,
       role,
-      file
+      // file
      })
-     await  newAdmin.save()
-    res.status(200).json({message:"Admin profile created successfully",newAdmin})
+     await  createNewAdmin.save()
+    res.status(200).send({message:"Admin profile created successfully",createNewAdmin})
+    console.log(createNewAdmin)
+
         
 
 

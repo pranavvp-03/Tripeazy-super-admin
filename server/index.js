@@ -8,14 +8,15 @@ const roleRoutes = require("./routes/roleRoutes");
 const newAdminRouter  = require("./routes/newAdmin")
 
 dotenv.config()
-app.use(express.json())
+// app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
 app.use(cors({
     origin:"http://localhost:5173",
     credentials:true
 }))
 app.use("/api",authRouter)
 app.use("/api/roles", roleRoutes);
-// app.use("/api/createNewAdmin",newAdminRouter)
+app.use("/api/createNewAdmin",newAdminRouter)
  
 mongoose
 .connect(process.env.MONGO_URI)

@@ -17,20 +17,9 @@ const newAdminSchema= new mongoose.Schema({
         type:String,
         required:true
     },
-    role:{
-       name:{
+    position:{
         type:String,
-        required:true,
-
-       },
-       description:{
-        type:String,
-        default:""
-       },
-       role:{
-        type:[String],
         required:true
-       }
     },
     gender:{
         type:String,

@@ -1,9 +1,10 @@
+const express=require("express")
+const {createNewAdmin }= require("../controllers/newAdminController")
+const router= express.Router()
 
-// const router= express.Router()
-// import upload from "../s3Uploads"
-// import { createNewAdmin } from "../controllers/newAdminController"
 
 
-// router.post("/", upload.single("Image"),createNewAdmin)
 
-// module.exports = newAdminRouter;
+router.post("/",createNewAdmin)
+
+module.exports = router

@@ -1,16 +1,36 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-// import { useNavigate } from 'react-router-dom';
-// const navigate=useNavigate()
+import axios from 'axios';
 function CreateAdmin() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const[admins,setAdmin]=useState([])
 
   // Function to toggle dropdown visibility
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   }
- 
 
+  useEffect(()=>{
+      const fetchAdmins = async ()=>{
+        try{
+             const response= await  axios.get("http://localhost:3001/api/createNewAdmin/getAdmin")
+             const data= response.data.admins
+            //  console.log(response.data)
+              setAdmin(data)
+              // console.log(data)
+
+        }catch(error){
+         console.log(error.message)
+        //  console.log("catch block")
+        }
+      }
+      
+      fetchAdmins()
+
+  },[])
+ 
+ 
+console.log(admins)
 
   return (
     <>

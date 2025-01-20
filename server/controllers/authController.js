@@ -2,10 +2,10 @@ const express = require("express")
 const Admin = require("../model/Admin")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
-const Role = require("../model/Role")
+const Role = require("../model/role")
 const JWT_SECRET = process.env.JWT_SECRET || "your_secret_key"
 
-// Register Super Admin
+
 exports.createAdmin = async (req, res) => {
     const { name, email, password, roleName } = req.body;
 
@@ -45,6 +45,8 @@ exports.createAdmin = async (req, res) => {
 // Login Super Admin
 exports.loginAdmin = async (req,res)=>{
     const {email,password} = req.body;
+    console.log(password,email);
+    
     try {
         const admin = await Admin.findOne({email}).populate("role");
         console.log(admin,"admin");

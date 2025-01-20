@@ -9,7 +9,7 @@ const newAdminSchema= new mongoose.Schema({
         type:String,
         required:true
     },
-    emial:{
+    email:{
         type:String,
         required:true
     },
@@ -17,31 +17,20 @@ const newAdminSchema= new mongoose.Schema({
         type:String,
         required:true
     },
-    role:{
-       name:{
+    position:{
         type:String,
-        required:true,
-
-       },
-       description:{
-        type:String,
-        default:""
-       },
-       role:{
-        type:[String],
         required:true
-       }
     },
     gender:{
         type:String,
         required:true
     },
-    fileUrl:{
-        type:String,
-        required:true
-    }
+    // fileUrl:{
+    //     type:String,
+    //     required:true
+    // }
 },{timestamps:true})
 
 const newAdmin= mongoose.model("newAdmin",newAdminSchema)
-module.exports= newAdmin
+module.exports= newAdmin 
 

@@ -181,14 +181,14 @@ console.log(admins)
         {/* grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pb-10 mt-5 */}
         
     <div className="">
-      {/* Admin Cards Section */}
+      
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pb-10 mt-5">
         {admins.map((admin) => (
           <div
             key={admin._id}
             className="flex flex-col items-center p-6 border rounded-lg shadow-lg bg-white dark:bg-gray-800 dark:border-gray-600"
           >
-            {/* Admin Image */}
+           
             <img
               className="w-24 h-24 mb-3 rounded-full shadow-lg"
               src="https://t4.ftcdn.net/jpg/02/14/74/61/360_F_214746128_31JkeaP6rU0NzzzdFC4khGkmqc8noe6h.jpg"

@@ -8,8 +8,8 @@ const roleRoutes = require("./routes/roleRoutes");
 const newAdminRouter  = require("./routes/newAdmin")
 
 dotenv.config()
-// app.use(express.json())
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json())
+// app.use(express());
 app.use(cors({
     origin:"http://localhost:5173",
     credentials:true

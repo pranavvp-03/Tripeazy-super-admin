@@ -37,19 +37,29 @@ function CreateNewAdmin() {
 
   const handleSubmission= async (e)=>{
     e.preventDefault()
-    const formData = new FormData();
-    // formData.append("image",image)
-    formData.append("position",position)
-    formData.append("name",name)
-    formData.append("password",password)
-    formData.append("email",email)
-    formData.append("phoneNumber",phoneNumber)
-    formData.append("gender",gender)
+    // const formData = new FormData();
+    // // formData.append("image",image)
+    // formData.append("position",position)
+    // formData.append("name",name)
+    // formData.append("password",password)
+    // formData.append("email",email)
+    // formData.append("phoneNumber",phoneNumber)
+    // formData.append("gender",gender)
+    const inputs ={
+      position,
+      name,
+      password,
+      email,
+      phoneNumber,
+      gender
+    }
+    // console.log(inputs);
+    
     
     
   try{
-    const response =  axios.post("http://localhost:3001/api/createNewAdmin/", formData)
-    const data= response.data
+    const response =  axios.post("http://localhost:3001/api/createNewAdmin/", inputs)
+    const data= response
     console.log(data)
 
   }catch(error){

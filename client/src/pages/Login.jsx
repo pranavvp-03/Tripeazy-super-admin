@@ -44,6 +44,7 @@ const Login = () => {
     if (newErrors.email || newErrors.password) return;
 
     try {
+      
       const response = await axios.post('http://localhost:3001/api/login', {
         email,
         password,

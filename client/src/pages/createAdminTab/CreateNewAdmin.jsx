@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import CheckBox from './CheckBox';
 import { useRef } from 'react';
 import axios from 'axios';
+// import { useSelector } from 'react-redux';
+
 
 
 
 function CreateNewAdmin() {
+  // const allowedTabs=useSelector(state=>state.role.Role)
+
+
+  // useEffect(()=>{
+  //   console.log(allowedTabs)
+  //  },[])
   const inputRef=useRef(null)
   const [image,setImage]=useState(null)
   const [position,setPosition]=useState("")
@@ -15,6 +23,7 @@ function CreateNewAdmin() {
   const [email,setEmail]=useState("")
   const [phoneNumber,setPhoneNumber]=useState("")
   const [gender,setGender]=useState("")
+  
    
   const handlePosition=(role)=>{
     setPosition(role)
@@ -39,12 +48,7 @@ function CreateNewAdmin() {
     e.preventDefault()
     // const formData = new FormData();
     // // formData.append("image",image)
-    // formData.append("position",position)
-    // formData.append("name",name)
-    // formData.append("password",password)
-    // formData.append("email",email)
-    // formData.append("phoneNumber",phoneNumber)
-    // formData.append("gender",gender)
+   
     const inputs ={
       position,
       name,

@@ -177,57 +177,66 @@ console.log(admins)
           </div>
         </nav>
        
-
-        <div className="w-full max-w-xs bg-white border border-gray-200 rounded-lg shadow dark:bg-white-800 dark:border-gray-300 ml-20 mt-20">
-          <div className="flex justify-end px-4 pt-4">
-            <button
-              onClick={toggleDropdown}
-              className="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
-              type="button"
-            >
-              <span className="sr-only">Open dropdown</span>
-              <svg
-                className="w-5 h-5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 16 3"
-              >
-                <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
-              </svg>
-            </button>
-            {dropdownOpen && (
-              <div
-                id="dropdown"
-                className="z-10 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
-              >
-                <ul className="py-2" aria-labelledby="dropdownButton">
-                  <li>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                    >
-                      More Info
-                    </a>
-                  </li>
-                
-                </ul>
-              </div>
-            )}
-          </div>
-          <div className="flex flex-col items-center pb-10">
+        {/* w-full max-w-xs bg-white border border-gray-200 rounded-lg shadow dark:bg-white-800 dark:border-gray-300 ml-20 mt-20 */}
+        {/* grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pb-10 mt-5 */}
+        
+    <div className="">
+      {/* Admin Cards Section */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pb-10 mt-5">
+        {admins.map((admin) => (
+          <div
+            key={admin._id}
+            className="flex flex-col items-center p-6 border rounded-lg shadow-lg bg-white dark:bg-gray-800 dark:border-gray-600"
+          >
+            {/* Admin Image */}
             <img
               className="w-24 h-24 mb-3 rounded-full shadow-lg"
               src="https://t4.ftcdn.net/jpg/02/14/74/61/360_F_214746128_31JkeaP6rU0NzzzdFC4khGkmqc8noe6h.jpg"
-              alt="Bonnie image"
+              alt="Admin image"
             />
-            <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-dark">Bonnie Green</h5>
-            <span className="text-sm text-gray-500 dark:text-gray-400">Chief Admin</span>
-            <div className="flex mt-4 md:mt-6 space-x-3 md:space-x-4">
-              
-            </div>
+            <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">{admin.name}</h5>
+            <span className="text-sm text-gray-500 dark:text-gray-400">{admin.position}</span>
+
+            {/* Dropdown Button */}
+            {/* <div className="flex justify-end px-4 pt-4">
+              <button
+                onClick={() => toggleDropdown(admin._id)}
+                className="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
+                type="button"
+              >
+                <span className="sr-only">Open dropdown</span>
+                <svg
+                  className="w-5 h-5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 16 3"
+                >
+                  <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
+                </svg>
+              </button> */}
+              {/* {dropdowns[admin._id] && (
+                <div
+                  id="dropdown"
+                  className="z-10 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+                >
+                  <ul className="py-2" aria-labelledby="dropdownButton">
+                    <li>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                      >
+                        More Info
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              )} */}
+            {/* </div> */}
           </div>
-        </div>
+        ))}
+      </div>
+      </div>
      
     </>
   );

@@ -19,7 +19,7 @@ function CreateAdmin() {
               setAdmin(data)
               // console.log(data)
 
-        }catch(error){
+        }catch(error){ 
          console.log(error.message)
         //  console.log("catch block")
         }

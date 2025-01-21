@@ -34,9 +34,12 @@ const tabs=
     <div>
    
          {visibleTabs.map((tab)=>{
+          
+           <div key={tab.index}>
             <NavLink to={tabs.path}>
             <h4>{tab.id}</h4>
             </NavLink>
+            </div>
          })}
     </div>
   )

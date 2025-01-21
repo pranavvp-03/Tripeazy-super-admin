@@ -14,6 +14,8 @@ import AdminDashboardLayout from './components/Admin-layout'
 import CreateNewAdmin from "./pages/createAdminTab/CreateNewAdmin"
 import Addrole from "./pages/createAdminTab/Addrole"
 import Navbar from "./components/Navbar"
+import NoAuthorized from "./components/NoAuthorized"
+import RestrictRoute from "./components/RestrictRoute"
 function App() {
   return (
    <Router>
@@ -21,17 +23,19 @@ function App() {
    
   
     <Routes>
+    <Route path = "/notAuthorized" element = {<NoAuthorized/>}/>
+
       <Route path = "/" element = {<Login/>}/>
       <Route element={<AdminDashboardLayout/>}>
-      <Route path = "/home" element = {<Home/>}/>
-      <Route path = "/agencies" element = {<Agencies/>}/>
-      <Route path = "/users" element ={<Users/>} />
-      <Route path = "/packages" element ={<Packages/>} />
-      <Route path = "/blogs" element ={<Blogs/>} />
-      <Route path = "/create-admin" element ={<CreateAdmin/>} />
-      <Route path = "/advertisments" element = {<Advertisements/>} />
-      <Route path = "/notifications" element ={<Notifications/>} />
-      <Route path ="/createNewAdmin" element ={<CreateNewAdmin/>}/>
+      <Route path = "/home" element = {<RestrictRoute  requiredPermission="Home"> <Home/></RestrictRoute>}/>
+      <Route path = "/agencies" element = {<RestrictRoute  requiredPermission="Agencies"> <Login/></RestrictRoute>}/>
+      <Route path = "/users" element = {<RestrictRoute  requiredPermission="Users"> <Users/></RestrictRoute>}/>
+      <Route path = "/packages" element = {<RestrictRoute  requiredPermission="Packages"> <Packages/></RestrictRoute>}/>
+      <Route path = "/blogs" element = {<RestrictRoute  requiredPermission="Blogs"> <Blogs/></RestrictRoute>}/>
+      <Route path = "/create-admin" element = {<RestrictRoute  requiredPermission="CreateAdmin"> <CreateAdmin/></RestrictRoute>}/>
+      <Route path = "/advertisments" element =  {<RestrictRoute  requiredPermission="Advertisement"> <Advertisements/></RestrictRoute>}/>
+      <Route path = "/notifications" element = {<RestrictRoute  requiredPermission="Notification"> <Notification/></RestrictRoute>}/>
+      {/* <Route path ="/createNewAdmin" element = {<RestrictRoute  requiredPermission="H"> <Home/></RestrictRoute>}/> */}
       <Route path ="/addrole" element={<Addrole/>}/>
       <Route path="/nav" element={<Navbar/>}/>
       </Route>

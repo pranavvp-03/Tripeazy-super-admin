@@ -45,6 +45,7 @@ function CheckBox({onSelect}) {
       const value=e.target.value
         setSelectedOption(e.target.value)
       onSelect(value)
+      // console.log(value)
 
      }
   return (

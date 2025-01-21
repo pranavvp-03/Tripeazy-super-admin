@@ -13,7 +13,7 @@ function CreateAdmin() {
   useEffect(()=>{
       const fetchAdmins = async ()=>{
         try{
-             const response= await  axios.get("http://localhost:3001/api/createNewAdmin/getAdmin")
+             const response= await  axios.get("http://localhost:3001/api/c/getAdmin")
              const data= response.data.admins
             //  console.log(response.data)
               setAdmin(data)

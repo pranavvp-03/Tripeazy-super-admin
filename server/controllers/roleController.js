@@ -1,5 +1,5 @@
 const Role = require("../model/role.js");
-// Create Role
+
 exports.createRole = async (req, res) => {
     const { roleName, description, permissions } = req.body;
     console.log(roleName, description, permissions,"no any response");
@@ -22,7 +22,7 @@ exports.getRole = async (req,res)=>{
 
     
     try {
-        const roles = await Role.find();
+        const roles = await Role.find({ roleName: { $ne: "Super-Admin" } });
         res.status(200).json({roles})
     } catch (error) {
         console.log("error fetching roles",error.messsage);

@@ -8,7 +8,7 @@ const roleReducers = (state= initialState, action)=>{
         case 'SET_PERMISSIONS':
             return {
                 ...state,
-                Permissions: action.payload.Permissions
+                Permissions: action.payload.permissions
             };
          case 'Roles':
             return{

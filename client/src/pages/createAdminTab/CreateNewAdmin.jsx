@@ -62,7 +62,7 @@ function CreateNewAdmin() {
     
     
   try{
-    const response =  axios.post("http://localhost:3001/api/createNewAdmin/", inputs)
+    const response =  axios.post("http://localhost:3001/api/register", inputs)
     const data= response
     console.log(data)
 

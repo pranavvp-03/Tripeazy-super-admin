@@ -7,10 +7,14 @@ const JWT_SECRET = process.env.JWT_SECRET || "your_secret_key"
 
 
 exports.createAdmin = async (req, res) => {
-    const { name, email, password, roleName } = req.body;
+    // const { name, email, password, roleName } = req.body; 
+      file= req.file
+    const {name,password,email,phoneNumber,gender,position}=req.body
+    console.log(name,password,email,phoneNumber,gender,position)
+    
 
     try {
-        console.log(name, email, roleName);
+        
 
         // Fetch the role by roleName
         const role = await Role.findOne({ roleName });
@@ -28,12 +32,21 @@ exports.createAdmin = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         // Create and save the new admin
-        const admin = new Admin({
-            name,
-            email,
-            password: hashedPassword,
-            role: role._id, // Save role as ObjectId
-        });
+        // const admin = new Admin({
+        //     name,
+        //     email,
+        //     password: hashedPassword,
+        //     role: role._id, // Save role as ObjectId
+        // });
+        const admin =  new Admin ({
+                  name,
+                  password:hashedPassword,
+                  email,
+                  phoneNumber,
+                  gender,
+                  role: role._id
+                  // file
+                 })
 
         await admin.save();
         res.status(201).json({ message: "Admin created successfully", admin });

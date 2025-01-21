@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
 function Navbar() {
-const allowedTabs=useSelector(state=>state.role.Role)
+const allowedTabs=useSelector(state=>state.role.Permission)
 
 console.log(allowedTabs)
 const tabs=
@@ -32,15 +32,13 @@ const tabs=
 
   return (
     <div>
-   
-         {visibleTabs.map((tab)=>{
-          
-           <div key={tab.index}>
-            <NavLink to={tabs.path}>
+      {visibleTabs.map((tab) => (
+        <div key={tab.id}>
+          <NavLink to={tab.path}>
             <h4>{tab.id}</h4>
-            </NavLink>
-            </div>
-         })}
+          </NavLink>
+        </div>
+      ))}
     </div>
   )
 }

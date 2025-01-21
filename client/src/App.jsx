@@ -32,6 +32,7 @@ function App() {
       <Route path = "/notifications" element ={<Notifications/>} />
       <Route path ="/createNewAdmin" element ={<CreateNewAdmin/>}/>
       <Route path ="/addrole" element={<Addrole/>}/>
+      {/* <Route path="/nav" element={<Navbar/>}/> */}
       </Route>
     </Routes>
     <Toaster/>

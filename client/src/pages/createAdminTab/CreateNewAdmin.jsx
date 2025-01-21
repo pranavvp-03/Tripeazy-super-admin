@@ -3,18 +3,18 @@ import { NavLink } from 'react-router-dom';
 import CheckBox from './CheckBox';
 import { useRef } from 'react';
 import axios from 'axios';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 
 
 
 function CreateNewAdmin() {
-  // const allowedTabs=useSelector(state=>state.role.Role)
+  const allowedTabs=useSelector(state=>state.role.Permissions)
 
 
-  // useEffect(()=>{
-  //   console.log(allowedTabs)
-  //  },[])
+  useEffect(()=>{
+    console.log(allowedTabs)
+   },[])
   const inputRef=useRef(null)
   const [image,setImage]=useState(null)
   const [position,setPosition]=useState("")
@@ -57,7 +57,8 @@ function CreateNewAdmin() {
       phoneNumber,
       gender
     }
-    // console.log(inputs);
+    console.log(inputs);
+
     
     
     

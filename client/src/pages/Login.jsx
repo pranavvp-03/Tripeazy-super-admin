@@ -50,7 +50,9 @@ const Login = () => {
         password,
       });
 
-      const { token, permissions, user } = response.data;
+      const { token, permissions,user,role } = response.data;
+      // console.log(response.data.role ,res.data.permissions)
+      console.log(role)
       localStorage.setItem('token', token);
       localStorage.setItem('permissions', JSON.stringify(permissions));
 

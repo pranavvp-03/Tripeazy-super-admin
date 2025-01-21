@@ -8,16 +8,19 @@ const JWT_SECRET = process.env.JWT_SECRET || "your_secret_key"
 
 exports.createAdmin = async (req, res) => {
     // const { name, email, password, roleName } = req.body; 
-      file= req.file
+    //   file= req.file
     const {name,password,email,phoneNumber,gender,position}=req.body
-    console.log(name,password,email,phoneNumber,gender,position)
+    // console.log(name,password,email,phoneNumber,gender,position)
+    console.log(position);
+    
     
 
     try {
         
 
         // Fetch the role by roleName
-        const role = await Role.findOne({ roleName });
+        const role = await Role.findOne({ roleName:position });
+        console.log(role)
         if (!role) {
             return res.status(404).json({ message: `Role '${roleName}' not found` });
         }
@@ -79,7 +82,7 @@ exports.loginAdmin = async (req,res)=>{
         )
 
         res.status(200).json({message:"Login successful",token,
-            role: admin.role.roleName,
+            role: admin.role,
             permissions: admin.role.permissions,})
             console.log(admin.role.roleName,"role");
     } catch (error) {

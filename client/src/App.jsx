@@ -13,6 +13,7 @@ import Notifications from './pages/Notifications'
 import AdminDashboardLayout from './components/Admin-layout'
 import CreateNewAdmin from "./pages/createAdminTab/CreateNewAdmin"
 import Addrole from "./pages/createAdminTab/Addrole"
+import Navbar from "./components/Navbar"
 function App() {
   return (
    <Router>
@@ -32,7 +33,7 @@ function App() {
       <Route path = "/notifications" element ={<Notifications/>} />
       <Route path ="/createNewAdmin" element ={<CreateNewAdmin/>}/>
       <Route path ="/addrole" element={<Addrole/>}/>
-      {/* <Route path="/nav" element={<Navbar/>}/> */}
+      <Route path="/nav" element={<Navbar/>}/>
       </Route>
     </Routes>
     <Toaster/>

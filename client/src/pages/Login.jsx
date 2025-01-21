@@ -50,14 +50,15 @@ const Login = () => {
         password,
       });
 
-      const { token, permissions,user,role } = response.data;
+      const { token, permissions,user } = response.data;
       // console.log(response.data.role ,res.data.permissions)
-      console.log(role)
+      // console.log(role)
       localStorage.setItem('token', token);
       localStorage.setItem('permissions', JSON.stringify(permissions));
 
       dispatch(loginSuccess(user, token));
       dispatch(setPermissions(permissions));
+      console.log(permissions)
 
       navigate('/home');
     } catch (err) {

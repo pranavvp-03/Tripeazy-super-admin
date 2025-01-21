@@ -1,47 +1,43 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { NavLink } from 'react-router-dom';
 
 function Navbar() {
-const allowedTabs=useSelector(state=>state.role.Permission)
+  const [allowedTabs, setAllowedTabs] = useState({});
 
-console.log(allowedTabs)
-const tabs=
-    {
-        id:"Home",path:"/home",
-        id:"Agencies",path:"/agencies",
-        id:"Users",path:"/users", 
-        id:"Packages",path:"/packages",
-        id:"Blogs",path:"/blogs",
-        id:"CreateAdmin",path:"/create-admin",
-        id:"Advertisments",path:"/advertisments",
-        id:"Notifications",path:"/notifications",
-       
+  useEffect(() => {
+  
+    const permissions = JSON.parse(localStorage.getItem("permissions"));
+    setAllowedTabs(permissions || {});
+    console.log(permissions); 
+  }, []);
 
-
-    } 
-
+  const tabs = [
+    { id: "Home", path: "/home" },
+    { id: "Agencies", path: "/agencies" },
+    { id: "Users", path: "/users" },
+    { id: "Packages", path: "/packages" },
+    { id: "Blogs", path: "/blogs" },
+    { id: "CreateAdmin", path: "/create-admin" },
+    { id: "Advertisments", path: "/advertisments" },
+    { id: "Notifications", path: "/notifications" },
+  ];
 
   
-  const  visibleTabs= tabs.filter((tab)=>{
-    allowedTabs.role[tab.id]  
-  })
-
-
-
+  const visibleTabs = tabs.filter((tab) => {
+    return allowedTabs[tab.id] && Array.isArray(allowedTabs[tab.id]) && allowedTabs[tab.id].length > 0;
+  });
 
   return (
     <div>
       {visibleTabs.map((tab) => (
         <div key={tab.id}>
           <NavLink to={tab.path}>
-            <h4>{tab.id}</h4>
+            <h4 className="text-center">{tab.id}</h4>
           </NavLink>
         </div>
       ))}
     </div>
-  )
+  );
 }
 
-export default Navbar
- 
+export default Navbar;

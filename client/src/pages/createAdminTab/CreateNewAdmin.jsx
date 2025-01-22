@@ -23,6 +23,7 @@ function CreateNewAdmin() {
   const [email,setEmail]=useState("")
   const [phoneNumber,setPhoneNumber]=useState("")
   const [gender,setGender]=useState("")
+  const [errors,setErrors]=useState({})
   
    
   const handlePosition=(role)=>{
@@ -44,8 +45,29 @@ function CreateNewAdmin() {
     
   }
 
+  const validate =()=>{
+    const newErrors={}
+    if(!name.trim()) newErrors.name="Name is required"
+    if (!email.trim() || !/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email))
+      newErrors.email = 'Valid email is required.';
+    if (!password.trim() || password.length < 6)
+      newErrors.password = 'Password must be at least 6 characters.';
+    if (!phoneNumber.trim() || !/^\d{10}$/.test(phoneNumber))
+      newErrors.phoneNumber = 'Phone number must be 10 digits.';
+    if (!gender.trim()) {
+      newErrors.gender = 'Gender is required.';
+    } else if (gender[0] !== gender[0].toUpperCase()) {
+      newErrors.gender = 'Gender must start with a capital letter.';
+    }
+    if (!position.trim()) newErrors.position = 'Role is required.';
+
+    setErrors(newErrors)
+    return object.keys(newErrors).length === 0 
+  }
+
   const handleSubmission= async (e)=>{
     e.preventDefault()
+    if(!validate()) return 
     // const formData = new FormData();
     // // formData.append("image",image)
    
@@ -160,6 +182,7 @@ function CreateNewAdmin() {
             onChange={(e)=>setName(e.target.value)}
             className=" bg-customGray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-customGray dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
+          {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
         </div>
 
         
@@ -177,6 +200,7 @@ function CreateNewAdmin() {
             onChange={(e)=>setPassword(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-F5F6FA dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
+          {errors.password && <p className="text-red-500 text-sm">{errors.password}</p>}
         </div>
           
         <div className=" w-3/4 col-span-6 ml-20">
@@ -193,6 +217,7 @@ function CreateNewAdmin() {
             onChange={(e)=>setEmail(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-F5F6FA dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
+          {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
         </div>
         <div className=" w-3/4 col-span-6 ">
           <label
@@ -208,6 +233,7 @@ function CreateNewAdmin() {
             onChange={(e)=>setPhoneNumber(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-F5F6FA dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
+          {errors.phoneNumber && <p className="text-red-500 text-sm">{errors.phoneNumber}</p>}
         </div>
        
         <div className='w-3/4 col-span-6 ml-20'>
@@ -227,6 +253,8 @@ function CreateNewAdmin() {
             onChange={(e)=>setGender(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-F5F6FA dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
+          {errors.gender && <p className="text-red-500 text-sm">{errors.gender}</p>}
+
         </div>
       </div>
       <div className='text-center mt-10 mr-10'>

@@ -31,7 +31,7 @@ exports.createAdmin = async (req, res) => {
             return res.status(400).json({ message: "Admin with this email already exists" });
         }
 
-        // Hash the password
+       
         const hashedPassword = await bcrypt.hash(password, 10);
 
         // Create and save the new admin

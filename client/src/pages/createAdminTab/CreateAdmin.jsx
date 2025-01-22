@@ -13,9 +13,9 @@ function CreateAdmin() {
   useEffect(()=>{
       const fetchAdmins = async ()=>{
         try{
-             const response= await  axios.get("http://localhost:3001/api/c/getAdmin")
+             const response= await  axios.get("http://localhost:3001/api/admins/getAdmin")
              const data= response.data.admins
-            //  console.log(response.data)
+             console.log(response.data.admins)
               setAdmin(data)
               // console.log(data)
 
@@ -147,7 +147,7 @@ console.log(admins)
                 />
               </div>
               <div className="flex flex-col items-start">
-  <h1 className="text-white text-2xl mb-4">Manage Admin</h1>
+  <h1 className="text-white text-2xl mb-4">Manage Admin</h1> 
   <ul className="flex p-4 md:p-0 space-x-4">
     <li>
      

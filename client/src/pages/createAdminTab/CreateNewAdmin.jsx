@@ -3,18 +3,27 @@ import { NavLink } from 'react-router-dom';
 import CheckBox from './CheckBox';
 import { useRef } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 
 
 
 function CreateNewAdmin() {
-  const allowedTabs=useSelector(state=>state.role.Permissions)
-
-
+  const navigate= useNavigate()
+  // const allowedTabs=useSelector(state=>state.role.Permissions)
   useEffect(()=>{
-    console.log(allowedTabs)
-   },[])
+    const permission = JSON.parse(localStorage.getItem("permissions"));
+    // console.log(permission.CreateAdmin)
+    if(!permission.CreateAdmin <=0){
+      navigate("/notAuthorized")
+    }
+  
+  },[navigate])
+
+  // useEffect(()=>{
+  //   console.log(allowedTabs)
+  //  },[])
   const inputRef=useRef(null)
   const [image,setImage]=useState(null)
   const [position,setPosition]=useState("")
@@ -96,7 +105,9 @@ function CreateNewAdmin() {
 
   
   return (
+   
     <>
+   
     <div>
         <nav className=" border-gray-200 bg-background-white -mt-1   ">
          

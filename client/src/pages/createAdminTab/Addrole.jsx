@@ -5,15 +5,15 @@ import PermissionList from './PermissionList'
 
 // import axios from 'axios'
 function Addrole() {
-  const navigate=useNavigate()
- useEffect(()=>{
-    const permission = JSON.parse(localStorage.getItem("permissions"));
-    // console.log(permission.CreateAdmin)
-    if(!permission.CreateAdmin <=0){
-      navigate("/notAuthorized")
-    }
+  // const navigate=useNavigate()
+//  useEffect(()=>{
+//     const permission = JSON.parse(localStorage.getItem("permissions"));
+//     // console.log(permission.CreateAdmin)
+//     if(!permission.CreateAdmin <=0){
+//       navigate("/notAuthorized")
+//     }
   
-  },[navigate])
+//   },[navigate])
 
 
 const [role,setRole]=useState("")

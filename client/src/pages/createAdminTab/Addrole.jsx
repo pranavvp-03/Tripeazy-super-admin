@@ -1,8 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState ,useEffect} from 'react'
 import { NavLink } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import PermissionList from './PermissionList'
+
 // import axios from 'axios'
 function Addrole() {
+  // const navigate=useNavigate()
+//  useEffect(()=>{
+//     const permission = JSON.parse(localStorage.getItem("permissions"));
+//     // console.log(permission.CreateAdmin)
+//     if(!permission.CreateAdmin <=0){
+//       navigate("/notAuthorized")
+//     }
+  
+//   },[navigate])
+
+
 const [role,setRole]=useState("")
 const [description,setDescription]=useState("")
 

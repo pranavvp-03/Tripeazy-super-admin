@@ -16,7 +16,7 @@ const roleReducers = (state= initialState, action)=>{
                 Roles:action.payload.Roles
             }   
             default :
-                return state
+                return state 
     }
 
 }

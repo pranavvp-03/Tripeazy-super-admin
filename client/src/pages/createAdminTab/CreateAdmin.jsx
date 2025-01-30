@@ -15,7 +15,7 @@ function CreateAdmin() {
         try{
              const response= await  axios.get("http://localhost:3001/api/admins/getAdmin")
              const data= response.data.admins
-             console.log(response.data.admins)
+            //  console.log(response.admins)
               setAdmin(data)
               // console.log(data)
 
@@ -35,7 +35,7 @@ console.log(admins)
   return (
     <>
       
-        <nav className="bg-white border-gray-200 dark:bg-gray-900 ">
+        <nav className="bg-white border-gray-200 dark:bg-gray-900 -mt-1">
           <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
               <img
@@ -96,29 +96,8 @@ console.log(admins)
                   placeholder="Search..."
                 />
               </div>
-              <button
-                type="button"
-                className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                aria-controls="navbar-search"
-                aria-expanded="false"
-              >
-                <span className="sr-only">Open main menu</span>
-                <svg
-                  className="w-5 h-5"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 17 14"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M1 1h15M1 7h15M1 13h15"
-                  />
-                </svg>
-              </button>
+             
+            
             </div>
             <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-search">
               <div className="relative mt-3 md:hidden">
@@ -147,7 +126,7 @@ console.log(admins)
                 />
               </div>
               <div className="flex flex-col items-start">
-  <h1 className="text-white text-2xl mb-4">Manage Admin</h1> 
+  <h1 className="text-white text-3xl mb-4">Manage Admin</h1> 
   <ul className="flex p-4 md:p-0 space-x-4">
     <li>
      
@@ -186,7 +165,7 @@ console.log(admins)
         {admins.map((admin) => (
           <div
             key={admin._id}
-            className="flex flex-col items-center p-6 border rounded-lg shadow-lg bg-white dark:bg-gray-800 dark:border-gray-600"
+           className=" ml-3 flex flex-col items-center p-6 h-fullw w-96 border rounded-lg shadow-lg bg-white dark:bg-white dark:border-gray-300 hover:bg-gray-50 hover:shadow-xl hover:scale-105 hover:border-blue-500 transition-all duration-300"
           >
            
             <img
@@ -194,8 +173,9 @@ console.log(admins)
               src="https://t4.ftcdn.net/jpg/02/14/74/61/360_F_214746128_31JkeaP6rU0NzzzdFC4khGkmqc8noe6h.jpg"
               alt="Admin image"
             />
-            <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">{admin.name}</h5>
-            <span className="text-sm text-gray-500 dark:text-gray-400">{admin.position}</span>
+            <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-gray-800">{admin.name}</h5>
+            <span className="text-md text-white dark:text-gray-800">{admin.role.roleName}</span>
+            <span className="text-md text-white dark:text-gray-800">{admin.email}</span>
 
             {/* Dropdown Button */}
             {/* <div className="flex justify-end px-4 pt-4">

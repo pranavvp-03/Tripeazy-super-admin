@@ -1,11 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { searchAdmins } from '../../redux/actions/roleAction';
+import useSearch from '../../Hooks/useSearch';
+
+
 function CreateAdmin() {
+  const {search,filteredAdmin} =useSearch()
+  const dispatch= useDispatch()
+  const adminSearch= useSelector(state=>state.role.Admins)
+
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const[admins,setAdmin]=useState([])
+  const [searchInput,setSearchInput]=useState()
 
-  // Function to toggle dropdown visibility
+  
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   }
@@ -17,6 +28,8 @@ function CreateAdmin() {
              const data= response.data.admins
             //  console.log(response.admins)
               setAdmin(data)
+              
+
               // console.log(data)
 
         }catch(error){ 
@@ -26,11 +39,22 @@ function CreateAdmin() {
       }
       
       fetchAdmins()
-
+     
   },[])
+  dispatch(searchAdmins(admins))
+  console.log(adminSearch)
+   console.log(searchInput)
+
+ const handleSearch = ()=>{
+     search(searchInput)
+     console.log();
+     
+  // console.log(searchInput);
+  
+ }
+
  
- 
-console.log(admins)
+
 
   return (
     <>
@@ -49,6 +73,7 @@ console.log(admins)
             </a>
             <div className="flex md:order-2">
               <button
+              onClick={handleSearch}
                 type="button"
                 aria-controls="navbar-search"
                 aria-expanded="false"
@@ -94,6 +119,8 @@ console.log(admins)
                   id="search-navbar"
                   className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Search..."
+                  value={searchInput}
+                  onChange={(e)=>setSearchInput(e.target.value)}
                 />
               </div>
              

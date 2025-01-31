@@ -1,6 +1,7 @@
 const initialState = {
     Permissions: [], 
-      Roles:[]
+      Roles:[],
+      Admins:[]
 }
 
 const roleReducers = (state= initialState, action)=>{
@@ -15,6 +16,13 @@ const roleReducers = (state= initialState, action)=>{
                 ...state,
                 Roles:action.payload.Roles
             }   
+         case 'SEARCH_ADMINS':
+            return{
+                ...state,
+                Admins:action.payload
+
+            }
+
             default :
                 return state 
     }

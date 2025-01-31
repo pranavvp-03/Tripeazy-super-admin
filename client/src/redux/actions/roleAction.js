@@ -7,3 +7,7 @@ export const getRoles=(Roles)=>({
     type:"Roles",
     payload:{Roles}
 })
+export const searchAdmins=(admins)=>({
+    type:"SEARCH_ADMINS",
+    payload:admins
+})

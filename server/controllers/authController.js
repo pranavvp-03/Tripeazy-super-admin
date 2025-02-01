@@ -5,15 +5,22 @@ const jwt = require("jsonwebtoken")
 const Role = require("../model/role")
 const JWT_SECRET = process.env.JWT_SECRET || "your_secret_key"
 
-// Register Super Admin
+
 exports.createAdmin = async (req, res) => {
-    const { name, email, password, roleName } = req.body;
+    // const { name, email, password, roleName } = req.body; 
+    //   file= req.file
+    const {name,password,email,phoneNumber,gender,position}=req.body
+    // console.log(name,password,email,phoneNumber,gender,position)
+    console.log(position);
+    
+    
 
     try {
-        console.log(name, email, roleName);
+        
 
         // Fetch the role by roleName
-        const role = await Role.findOne({ roleName });
+        const role = await Role.findOne({ roleName:position });
+        console.log(role)
         if (!role) {
             return res.status(404).json({ message: `Role '${roleName}' not found` });
         }
@@ -24,16 +31,25 @@ exports.createAdmin = async (req, res) => {
             return res.status(400).json({ message: "Admin with this email already exists" });
         }
 
-        // Hash the password
+       
         const hashedPassword = await bcrypt.hash(password, 10);
 
         // Create and save the new admin
-        const admin = new Admin({
-            name,
-            email,
-            password: hashedPassword,
-            role: role._id, // Save role as ObjectId
-        });
+        // const admin = new Admin({
+        //     name,
+        //     email,
+        //     password: hashedPassword,
+        //     role: role._id, // Save role as ObjectId
+        // });
+        const admin =  new Admin ({
+                  name,
+                  password:hashedPassword,
+                  email,
+                  phoneNumber,
+                  gender,
+                  role: role._id
+                  // file
+                 })
 
         await admin.save();
         res.status(201).json({ message: "Admin created successfully", admin });
@@ -45,6 +61,8 @@ exports.createAdmin = async (req, res) => {
 // Login Super Admin
 exports.loginAdmin = async (req,res)=>{
     const {email,password} = req.body;
+    console.log(password,email);
+    
     try {
         const admin = await Admin.findOne({email}).populate("role");
         console.log(admin,"admin");
@@ -64,7 +82,7 @@ exports.loginAdmin = async (req,res)=>{
         )
 
         res.status(200).json({message:"Login successful",token,
-            role: admin.role.roleName,
+            role: admin.role,
             permissions: admin.role.permissions,})
             console.log(admin.role.roleName,"role");
     } catch (error) {

@@ -24,7 +24,7 @@ const UserNavbar = () => {
 
   return (
     <>
-      {/* Desktop Sidebar */}
+      
       <div className="hidden md:flex flex-col w-64 text-slate-800 h-full">
         <div className="flex items-center justify-center h-20 border-b">
           <h1 className="text-2xl font-bold">Super Admin</h1>
@@ -219,7 +219,7 @@ const UserNavbar = () => {
                 to="/profile-settings"
                 onClick={closeSidebar}
                 className={({ isActive }) =>
-                  `flex items-center gap-4 p-3 rounded-xl ${isActive ? "bg-blue-600 text-white" : ""}`
+                  `flex items-center gap-4 p-3 rounded-xl ${isActive ? "bg-blue-600 text-white" : ""}` 
                 }
               >
                 <FaUser />

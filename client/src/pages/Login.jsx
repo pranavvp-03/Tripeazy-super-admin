@@ -44,18 +44,20 @@ const Login = () => {
     if (newErrors.email || newErrors.password) return;
 
     try {
+      
       const response = await axios.post('http://localhost:3001/api/login', {
         email,
         password,
       });
 
-      const { token, permissions, user } = response.data;
+      const { token, permissions,user } = response.data;
+      // console.log(response.data.role ,res.data.permissions)
+      // console.log(role)
       localStorage.setItem('token', token);
       localStorage.setItem('permissions', JSON.stringify(permissions));
 
       dispatch(loginSuccess(user, token));
       dispatch(setPermissions(permissions));
-    
 
       navigate('/home');
     } catch (err) {

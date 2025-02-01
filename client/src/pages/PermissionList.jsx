@@ -15,6 +15,8 @@ function PermissionList({roleName,description}) {
     Packages:[],   
     Blogs:[],
     CreateAdmin:[],
+    Advertisement:[],
+    Notifications:[],
   })
   const dispatch=useDispatch()
   const role = useSelector(state => state.role.Permissions);
@@ -61,7 +63,7 @@ function PermissionList({roleName,description}) {
      console.log("response successfully recieved")
      dispatch(setPermissions(response.data))
     //  console.log(role);
-     toast.success('Successfully toasted!')
+     toast.success(`Role Created Successfully😎`)
     
     
      
@@ -78,24 +80,19 @@ function PermissionList({roleName,description}) {
    
 }
 
-// if (isTrue === true) {
-//   return <SuccessTost />;
-// }
-// if (isTrue=== false){
-//   return <RejectTost/>
-// }
+
   return (
     <div>
           <div className="items-center mt-10">
     <h1 className="mb-4 font-bold text-gray-900 dark:text-dark">Tabs and Permissions</h1>
     <div className="w-1/2 items-center">
-      <ul className="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-      <li className=" bg-custom-purple w-1/2  border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-          <div className="flex items-center ps-3 ml-5">
+      <ul className=" items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+      <li className="  bg-custom-purple w-1/2  border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+          <div className="flex items-center ps-3 ml-5  ">
             
             <label
               htmlFor="vue-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 "
+              className="   w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 "
             >
               Home
             </label>
@@ -178,7 +175,7 @@ function PermissionList({roleName,description}) {
               htmlFor="vue-checkbox-list"
               className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 "
             >
-              Home
+             Agencies
             </label>
           </div>
         </li>
@@ -508,7 +505,7 @@ function PermissionList({roleName,description}) {
               id="vue-checkbox-list"
               type="checkbox"
               value="View"
-              onChange={(e)=>{handleCheckbox(e, "Create Admin")}}
+              onChange={(e)=>{handleCheckbox(e, "CreateAdmin")}}
               className=" ml-10 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -525,7 +522,7 @@ function PermissionList({roleName,description}) {
               id="react-checkbox-list"
               type="checkbox"
               value="Edit"
-              onChange={(e)=>{handleCheckbox(e, "Create Admin")}}
+              onChange={(e)=>{handleCheckbox(e, "CreateAdmin")}}
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -542,7 +539,168 @@ function PermissionList({roleName,description}) {
               id="angular-checkbox-list"
               type="checkbox"
               value="Delete"
-              onChange={(e)=>{handleCheckbox(e, "Create Admin")}}
+              onChange={(e)=>{handleCheckbox(e, "CreateAdmin")}}
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+            />
+            <label
+              htmlFor="angular-checkbox-list"
+              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              Delete
+            </label>
+          </div>
+        </li>
+        <li className=" bg-custom-purple w-1/2 dark:border-gray-600">
+          <div className="flex items-center ps-3">
+            <input
+              id="laravel-checkbox-list"
+              type="checkbox"
+              value=""
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+            />
+            <label
+              htmlFor="laravel-checkbox-list"
+              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              All
+            </label>
+          </div>
+        </li>
+      </ul>
+
+      <ul className="  mt-3 flex items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+      <li className=" bg-custom-purple w-1/2  border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+          <div className="flex items-center ps-3 ml-5">
+            
+            <label
+              htmlFor="vue-checkbox-list"
+              className="w-full py-3 ms-3 text-sm font-medium text-gray-900 dark:text-gray-300 "
+            >
+              Advertisement
+            </label>
+          </div>
+        </li>
+        <li className=" bg-custom-purple w-1/2  border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+          <div className="flex items-center ps-3">
+            <input
+              id="vue-checkbox-list"
+              type="checkbox"
+              value="View"
+              onChange={(e)=>{handleCheckbox(e, "Advertisement")}}
+              className=" ml-10 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+            />
+            <label
+              htmlFor="vue-checkbox-list"
+              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              View
+            </label>
+          </div>
+        </li>
+        <li className=" bg-custom-purple w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+          <div className="flex items-center ps-3">
+            <input
+              id="react-checkbox-list"
+              type="checkbox"
+              value="Edit"
+              onChange={(e)=>{handleCheckbox(e, "Advertisement")}}
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+            />
+            <label
+              htmlFor="react-checkbox-list"
+              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              Edit
+            </label>
+          </div>
+        </li>
+        <li className=" bg-custom-purple w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+          <div className="flex items-center ps-3">
+            <input
+              id="angular-checkbox-list"
+              type="checkbox"
+              value="Delete"
+              onChange={(e)=>{handleCheckbox(e, "Advertisement")}}
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+            />
+            <label
+              htmlFor="angular-checkbox-list"
+              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              Delete
+            </label>
+          </div>
+        </li>
+        <li className=" bg-custom-purple w-1/2 dark:border-gray-600">
+          <div className="flex items-center ps-3">
+            <input
+              id="laravel-checkbox-list"
+              type="checkbox"
+              value=""
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+            />
+            <label
+              htmlFor="laravel-checkbox-list"
+              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              All
+            </label>
+          </div>
+        </li>
+      </ul>
+      <ul className="  mt-3 flex items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+      <li className=" bg-custom-purple w-1/2  border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+          <div className="flex items-center ps-3 ml-5">
+            
+            <label
+              htmlFor="vue-checkbox-list"
+              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 "
+            >
+              Notification
+            </label>
+          </div>
+        </li>
+        <li className=" bg-custom-purple w-1/2  border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+          <div className="flex items-center ps-3">
+            <input
+              id="vue-checkbox-list"
+              type="checkbox"
+              value="View"
+              onChange={(e)=>{handleCheckbox(e, "Notifications")}}
+              className=" ml-10 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+            />
+            <label
+              htmlFor="vue-checkbox-list"
+              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              View
+            </label>
+          </div>
+        </li>
+        <li className=" bg-custom-purple w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+          <div className="flex items-center ps-3">
+            <input
+              id="react-checkbox-list"
+              type="checkbox"
+              value="Edit"
+              onChange={(e)=>{handleCheckbox(e, "Notifications")}}
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+            />
+            <label
+              htmlFor="react-checkbox-list"
+              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              Edit
+            </label>
+          </div>
+        </li>
+        <li className=" bg-custom-purple w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+          <div className="flex items-center ps-3">
+            <input
+              id="angular-checkbox-list"
+              type="checkbox"
+              value="Delete"
+              onChange={(e)=>{handleCheckbox(e, "Notifications")}}
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label

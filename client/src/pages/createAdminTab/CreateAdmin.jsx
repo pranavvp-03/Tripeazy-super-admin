@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { searchAdmins } from '../../redux/actions/roleAction';
 import useSearch from '../../Hooks/useSearch';
 
 
+
 function CreateAdmin() {
-  const {search,filteredAdmin} =useSearch()
+  const {search,filteredAdmin,error} =useSearch()
   const dispatch= useDispatch()
   const adminSearch= useSelector(state=>state.role.Admins)
 
@@ -49,22 +51,16 @@ function CreateAdmin() {
  const handleSearch = (e)=>{
      search(searchInput)
      console.log("this is search fuction"); 
-    
-
-    
-     
+       
   // console.log(searchInput);
+  }
   
- }
  const handleKey =(e)=>{
   if(e.key==="Enter"){
-    handleSearch()
+   handleSearch()
   }
-
  }
  
-
-
   return (
     <>
       
@@ -197,9 +193,11 @@ function CreateAdmin() {
         {/* grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pb-10 mt-5 */}
         
     <div className="">
-      
+   
+    {error && <p className="text-red-500 text-center text-lg">{error}</p>} 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pb-10 mt-5">
-        {admins.map((admin) => (
+        
+        {(filteredAdmin.length > 0 ? filteredAdmin :admins).map((admin) => (
           <div
             key={admin._id}
            className=" ml-3 flex flex-col items-center p-6 h-fullw w-96 border rounded-lg shadow-lg bg-white dark:bg-white dark:border-gray-300 hover:bg-gray-50 hover:shadow-xl hover:scale-105 hover:border-blue-500 transition-all duration-300"

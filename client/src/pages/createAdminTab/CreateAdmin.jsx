@@ -40,19 +40,28 @@ function CreateAdmin() {
       
       fetchAdmins()
      
-  },[])
+  },[filteredAdmin])
   dispatch(searchAdmins(admins))
   console.log(adminSearch)
-   console.log(searchInput)
+  //  console.log(searchInput)
+  console.log(filteredAdmin)
 
- const handleSearch = ()=>{
+ const handleSearch = (e)=>{
      search(searchInput)
-     console.log();
+     console.log("this is search fuction"); 
+    
+
+    
      
   // console.log(searchInput);
   
  }
+ const handleKey =(e)=>{
+  if(e.key==="Enter"){
+    handleSearch()
+  }
 
+ }
  
 
 
@@ -121,6 +130,7 @@ function CreateAdmin() {
                   placeholder="Search..."
                   value={searchInput}
                   onChange={(e)=>setSearchInput(e.target.value)}
+                  onKeyDown={handleKey}
                 />
               </div>
              

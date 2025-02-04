@@ -58,7 +58,6 @@ const Login = () => {
 
       dispatch(loginSuccess(user, token));
       dispatch(setPermissions(permissions));
-      console.log(permissions)
 
       navigate('/home');
     } catch (err) {

@@ -16,8 +16,7 @@ import {
 function Navbar() {
   const [allowedTabs, setAllowedTabs] = useState({});
   useEffect(()=>{
-      
-      
+    
   const permissions = JSON.parse(localStorage.getItem("permissions"));
   console.log(permissions);
  

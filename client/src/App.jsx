@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom"
-import {Toaster} from 'react-hot-toast'
+import { Toaster } from "react-hot-toast";
 import Login from './pages/Login' 
-
 import Home from './pages/Home'
 import Agencies from './pages/agencies'
 import Users from './pages/users'
@@ -34,7 +33,7 @@ function App() {
       <Route path = "/blogs" element = {<RestrictRoute  requiredPermission="Blogs"> <Blogs/></RestrictRoute>}/>
       <Route path = "/create-admin" element = {<RestrictRoute  requiredPermission="CreateAdmin"> <CreateAdmin/></RestrictRoute>}/>
       <Route path = "/advertisments" element =  {<RestrictRoute  requiredPermission="Advertisement"> <Advertisements/></RestrictRoute>}/>
-      <Route path = "/notifications" element = {<RestrictRoute  requiredPermission="Notifications"> <Notification/></RestrictRoute>}/>
+      <Route path = "/notifications" element = {<RestrictRoute  requiredPermission="Notifications"> <Notifications/></RestrictRoute>}/>
       <Route path ="/createNewAdmin" element = { <CreateNewAdmin/>}/>
       <Route path ="/addrole" element={<Addrole/>}/>
       {/* <Route path="/nav" element={<Navbar/>}/> */}

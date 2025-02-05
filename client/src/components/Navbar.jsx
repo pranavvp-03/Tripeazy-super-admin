@@ -49,7 +49,7 @@ function Navbar() {
   return (
     <div className="text-left hidden md:flex flex-col w-64 text-slate-800 h-full">
       <div className="flex items-center justify-center h-20 border-b">
-        
+        <FaUser className="grid justify-items-start ... margin-left-20px"/>
           <h1 className="text-2xl font-bold"> Admin</h1>
         </div>
       {visibleTabs.map((tab) => (

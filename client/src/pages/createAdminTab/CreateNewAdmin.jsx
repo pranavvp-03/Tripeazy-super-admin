@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import CheckBox from './CheckBox';
 import { useRef } from 'react';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -71,7 +72,7 @@ function CreateNewAdmin() {
     if (!position.trim()) newErrors.position = 'Role is required.';
 
     setErrors(newErrors)
-    return object.keys(newErrors).length === 0 
+    return Object.keys(newErrors).length === 0 
   }
 
   const handleSubmission= async (e)=>{
@@ -96,6 +97,7 @@ function CreateNewAdmin() {
   try{
     const response =  axios.post("http://localhost:3001/api/register", inputs)
     const data= response
+    toast.success("Admin Created Successfully😎")
     console.log(data)
 
   }catch(error){

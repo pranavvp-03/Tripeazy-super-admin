@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { setPermissions } from '../redux/actions/roleAction'
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 
 function PermissionList({roleName,description}) {

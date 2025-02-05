@@ -8,6 +8,7 @@ const AdminDashboardLayout = () => {
       {/* <AdminNavbar /> */}
       <Navbar/>
         <div className="flex-1 p-1 overflow-auto bg-lightBg">
+        
       <Outlet />
       </div>
     </div>  

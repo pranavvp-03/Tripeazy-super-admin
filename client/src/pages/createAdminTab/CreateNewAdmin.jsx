@@ -71,7 +71,7 @@ function CreateNewAdmin() {
     if (!position.trim()) newErrors.position = 'Role is required.';
 
     setErrors(newErrors)
-    return object.keys(newErrors).length === 0 
+    return Object.keys(newErrors).length === 0 
   }
 
   const handleSubmission= async (e)=>{

@@ -119,7 +119,7 @@ function CreateNewAdmin() {
      <ul className="flex p-4 md:p-0 space-x-4 mt-4">
     <li> 
       <NavLink
-                to="/create-admin"
+                to="/Admin-List"
                  className={({ isActive }) =>
                    `p-2 rounded-lg ${isActive ? "bg-blue-500 text-white" : "text-gray-600 font-sans  hover:text-black hover:text-lg hover:underline decoration-blue-400  hover:shadow-sm transition duration-700"}`
                  }

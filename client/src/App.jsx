@@ -11,10 +11,13 @@ import Advertisements from './pages/Advertisements'
 import Notifications from './pages/Notifications'
 import AdminDashboardLayout from './components/Admin-layout'
 import CreateNewAdmin from "./pages/createAdminTab/CreateNewAdmin"
-import Addrole from "./pages/createAdminTab/Addrole"
+import Addrole from "./pages/ManageRole/Addrole";
+import ManageRole from "./pages/ManageRole/ManageRole";
+
 // import Navbar from "./components/Navbar"
 import NoAuthorized from "./components/NoAuthorized"
 import RestrictRoute from "./components/RestrictRoute"
+import { useEffect } from "react";
 function App() {
   return (
    <Router>
@@ -31,7 +34,8 @@ function App() {
       <Route path = "/users" element = {<RestrictRoute  requiredPermission="Users"> <Users/></RestrictRoute>}/>
       <Route path = "/packages" element = {<RestrictRoute  requiredPermission="Packages"> <Packages/></RestrictRoute>}/>
       <Route path = "/blogs" element = {<RestrictRoute  requiredPermission="Blogs"> <Blogs/></RestrictRoute>}/>
-      <Route path = "/create-admin" element = {<RestrictRoute  requiredPermission="CreateAdmin"> <CreateAdmin/></RestrictRoute>}/>
+      <Route path = "/Admin-List" element = {<RestrictRoute  requiredPermission="AdminList"> <CreateAdmin/></RestrictRoute>}/>
+      <Route path = "/manage-Role" element = {<RestrictRoute  requiredPermission="ManageRole"> <ManageRole/></RestrictRoute>}/>
       <Route path = "/advertisments" element =  {<RestrictRoute  requiredPermission="Advertisement"> <Advertisements/></RestrictRoute>}/>
       <Route path = "/notifications" element = {<RestrictRoute  requiredPermission="Notifications"> <Notifications/></RestrictRoute>}/>
       <Route path ="/createNewAdmin" element = { <CreateNewAdmin/>}/>

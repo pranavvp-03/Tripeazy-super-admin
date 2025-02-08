@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
-import toast from 'react-hot-toast';
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { searchAdmins } from '../../redux/actions/roleAction';
+import {logout} from '../../redux/actions/authAction'
 import useSearch from '../../Hooks/useSearch';
-
+import ProfileMenu from '../../components/ProfileMenu';
 
 
 function CreateAdmin() {
@@ -26,7 +26,7 @@ function CreateAdmin() {
   useEffect(()=>{
       const fetchAdmins = async ()=>{
         try{
-             const response= await  axios.get("http://localhost:3001/api/admins/getAdmin")
+             const response= await  axios.get("http://localhost:3001/api/admins/getAdmin",{headers:{Authorization:`Bearer ${localStorage.getItem("token")}`}})
              const data= response.data.admins
             //  console.log(response.admins)
               setAdmin(data)
@@ -59,6 +59,13 @@ function CreateAdmin() {
   if(e.key==="Enter"){
    handleSearch()
   }
+ }
+
+ const handleLogout = ()=>{
+   dispatch(logout());
+
+   window.location.href="/"
+   localStorage.removeItem("token")
  }
  
   return (
@@ -102,7 +109,7 @@ function CreateAdmin() {
                 <span className="sr-only">Search</span>
               </button>
               <div className="relative hidden md:block">
-                <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none space-x-4">
                   <svg
                     className="w-4 h-4 text-gray-500 dark:text-gray-400"
                     aria-hidden="true"
@@ -119,16 +126,40 @@ function CreateAdmin() {
                     />
                   </svg>
                 </div>
-                <input
-                  type="text"
-                  id="search-navbar"
-                  className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Search..."
-                  value={searchInput}
-                  onChange={(e)=>setSearchInput(e.target.value)}
-                  onKeyDown={handleKey}
-                />
+
+               <div className="flex items-center w-full p-4">
+
+                
+  {/* Search Input with Icon Outside */}
+  <div className="relative flex-grow">
+  <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+  🔍 {/* Replace with an actual icon */}
+</span>
+
+    <input
+      type="text"
+      id="search-navbar"
+      className="w-full pl-10 pr-4 py-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 
+                 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 
+                 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      placeholder="Search..."
+      value={searchInput}
+      onChange={(e) => setSearchInput(e.target.value)}
+      onKeyDown={handleKey}
+    />
+  </div>
+
+  {/* Profile Menu - Properly Imported and Aligned */}
+  <div className="ml-4">
+    <ProfileMenu  handleLogout={handleLogout} />
+  </div>
+</div>
+
+               
               </div>
+              
+              
+             
              
             
             </div>
@@ -159,12 +190,13 @@ function CreateAdmin() {
                 />
               </div>
               <div className="flex flex-col items-start">
-  <h1 className="text-white text-3xl mb-4">Manage Admin</h1> 
+  <h1 className="text-white text-3xl mb-4">Manage Admin</h1>
+  
   <ul className="flex p-4 md:p-0 space-x-4">
     <li>
      
      <NavLink
-          to="/create-admin"
+          to="/Admin-List"
           className={({ isActive }) =>
             `p-2 rounded-lg ${isActive ? " text-white  text-lg underline decoration-blue-400" : "text-gray-600"}`
           }
@@ -250,6 +282,7 @@ function CreateAdmin() {
             {/* </div> */}
           </div>
         ))}
+        
       </div>
       </div>
      

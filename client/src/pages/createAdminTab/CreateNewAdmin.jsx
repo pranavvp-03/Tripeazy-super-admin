@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import CheckBox from './CheckBox';
 import { useRef } from 'react';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -10,8 +11,8 @@ import { useSelector } from 'react-redux';
 
 
 function CreateNewAdmin() {
-  // const navigate= useNavigate()
-  // const allowedTabs=useSelector(state=>state.role.Permissions)
+  const navigate= useNavigate()
+  const allowedTabs=useSelector(state=>state.role.Permissions)
   // useEffect(()=>{
   //   const permission = JSON.parse(localStorage.getItem("permissions"));
   //   // console.log(permission.CreateAdmin)
@@ -71,7 +72,7 @@ function CreateNewAdmin() {
     if (!position.trim()) newErrors.position = 'Role is required.';
 
     setErrors(newErrors)
-    return object.keys(newErrors).length === 0 
+    return Object.keys(newErrors).length === 0 
   }
 
   const handleSubmission= async (e)=>{
@@ -96,6 +97,7 @@ function CreateNewAdmin() {
   try{
     const response =  axios.post("http://localhost:3001/api/register", inputs)
     const data= response
+    toast.success("Admin Created Successfully😎")
     console.log(data)
 
   }catch(error){
@@ -117,7 +119,7 @@ function CreateNewAdmin() {
      <ul className="flex p-4 md:p-0 space-x-4 mt-4">
     <li> 
       <NavLink
-                to="/create-admin"
+                to="/Admin-List"
                  className={({ isActive }) =>
                    `p-2 rounded-lg ${isActive ? "bg-blue-500 text-white" : "text-gray-600 font-sans  hover:text-black hover:text-lg hover:underline decoration-blue-400  hover:shadow-sm transition duration-700"}`
                  }
@@ -143,14 +145,7 @@ function CreateNewAdmin() {
           
         </nav>
     
-        <div className='flex justify-end text-right mt-10 mr-10 '>
-      <NavLink
-        to="/addrole"  
-        className="  w-1/7 flex justify-end text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-      >
-        Create New role
-      </NavLink>
-    </div>
+       
 
       
     </div>

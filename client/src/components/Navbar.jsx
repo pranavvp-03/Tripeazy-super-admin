@@ -35,7 +35,7 @@ function Navbar() {
     { id: "Users",  label: "Users", path: "/users", icon: <FaUsers /> },
     { id: "Packages", label: "Packages", path: "/packages", icon: <FaHome /> },
     { id: "Blogs", label: "Blogs", path: "/blogs", icon: <FaHome /> },
-    { id: "Admin List", label: "Admin List", path: "/Admin-List", icon: <FaHome /> },
+    { id: "AdminList", label: "Admin List", path: "/Admin-List", icon: <FaHome /> },
     { id: "Advertisement", label: "Advertisement", path: "/advertisments", icon: <FaHome /> }, 
     { id: "Notifications", label: "Notifications", path: "/notifications", icon: <FaHome /> }, 
   ];

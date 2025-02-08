@@ -14,7 +14,7 @@ function NoAuthorized() {
 
     
     <div className="relative bg-white p-10 shadow-2xl rounded-lg max-w-md text-center">
-      <h1 className="text-4xl font-bold text-red-600">Access Denied</h1>
+      <h1 className="text-4xl font-bold text-red-600">Access Denied 🤷‍♀️</h1>
       <p className="text-gray-700 mt-4">
         Sorry, you do not have permission to access this page. Please contact the administrator if you believe this is a mistake.
       </p>

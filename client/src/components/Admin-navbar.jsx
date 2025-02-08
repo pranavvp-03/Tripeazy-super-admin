@@ -10,7 +10,7 @@ import {
   FaPlus,
   FaUser,
   FaEnvelope,
-  FaRegCalendarAlt 
+  FaRegCalendarAlt,
 } from "react-icons/fa";
 import { useSelector } from "react-redux";
 
@@ -76,13 +76,13 @@ const UserNavbar = () => {
             Blogs
           </NavLink>
           <NavLink
-            to="/create-admin"
+            to="/Admin-List"
             className={({ isActive }) =>
               `flex items-center gap-4 p-3 rounded-xl ${isActive ? "bg-custom-purple text-white" : ""}`
             }
           >
             <FaBell />
-            Create Admin
+            Admin List
           </NavLink>
           <NavLink
             to="/advertisments"
@@ -203,7 +203,7 @@ const UserNavbar = () => {
                 }
               >
                 <FaBell />
-                Create Admin
+                Admin List
               </NavLink>
               <NavLink
                 to="/create-post"

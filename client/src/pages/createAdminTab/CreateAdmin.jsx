@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
-import toast from 'react-hot-toast';
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { searchAdmins } from '../../redux/actions/roleAction';
+import {logout} from '../../redux/actions/authAction'
 import useSearch from '../../Hooks/useSearch';
-
 
 
 function CreateAdmin() {
@@ -26,7 +25,7 @@ function CreateAdmin() {
   useEffect(()=>{
       const fetchAdmins = async ()=>{
         try{
-             const response= await  axios.get("http://localhost:3001/api/admins/getAdmin")
+             const response= await  axios.get("http://localhost:3001/api/admins/getAdmin",{headers:{Authorization:`Bearer ${localStorage.getItem("token")}`}})
              const data= response.data.admins
             //  console.log(response.admins)
               setAdmin(data)
@@ -59,6 +58,13 @@ function CreateAdmin() {
   if(e.key==="Enter"){
    handleSearch()
   }
+ }
+
+ const handleLogout = ()=>{
+   dispatch(logout());
+
+   window.location.href="/"
+   localStorage.removeItem("token")
  }
  
   return (
@@ -129,6 +135,12 @@ function CreateAdmin() {
                   onKeyDown={handleKey}
                 />
               </div>
+              <button
+    onClick={handleLogout} 
+    className="ml-4 text-white bg-red-500 hover:bg-red-600 font-medium rounded-lg text-sm px-4 py-2.5 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800"
+  >
+    Logout
+  </button>
              
             
             </div>
@@ -159,12 +171,13 @@ function CreateAdmin() {
                 />
               </div>
               <div className="flex flex-col items-start">
-  <h1 className="text-white text-3xl mb-4">Manage Admin</h1> 
+  <h1 className="text-white text-3xl mb-4">Manage Admin</h1>
+  
   <ul className="flex p-4 md:p-0 space-x-4">
     <li>
      
      <NavLink
-          to="/create-admin"
+          to="/Admin-List"
           className={({ isActive }) =>
             `p-2 rounded-lg ${isActive ? " text-white  text-lg underline decoration-blue-400" : "text-gray-600"}`
           }
@@ -250,6 +263,7 @@ function CreateAdmin() {
             {/* </div> */}
           </div>
         ))}
+        
       </div>
       </div>
      

@@ -1,6 +1,7 @@
 import React, { useState ,useEffect} from 'react'
 import { NavLink } from 'react-router-dom'
-import PermissionList from '../PermissionList'
+import { useNavigate } from 'react-router-dom'
+import PermissionList from './PermissionList'
 // import axios from 'axios'
 function Addrole() {
   const navigate=useNavigate()

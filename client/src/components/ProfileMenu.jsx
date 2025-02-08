@@ -16,7 +16,6 @@ const ProfileMenu = ({ user, handleLogout }) => {
         <DropdownMenu>
           <div className="absolute right-0 mt-2 w-48 bg-white shadow-md rounded-lg p-2">
             <p className="px-4 py-2">{user?.name}</p>
-            <h1>pranav</h1>
             <hr />
             <Button onClick={handleLogout} className="w-full mt-2 bg-red-500">
               Logout

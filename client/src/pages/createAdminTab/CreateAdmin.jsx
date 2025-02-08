@@ -151,7 +151,7 @@ function CreateAdmin() {
 
   {/* Profile Menu - Properly Imported and Aligned */}
   <div className="ml-4">
-    <ProfileMenu  handleLogout={handleLogout} />
+    <ProfileMenu  handleLogout={handleLogout}  />
   </div>
 </div>
 

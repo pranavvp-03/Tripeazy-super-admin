@@ -83,7 +83,7 @@ exports.loginAdmin = async (req,res)=>{
 
         res.status(200).json({message:"Login successful",token,
             role: admin.role,
-            permissions: admin.role.permissions,})
+            permissions: admin.role.permissions,user:{name:admin.name,email:admin.email}})
             console.log(admin.role.roleName,"role");
     } catch (error) {
         console.log(error,"error in login admin");

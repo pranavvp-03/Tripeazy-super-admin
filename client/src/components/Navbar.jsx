@@ -25,7 +25,7 @@ function Navbar() {
   
   },[])
 
-  console.log(allowedTabs)
+  console.log(allowedTabs )
 
  
 
@@ -36,14 +36,17 @@ function Navbar() {
     { id: "Packages", label: "Packages", path: "/packages", icon: <FaHome /> },
     { id: "Blogs", label: "Blogs", path: "/blogs", icon: <FaHome /> },
     { id: "AdminList", label: "Admin List", path: "/Admin-List", icon: <FaHome /> },
+    { id: "ManageRole",label:"Manage Role", path: "/manage-Role", icon: <FaHome /> },
     { id: "Advertisement", label: "Advertisement", path: "/advertisments", icon: <FaHome /> }, 
     { id: "Notifications", label: "Notifications", path: "/notifications", icon: <FaHome /> }, 
+
   ];
   
   const visibleTabs = tabs.filter((tab) => {
     return allowedTabs[tab.id] && (allowedTabs[tab.id]) && allowedTabs[tab.id].length > 0;
   });
-
+  //  console.log(visibleTabs);
+   
   return (
     <div className="text-left hidden md:flex flex-col w-64 text-slate-800 h-full">
       <div className="flex items-center justify-center h-20 border-b">
@@ -56,7 +59,7 @@ function Navbar() {
             `flex items-center gap-4 p-3 rounded-xl ${isActive ? "bg-custom-purple text-white" : ""}`
           }>
             <span>{tab.icon }</span>
-            <h1 className="">{tab.id}</h1>
+            <h1 className="">{tab.label}</h1>
           </NavLink>
         </div>
       ))}

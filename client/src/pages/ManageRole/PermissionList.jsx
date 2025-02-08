@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
-import { setPermissions } from '../redux/actions/roleAction'
+// import { setPermissions } from '../redux/actions/roleAction'
 import toast from "react-hot-toast";
 
 
@@ -15,6 +15,7 @@ function PermissionList({roleName,description}) {
     Packages:[],   
     Blogs:[],
     AdminList:[],
+    ManageRole:[], 
     Advertisement:[],
     Notifications:[],
   })
@@ -51,7 +52,7 @@ function PermissionList({roleName,description}) {
       
       toast.error("No Response from the  Server")
      
-       console.log("There is no responce to recieve ")
+       console.log("There is no response to recieve")
        return
      }
      if(response.status === 400){
@@ -61,7 +62,7 @@ function PermissionList({roleName,description}) {
      
      if(response.status===201){
      console.log("response successfully recieved")
-     dispatch(setPermissions(response.data))
+    //  dispatch(setPermissions(response.data))
     //  console.log(role);
      toast.success(`Role Created Successfully😎`)
     
@@ -495,7 +496,7 @@ function PermissionList({roleName,description}) {
               htmlFor="vue-checkbox-list"
               className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 "
             >
-              Creation
+              Admin List 
             </label>
           </div>
         </li>
@@ -505,7 +506,7 @@ function PermissionList({roleName,description}) {
               id="vue-checkbox-list"
               type="checkbox"
               value="View"
-              onChange={(e)=>{handleCheckbox(e, "Admin List")}}
+              onChange={(e)=>{handleCheckbox(e, "AdminList")}}
               className=" ml-10 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -522,7 +523,7 @@ function PermissionList({roleName,description}) {
               id="react-checkbox-list"
               type="checkbox"
               value="Edit"
-              onChange={(e)=>{handleCheckbox(e, "Admin List")}}
+              onChange={(e)=>{handleCheckbox(e, "AdminList")}}
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -539,7 +540,89 @@ function PermissionList({roleName,description}) {
               id="angular-checkbox-list"
               type="checkbox"
               value="Delete"
-              onChange={(e)=>{handleCheckbox(e, "Admin List")}}
+              onChange={(e)=>{handleCheckbox(e, "AdminList")}}
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+            />
+            <label
+              htmlFor="angular-checkbox-list"
+              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              Delete
+            </label>
+          </div>
+        </li>
+        <li className=" bg-custom-purple w-1/2 dark:border-gray-600">
+          <div className="flex items-center ps-3">
+            <input
+              id="laravel-checkbox-list"
+              type="checkbox"
+              value=""
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+            />
+            <label
+              htmlFor="laravel-checkbox-list"
+              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              All
+            </label>
+          </div>
+        </li>
+      </ul>
+
+
+      <ul className=" mt-3 items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+      <li className=" bg-custom-purple w-1/2  border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+          <div className="flex items-center ps-3 ml-5">
+            
+            <label
+              htmlFor="vue-checkbox-list"
+              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 "
+            >
+             Manage Role
+            </label>
+          </div>
+        </li>
+        <li className=" bg-custom-purple w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+          <div className="flex items-center ps-3 ml-10">
+            <input
+              id="vue-checkbox-list"
+              type="checkbox"
+              value="view"
+              onChange={(e)=>{handleCheckbox(e, "ManageRole")}}
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+            />
+            <label
+              htmlFor="vue-checkbox-list"
+              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              View
+            </label>
+          </div>
+        </li>
+        <li className=" bg-custom-purple w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+          <div className="flex items-center ps-3">
+            <input
+              id="react-checkbox-list"
+              type="checkbox"
+              value="Edit"
+              onChange={(e)=>{handleCheckbox(e, "ManageRole")}}
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+            />
+            <label
+              htmlFor="react-checkbox-list"
+              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              Edit
+            </label>
+          </div>
+        </li>
+        <li className=" bg-custom-purple w-1/2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+          <div className="flex items-center ps-3">
+            <input
+              id="angular-checkbox-list"
+              type="checkbox"
+              value="Delete"
+              onChange={(e)=>{handleCheckbox(e, "ManageRole")}}
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
             />
             <label
@@ -574,7 +657,7 @@ function PermissionList({roleName,description}) {
             
             <label
               htmlFor="vue-checkbox-list"
-              className="w-full py-3 ms-3 text-sm font-medium text-gray-900 dark:text-gray-300 "
+              className="w-full py-3 -ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 "
             >
               Advertisement
             </label>

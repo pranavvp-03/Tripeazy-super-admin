@@ -177,30 +177,9 @@ function ManageRole() {
               <span className="bg-green-500 text-white py-1 px-2 rounded-full text-xs">Active</span>
             </td>
           </tr>
-          <tr>
-            <td className="py-4 px-6 border-b border-gray-200">Jane Doe</td>
-            <td className="py-4 px-6 border-b border-gray-200 truncate">janedoe@gmail.com</td>
-            <td className="py-4 px-6 border-b border-gray-200">555-555-5555</td>
-            <td className="py-4 px-6 border-b border-gray-200">
-              <span className="bg-red-500 text-white py-1 px-2 rounded-full text-xs">Inactive</span>
-            </td>
-          </tr>
-          <tr>
-            <td className="py-4 px-6 border-b border-gray-200">Jane Doe</td>
-            <td className="py-4 px-6 border-b border-gray-200 truncate">janedoe@gmail.com</td>
-            <td className="py-4 px-6 border-b border-gray-200">555-555-5555</td>
-            <td className="py-4 px-6 border-b border-gray-200">
-              <span className="bg-red-500 text-white py-1 px-2 rounded-full text-xs">Inactive</span>
-            </td>
-          </tr>
-          <tr>
-            <td className="py-4 px-6 border-b border-gray-200">Jane Doe</td>
-            <td className="py-4 px-6 border-b border-gray-200 truncate">janedoe@gmail.com</td>
-            <td className="py-4 px-6 border-b border-gray-200">555-555-5555</td>
-            <td className="py-4 px-6 border-b border-gray-200">
-              <span className="bg-red-500 text-white py-1 px-2 rounded-full text-xs">Inactive</span>
-            </td>
-          </tr>
+       
+          
+          
         </tbody>
       </table>
     </div>

@@ -34,8 +34,8 @@ function App() {
       <Route path = "/users" element = {<RestrictRoute  requiredPermission="Users"> <Users/></RestrictRoute>}/>
       <Route path = "/packages" element = {<RestrictRoute  requiredPermission="Packages"> <Packages/></RestrictRoute>}/>
       <Route path = "/blogs" element = {<RestrictRoute  requiredPermission="Blogs"> <Blogs/></RestrictRoute>}/>
-      <Route path = "/Admin-List" element = {<RestrictRoute  requiredPermission="Admin List"> <CreateAdmin/></RestrictRoute>}/>
-      <Route path = "/manage-Role" element = {<RestrictRoute  requiredPermission="ManageRole"> <CreateAdmin/></RestrictRoute>}/>
+      <Route path = "/Admin-List" element = {<RestrictRoute  requiredPermission="AdminList"> <CreateAdmin/></RestrictRoute>}/>
+      <Route path = "/manage-Role" element = {<RestrictRoute  requiredPermission="ManageRole"> <ManageRole/></RestrictRoute>}/>
       <Route path = "/advertisments" element =  {<RestrictRoute  requiredPermission="Advertisement"> <Advertisements/></RestrictRoute>}/>
       <Route path = "/notifications" element = {<RestrictRoute  requiredPermission="Notifications"> <Notifications/></RestrictRoute>}/>
       <Route path ="/createNewAdmin" element = { <CreateNewAdmin/>}/>

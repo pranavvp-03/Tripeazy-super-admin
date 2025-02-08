@@ -28,47 +28,39 @@ console.log(description)
 
 
     <div>
-      <nav className=" border-gray-200  bg-nav-white -mt-1 ">
-          <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-           
-            <div className="flex md:order-2">
-             
-              <div className="relative hidden md:block">
-                <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                  
-                </div>
+      <nav className=" border-gray-200 bg-background-white -mt-1   ">
                
-              </div>
-             
-            </div>
-            <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-search">
-            <div class=" mt-0 flex justify-between gap-2">
-    <a href="/createNewAdmin"
-        class=" -mt-3 inline-flex items-center border border-indigo-300 px-3 py-1.5 rounded-md text-indigo-500 hover:bg-indigo-50">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18">
-            </path>
-        </svg>
-        
-    </a>
-    </div>
-            
-              <div className="flex flex-col items-start">
-             
-  <h1 className=" ml-6 mt-6 text-dark text-4xl mb-4">Manage Admin</h1>
-  <ul className="flex p-4 md:p-0 space-x-4">
-    <li>
-    
-    </li>
-    <li>
-    
-    </li>
-  </ul>
-</div>
-
-            </div>
-          </div>
-        </nav>
+                    <div className="flex flex-col items-start">
+        <h1 className="text-dark text-3xl mb-4 mt-2 ml-4 ">Manage Admin</h1>
+      
+           <ul className="flex p-4 md:p-0 space-x-4 mt-4">
+          <li> 
+            <NavLink
+                      to="/manage-Role"
+                       className={({ isActive }) =>
+                         `p-2 rounded-lg ${isActive ? "bg-blue-500 text-white" : "text-gray-600 font-sans  hover:text-black hover:text-lg hover:underline decoration-blue-400  hover:shadow-sm transition duration-700"}`
+                       }
+                     >
+                       Existing Roles
+                     </NavLink>
+                 </li>
+                 <li>
+                      <NavLink
+                       to="/addrole"
+                       className={({ isActive }) =>
+                         ` p-2 rounded-lg${isActive ? "  text-dark text-lg underline decoration-blue-400 scale-105 shadow-sm" : "text-gray-600 hover:text-white"}`
+                       }
+                     >
+                       Create New 
+                     </NavLink>
+      
+             </li>
+        </ul> 
+        </div>
+      
+                 
+                
+              </nav>
         <div>
           <h1 className='mt-5 font-bold'>
             Create New Role

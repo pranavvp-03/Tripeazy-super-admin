@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { searchAdmins } from '../../redux/actions/roleAction';
 import {logout} from '../../redux/actions/authAction'
 import useSearch from '../../Hooks/useSearch';
+import ProfileMenu from '../../components/ProfileMenu';
 
 
 function CreateAdmin() {
@@ -128,19 +129,15 @@ function CreateAdmin() {
                 <input
                   type="text"
                   id="search-navbar"
-                  className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="block w-full p-2 ps-10 text-sm mr-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Search..."
                   value={searchInput}
                   onChange={(e)=>setSearchInput(e.target.value)}
                   onKeyDown={handleKey}
                 />
               </div>
-              <button
-    onClick={handleLogout} 
-    className="ml-4 text-white bg-red-500 hover:bg-red-600 font-medium rounded-lg text-sm px-4 py-2.5 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800"
-  >
-    Logout
-  </button>
+              
+             <ProfileMenu handleLogout={handleLogout} className="ml-5"/>
              
             
             </div>

@@ -109,7 +109,7 @@ function CreateAdmin() {
                 <span className="sr-only">Search</span>
               </button>
               <div className="relative hidden md:block">
-                <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none space-x-4">
                   <svg
                     className="w-4 h-4 text-gray-500 dark:text-gray-400"
                     aria-hidden="true"
@@ -126,18 +126,40 @@ function CreateAdmin() {
                     />
                   </svg>
                 </div>
-                <input
-                  type="text"
-                  id="search-navbar"
-                  className="block w-full p-2 ps-10 text-sm mr-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Search..."
-                  value={searchInput}
-                  onChange={(e)=>setSearchInput(e.target.value)}
-                  onKeyDown={handleKey}
-                />
+
+               <div className="flex items-center w-full p-4">
+
+                
+  {/* Search Input with Icon Outside */}
+  <div className="relative flex-grow">
+  <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+  🔍 {/* Replace with an actual icon */}
+</span>
+
+    <input
+      type="text"
+      id="search-navbar"
+      className="w-full pl-10 pr-4 py-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 
+                 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 
+                 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      placeholder="Search..."
+      value={searchInput}
+      onChange={(e) => setSearchInput(e.target.value)}
+      onKeyDown={handleKey}
+    />
+  </div>
+
+  {/* Profile Menu - Properly Imported and Aligned */}
+  <div className="ml-4">
+    <ProfileMenu  handleLogout={handleLogout} />
+  </div>
+</div>
+
+               
               </div>
               
-             <ProfileMenu handleLogout={handleLogout} className="ml-5"/>
+              
+             
              
             
             </div>

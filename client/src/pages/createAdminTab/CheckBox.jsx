@@ -43,7 +43,7 @@ function CheckBox({onSelect}) {
 
      const handleChange=(e)=>{
       const value=e.target.value
-        setSelectedOption(e.target.value)
+        setSelectedOption(value)
       onSelect(value)
       // console.log(value)
 

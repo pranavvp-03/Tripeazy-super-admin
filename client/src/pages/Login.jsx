@@ -54,7 +54,7 @@ const Login = () => {
       // console.log(response.data.role ,res.data.permissions)
       // console.log(role)
       // localStorage.setItem('token', token);
-      // localStorage.setItem('permissions', JSON.stringify(permissions));
+      localStorage.setItem('permissions', JSON.stringify(permissions));
       console.log(user,"from user is successfulll")
       dispatch(loginSuccess(user, token));
       dispatch(setPermissions(permissions));

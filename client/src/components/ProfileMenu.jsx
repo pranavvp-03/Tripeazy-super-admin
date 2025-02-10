@@ -10,11 +10,11 @@ const ProfileDropdown = () => {
   // Get user details from Redux
   const user = useSelector((state) => state.auth.user); 
 
-  useEffect(() => {
-    if (user) {
-      localStorage.setItem("userData", JSON.stringify(user));
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (user) {
+  //     localStorage.setItem("userData", JSON.stringify(user));
+  //   }
+  // }, [user]);
 
   const handleLogout = () => {
     dispatch(logout());

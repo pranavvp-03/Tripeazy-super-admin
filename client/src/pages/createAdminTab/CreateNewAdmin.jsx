@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux';
 
 function CreateNewAdmin() {
   const navigate= useNavigate()
-  const allowedTabs=useSelector(state=>state.role.Permissions)
+  const allowedTabs=useSelector(state=>state.auth.Permissions)
   // useEffect(()=>{
   //   const permission = JSON.parse(localStorage.getItem("permissions"));
   //   // console.log(permission.CreateAdmin)
@@ -25,6 +25,13 @@ function CreateNewAdmin() {
   // useEffect(()=>{
   //   console.log(allowedTabs)
   //  },[])
+  // useEffect(()=>{
+  //   console.log(allowedTabs,"allowed tabs")
+  //   if(allowedTabs === null){
+  //     navigate("/notAuthorized")
+  //   }
+  // },[navigate])
+  console.log(allowedTabs,"from allowed tabs redux")
   const inputRef=useRef(null)
   const [image,setImage]=useState(null)
   const [position,setPosition]=useState("")

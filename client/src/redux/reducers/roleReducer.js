@@ -9,7 +9,7 @@ const roleReducers = (state= initialState, action)=>{
         case 'SET_PERMISSIONS':
             return {
                 ...state,
-                Permissions: action.payload.permissions
+                Permissions: action.payload.Permissions
             };
          case 'Roles':
             return{
@@ -19,7 +19,7 @@ const roleReducers = (state= initialState, action)=>{
          case 'SEARCH_ADMINS':
             return{
                 ...state,
-                Admins:action.payload
+                Admins:action.payload.Admins
 
             }
 

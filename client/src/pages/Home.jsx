@@ -73,11 +73,11 @@ export default function Home() {
             <CardTitle>Users Growth</CardTitle>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={300} >
               <BarChart data={data}>
                 <XAxis dataKey="name" />
                 <YAxis />
-                <Bar dataKey="users" fill="hsl(var(--primary))" />
+                <Bar dataKey="users" fill="#6D28D9" />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>

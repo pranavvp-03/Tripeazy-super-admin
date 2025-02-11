@@ -62,10 +62,10 @@ function CreateAdmin() {
  }
 
  const handleLogout = ()=>{
-   dispatch(logout());
+  //  dispatch(logout());
 
-   window.location.href="/"
-   localStorage.removeItem("token")
+  //  window.location.href="/"
+  //  localStorage.removeItem("token")
  }
  
   return (

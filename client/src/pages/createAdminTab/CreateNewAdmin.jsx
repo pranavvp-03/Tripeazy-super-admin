@@ -118,7 +118,7 @@ function CreateNewAdmin() {
     <>
    
     <div>
-        <nav className=" border-gray-200 bg-background-white -mt-1   ">
+        <nav className=" border-gray-200  bg-background-white -mt-1   ">
          
               <div className="flex flex-col items-start">
   <h1 className="text-dark text-3xl mb-4 mt-2 ml-4 ">Manage Admin</h1>

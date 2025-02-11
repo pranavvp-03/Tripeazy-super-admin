@@ -1,11 +1,11 @@
 export const setPermissions = (permissions) => ({
     type: "SET_PERMISSIONS",
-    payload: { permissions },
+    payload: { permissions },   
     
 })
 
 export const getRoles=(Roles)=>({
-    type:"Roles",
+    type:"SET_ROLES",
     payload:{Roles}
 })
 export const searchAdmins=(admins)=>({

@@ -2,12 +2,15 @@ const initialState = {
     isAuthenticated: localStorage.getItem("token") ? true : false,
     user: JSON.parse(localStorage.getItem("userData")) || null,
     token: localStorage.getItem("token") || null,
-    permissions: JSON.parse(localStorage.getItem("permissions")) || null, // Ensure permissions exist in state
+    permissions: JSON.parse(localStorage.getItem("permissions")) || {}, // Ensure permissions exist in state
 };
 
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'LOGIN_SUCCESS':
+            console.log("LOGIN_SUCCESS payload:", action.payload); // Debug
+            console.log("Permissions inside payload:", action.payload.permissions); // Debug
+        
             localStorage.setItem("userData", JSON.stringify(action.payload.user));
             localStorage.setItem("token", action.payload.token);
             localStorage.setItem("permissions", JSON.stringify(action.payload.permissions)); // Save permissions
@@ -16,11 +19,11 @@ const authReducer = (state = initialState, action) => {
                 isAuthenticated: true,
                 user: action.payload.user,
                 token: action.payload.token,
-                permissions: action.payload.permissions||{} // Store permissions in state
+                permissions: action.payload.permissions  // Store permissions in state
             };
 
         case 'SET_PERMISSIONS':
-            localStorage.setItem("permissions", JSON.stringify(action.payload));
+            //  localStorage.setItem("permissions", JSON.stringify(action.payload));
             return {
                 ...state,
                 permissions: action.payload

@@ -11,7 +11,7 @@ exports.createAdmin = async (req, res) => {
     //   file= req.file
     const {name,password,email,phoneNumber,gender,position}=req.body
     // console.log(name,password,email,phoneNumber,gender,position)
-    console.log(position);
+    // console.log(position);
     
     
 
@@ -28,7 +28,7 @@ exports.createAdmin = async (req, res) => {
         // Check if an admin with the same email already exists
         const existingAdmin = await Admin.findOne({ email });
         if (existingAdmin) {
-            return res.status(400).json({ message: "Admin with this email already exists" });
+            return res.status(400).send({ error: "Admin with this email already exists" });
         }
 
        

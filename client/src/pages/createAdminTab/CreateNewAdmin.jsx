@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { data, NavLink } from 'react-router-dom';
 import CheckBox from './CheckBox';
 import { useRef } from 'react';
 import axios from 'axios';
@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux';
 
 function CreateNewAdmin() {
   const navigate= useNavigate()
-  const allowedTabs=useSelector(state=>state.auth.Permissions)
+  const allowedTabs=useSelector(state=>state.auth.permissions)
   // useEffect(()=>{
   //   const permission = JSON.parse(localStorage.getItem("permissions"));
   //   // console.log(permission.CreateAdmin)
@@ -96,19 +96,19 @@ function CreateNewAdmin() {
       phoneNumber,
       gender
     }
-    console.log(inputs);
+    // console.log(inputs);
 
     
     
     
   try{
     const response =  axios.post("http://localhost:3001/api/register", inputs)
-    const data= response
+    console.log(response,"from response")
     toast.success("Admin Created Successfully😎")
-    console.log(data)
 
   }catch(error){
-     console.log({error:error.message})
+    console.log(error,"from catch")
+     
   }
 }
 

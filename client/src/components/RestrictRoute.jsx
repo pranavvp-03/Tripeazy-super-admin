@@ -12,7 +12,7 @@ function RestrictRoute({ children, requiredPermission }) {
 
   // 🔹 If user is NOT authenticated → Redirect to login
   if (!isAuthenticated) {
-    return <Navigate to="/notAuthorized" />;
+    return <Navigate to="/" />;
   }
 
   // 🔹 If permissions are still loading but user is logged in → Show loading

@@ -27,7 +27,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import { Activity } from "lucide-react";
-import CommonNav from "../../components/CommonNav";
+import CommonNav from "../components/CommonNav";
 
 const data = [
   { name: "Jan", users: 120 },

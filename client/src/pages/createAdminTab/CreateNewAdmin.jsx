@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { data, NavLink } from 'react-router-dom';
 import CheckBox from './CheckBox';
 import { useRef } from 'react';
 import axios from 'axios';
@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux';
 
 function CreateNewAdmin() {
   const navigate= useNavigate()
-  const allowedTabs=useSelector(state=>state.role.Permissions)
+  const allowedTabs=useSelector(state=>state.auth.permissions)
   // useEffect(()=>{
   //   const permission = JSON.parse(localStorage.getItem("permissions"));
   //   // console.log(permission.CreateAdmin)
@@ -25,6 +25,13 @@ function CreateNewAdmin() {
   // useEffect(()=>{
   //   console.log(allowedTabs)
   //  },[])
+  // useEffect(()=>{
+  //   console.log(allowedTabs,"allowed tabs")
+  //   if(allowedTabs === null){
+  //     navigate("/notAuthorized")
+  //   }
+  // },[navigate])
+  console.log(allowedTabs,"from allowed tabs redux")
   const inputRef=useRef(null)
   const [image,setImage]=useState(null)
   const [position,setPosition]=useState("")
@@ -89,19 +96,19 @@ function CreateNewAdmin() {
       phoneNumber,
       gender
     }
-    console.log(inputs);
+    // console.log(inputs);
 
     
     
     
   try{
     const response =  axios.post("http://localhost:3001/api/register", inputs)
-    const data= response
+    console.log(response,"from response")
     toast.success("Admin Created Successfully😎")
-    console.log(data)
 
   }catch(error){
-     console.log({error:error.message})
+    console.log(error,"from catch")
+     
   }
 }
 
@@ -111,7 +118,7 @@ function CreateNewAdmin() {
     <>
    
     <div>
-        <nav className=" border-gray-200 bg-background-white -mt-1   ">
+        <nav className=" border-gray-200  bg-background-white -mt-1   ">
          
               <div className="flex flex-col items-start">
   <h1 className="text-dark text-3xl mb-4 mt-2 ml-4 ">Manage Admin</h1>

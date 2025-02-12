@@ -53,11 +53,16 @@ const Login = () => {
       const { token, permissions,user } = response.data;
       // console.log(response.data.role ,res.data.permissions)
       // console.log(role)
-      localStorage.setItem('token', token);
-      localStorage.setItem('permissions', JSON.stringify(permissions));
-
-      dispatch(loginSuccess(user, token));
-      dispatch(setPermissions(permissions));
+      // localStorage.setItem('token', token);
+      // localStorage.setItem('permissions', JSON.stringify(permissions));
+      console.log("token from response",token);
+      console.log("permissions from response",permissions);
+      console.log("user from response",user);
+      
+      dispatch(loginSuccess(user, token, permissions));
+      // dispatch(setPermissions(permissions));
+      // console.log("Permissions received:",permissions);
+     
 
       navigate('/home');
     } catch (err) {

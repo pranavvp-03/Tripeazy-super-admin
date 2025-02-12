@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { data, NavLink } from 'react-router-dom'
 import axios from 'axios'
 
+import  ProfileDropdown  from "../../components/ProfileMenu"
+
 function ManageRole() {
+   const [role,setRole] =useState([])
 
   useEffect(()=>{
        
@@ -14,8 +17,9 @@ function ManageRole() {
             'Authorization' : `Bearer ${token} `
           }
          })
-          const data= response.data
+          const data= response.data.roles
           console.log(data);
+          setRole(data)
           
 
         }catch(error){
@@ -28,7 +32,7 @@ function ManageRole() {
   },[])
   return (
     <div>
-       <nav className="bg-white border-gray-200 dark:bg-gray-900 -mt-1">
+       {/* <nav className="bg-white border-gray-200 dark:bg-gra -mt-1">
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                   <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
                     <img
@@ -157,36 +161,80 @@ function ManageRole() {
       
                   </div>
                 </div>
-              </nav>
-              <div className="shadow-lg rounded-lg overflow-hidden mx-4 md:mx-10">
-      <table className="w-full table-fixed">
-        <thead>
-          <tr className="bg-gray-100">
-            <th className="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">Name</th>
-            <th className="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">Email</th>
-            <th className="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">Phone</th>
-            <th className="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">Status</th>
-          </tr>
-        </thead>
-        <tbody className="bg-white">
-          <tr>
-            <td className="py-4 px-6 border-b border-gray-200">John Doe</td>
-            <td className="py-4 px-6 border-b border-gray-200 truncate">johndoe@gmail.com</td>
+              </nav> */}
+             
+
+             <div>
+      <nav className="bg-gray-900 border-gray-200 -mr-2 -mt-1 rounded-t-md flex flex-col items-center h-32">
+        
+        <div className="flex items-center justify-center w-full">
+          <h1 className="text-white text-3xl mt-2">Manage Role</h1>
+        </div>
+        
+        <div className="flex items-center justify-between w-full px-4 mt-2">
+          <div className="flex items-center space-x-3">
+            <a href="https://flowbite.com/">
+              <img
+                src="https://flowbite.com/docs/images/logo.svg"
+                className="h-8"
+                alt="Flowbite Logo"
+              />
+            </a>
+            <span className="self-center text-2xl font-semibold whitespace-nowrap text-white dark:text-white w-full">
+              Trippeazy
+            </span>
+          </div>
+      
+         <div className="align-flex -mt-2">
+            <ProfileDropdown/>
+          </div>
+        </div>
+        <div className='flex items-center justify-center w-full '>
+       <NavLink
+                to="/manage-Role"
+                className={({ isActive }) =>
+                  `p-2 rounded-lg ${isActive ? " text-white  text-lg underline decoration-blue-400" : "text-gray-600"}`
+                }
+              >
+                Existing Role
+              </NavLink>
+
+              <NavLink
+                to="/addrole"
+                className={({ isActive }) =>
+                  `p-2 rounded-lg ${isActive ? "bg-blue-500 text-white" : "text-gray-600 font-sans  hover:text-white hover:text-lg hover:underline decoration-blue-500 hover:scale-105  transition duration-700"}`
+                }
+              >
+                Create New one              </NavLink>
+       </div>
+      
+        
+      </nav>
+    </div> 
+
+
+    <div className="shadow-lg rounded-lg overflow-hidden mx-4 md:mx-10 mt-5">
+  <table className="w-full table-fixed">
+    <thead>
+      <tr className="bg-gray-100">
+        <th className="w-1/3 py-4 px-6 text-left text-gray-600 font-bold uppercase">Role Name</th>
+        <th className="w-1/3 py-4 px-6 text-left text-gray-600 font-bold uppercase">Description</th>
+        <th className="w-1/3 py-4 px-6 text-left text-gray-600 font-bold uppercase">Phone</th>
+      </tr>
+    </thead>
+    <tbody>
+      {Array.isArray(role) &&
+        role.map((data) => (
+          <tr key={data._id} className="bg-white text-dark">
+            <td className="py-4 px-6 border-b border-gray-200 font-serif">{data.roleName}</td>
+            <td className="py-4 px-6 border-b border-gray-200 font-serif">{data.description}</td>
             <td className="py-4 px-6 border-b border-gray-200">555-555-5555</td>
-            <td className="py-4 px-6 border-b border-gray-200">
-              <span className="bg-green-500 text-white py-1 px-2 rounded-full text-xs">Active</span>
-            </td>
           </tr>
-       
-          
-          
-        </tbody>
-      </table>
-    </div>
-
-
-
-    </div>
+        ))}
+    </tbody>
+  </table>
+</div>
+</div>
   )
 }
 

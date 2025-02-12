@@ -62,16 +62,16 @@ function CreateAdmin() {
  }
 
  const handleLogout = ()=>{
-   dispatch(logout());
+  //  dispatch(logout());
 
-   window.location.href="/"
-   localStorage.removeItem("token")
+  //  window.location.href="/"
+  //  localStorage.removeItem("token")
  }
  
   return (
     <>
       
-        <nav className="bg-white border-gray-200 dark:bg-gray-900 -mt-1">
+        <nav className="bg-gray-900 border-gray-200 -mr-1 -mt-2 rounded-t-md">
           <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
               <img
@@ -79,7 +79,7 @@ function CreateAdmin() {
                 className="h-8"
                 alt="Flowbite Logo"
               />
-              <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+              <span className="self-center text-2xl font-semibold whitespace-nowrap text-white dark:text-white">
                 Trippeazy
               </span>
             </a>
@@ -110,21 +110,7 @@ function CreateAdmin() {
               </button>
               <div className="relative hidden md:block">
                 <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none space-x-4">
-                  <svg
-                    className="w-4 h-4 text-gray-500 dark:text-gray-400"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                    />
-                  </svg>
+                  
                 </div>
 
                <div className="flex items-center w-full p-4">
@@ -151,7 +137,7 @@ function CreateAdmin() {
 
   {/* Profile Menu - Properly Imported and Aligned */}
   <div className="ml-4">
-    <ProfileMenu  handleLogout={handleLogout} />
+    <ProfileMenu  handleLogout={handleLogout}  />
   </div>
 </div>
 
@@ -241,8 +227,8 @@ function CreateAdmin() {
               alt="Admin image"
             />
             <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-gray-800">{admin.name}</h5>
-            <span className="text-md text-white dark:text-gray-800">{admin.role.roleName}</span>
-            <span className="text-md text-white dark:text-gray-800">{admin.email}</span>
+            <span className="text-md text-dark dark:text-gray-800">{admin.role.roleName}</span>
+            <span className="text-md text-dark dark:text-gray-800">{admin.email}</span>
 
             {/* Dropdown Button */}
             {/* <div className="flex justify-end px-4 pt-4">

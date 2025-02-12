@@ -7,6 +7,7 @@ const useSearch = () => {
   const [error, setError] = useState("");
 
   const searchAdmin = useSelector((state) => state.role.Admins);
+  
 
   const search = (searchQuery) => {
     if (!searchQuery.trim()) {
@@ -29,6 +30,7 @@ const useSearch = () => {
   };
 
   useEffect(() => {
+    console.log(searchAdmin,"searchadmin a;sdlfkjjjjjjj")
     if (searchAdmin.length === 0) {
       setFilteredAdmin([]);
     }

@@ -12,7 +12,7 @@ import ProfileMenu from '../../components/ProfileMenu';
 function CreateAdmin() {
   const {search,filteredAdmin,error} =useSearch()
   const dispatch= useDispatch()
-  const adminSearch= useSelector(state=>state.role.Admins)
+  const adminSearch= useSelector(state=>state. role.Admins)
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const[admins,setAdmin]=useState([])
@@ -50,16 +50,19 @@ function CreateAdmin() {
 
  const handleSearch = (e)=>{
      search(searchInput)
+  
      console.log("this is search fuction"); 
-       
+     
   // console.log(searchInput);
   }
   
- const handleKey =(e)=>{
-  if(e.key==="Enter"){
-   handleSearch()
-  }
- }
+
+  
+//  const handleKey =(e)=>{
+//   if(e.key==="Enter"){
+//    handleSearch()
+//   }
+//  }
 
  const handleLogout = ()=>{
   //  dispatch(logout());
@@ -85,7 +88,7 @@ function CreateAdmin() {
             </a>
             <div className="flex md:order-2">
               <button
-              onClick={handleSearch}
+              // onChange={handleSearch}
                 type="button"
                 aria-controls="navbar-search"
                 aria-expanded="false"
@@ -130,8 +133,12 @@ function CreateAdmin() {
                  dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
       placeholder="Search..."
       value={searchInput}
-      onChange={(e) => setSearchInput(e.target.value)}
-      onKeyDown={handleKey}
+      onChange={(e) => 
+        {setSearchInput(e.target.value)
+          handleSearch(e.target.value)
+      }}
+    
+      // onKeyDown={handleKey}   
     />
   </div>
 
@@ -215,7 +222,7 @@ function CreateAdmin() {
     {error && <p className="text-red-500 text-center text-lg">{error}</p>} 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pb-10 mt-5">
         
-        {(filteredAdmin.length > 0 ? filteredAdmin :admins).map((admin) => (
+        {(filteredAdmin.length > 0 && searchInput.length >0 ? filteredAdmin :admins).map((admin) => (
           <div
             key={admin._id}
            className=" ml-3 flex flex-col items-center p-6 h-fullw w-96 border rounded-lg shadow-lg bg-white dark:bg-white dark:border-gray-300 hover:bg-gray-50 hover:shadow-xl hover:scale-105 hover:border-blue-500 transition-all duration-300"

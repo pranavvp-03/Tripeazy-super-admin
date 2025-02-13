@@ -27,7 +27,13 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import { Activity } from "lucide-react";
+
+
+
+
 import CommonNav from "../components/CommonNav";
+
+
 
 const data = [
   { name: "Jan", users: 120 },
@@ -39,8 +45,10 @@ const data = [
 
 export default function Home() {
   return (
+
   <>
     <CommonNav/>
+
     <div className="min-h-screen bg-[--background] text-[--foreground] p-6">
       {/* Header */}
       <header className="flex justify-between items-center mb-6">
@@ -86,6 +94,9 @@ export default function Home() {
         </Card>
       </div>
     </div>
+
     </>
+
+
   );
 }

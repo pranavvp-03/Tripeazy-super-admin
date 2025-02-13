@@ -12,7 +12,7 @@ const useSearch = () => {
   const search = (searchQuery) => {
     if (!searchQuery.trim()) {
       setFilteredAdmin([]);
-      setError("No search data is provided");
+      setError("");
       return;
     }
 

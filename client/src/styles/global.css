@@ -56,3 +56,7 @@
     }
   }
   
+  .blur-sm {
+    filter: blur(100px);
+  }
+  

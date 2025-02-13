@@ -14,6 +14,7 @@ import CreateNewAdmin from "./pages/createAdminTab/CreateNewAdmin"
 import Addrole from "./pages/ManageRole/Addrole";
 import ManageRole from "./pages/ManageRole/ManageRole";
 import CommonNav from "./components/CommonNav";
+import ViewProfile from "./pages/createAdminTab/ViewProfile";
 
 // import Navbar from "./components/Navbar"
 import NoAuthorized from "./components/NoAuthorized"
@@ -42,6 +43,7 @@ function App() {
       <Route path ="/createNewAdmin" element = { <CreateNewAdmin/>}/>
       <Route path ="/addrole" element={<Addrole/>}/>
       <Route path ="/commonNav" element={<CommonNav/>}/>
+      <Route path ="/profileView" element={<ViewProfile/>}/>
 
       {/* <Route path="/nav" element={<Navbar/>}/> */}
       </Route>

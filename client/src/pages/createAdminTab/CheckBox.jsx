@@ -4,13 +4,15 @@ import axios from 'axios'
  import { useSelector } from 'react-redux'
  import { getRoles } from '../../redux/actions/roleAction'
 
-function CheckBox({onSelect}) {
+function CheckBox({onSelect,selectedRole}) {
     const [selectedOption,setSelectedOption]=useState("General manager")
     const [roles,setRoles]=useState([])
 
     const dispatch=useDispatch()
    
-     const Getroles=useSelector(state=>state.role.Roles ?? [])
+     const Getroles=useSelector(state=>state.role.Role ?? [])
+     console.log(Getroles ,"this is getRole");
+     
    
     useEffect(()=>{
       const fetchRoles= async()=>{
@@ -26,6 +28,7 @@ function CheckBox({onSelect}) {
                 console.log("no response for getting role")
               }
               const data= await response.data
+              console.log(response.data)
               
               dispatch(getRoles(response.data))
             

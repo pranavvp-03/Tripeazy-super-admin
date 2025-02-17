@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../redux/actions/authAction";
-import Button from "./ui/Button";
+import Button from "./ui/button";
 import  DropdownMenu  from "./ui/dropdown-menu"
 
 const ProfileDropdown = () => {

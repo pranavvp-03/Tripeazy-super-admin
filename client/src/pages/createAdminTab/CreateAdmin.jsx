@@ -7,6 +7,7 @@ import { searchAdmins } from '../../redux/actions/roleAction';
 import {logout} from '../../redux/actions/authAction'
 import useSearch from '../../Hooks/useSearch';
 import ProfileMenu from '../../components/ProfileMenu';
+import AdminPopup from './AdminPopup';
 
 
 function CreateAdmin() {
@@ -17,6 +18,7 @@ function CreateAdmin() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const[admins,setAdmin]=useState([])
   const [searchInput,setSearchInput]=useState()
+  const [selectedAdmin,setSelectedAdmin]=useState(null)
 
   
   const toggleDropdown = () => {
@@ -24,6 +26,7 @@ function CreateAdmin() {
   }
 
   useEffect(()=>{
+    
       const fetchAdmins = async ()=>{
         try{
              const response= await  axios.get("http://localhost:3001/api/admins/getAdmin",{headers:{Authorization:`Bearer ${localStorage.getItem("token")}`}})
@@ -42,7 +45,7 @@ function CreateAdmin() {
       
       fetchAdmins()
      
-  },[filteredAdmin])
+  },[])
   dispatch(searchAdmins(admins))
   console.log(adminSearch)
   //  console.log(searchInput)
@@ -54,6 +57,10 @@ function CreateAdmin() {
      console.log("this is search fuction"); 
      
   // console.log(searchInput);
+  }
+
+  const handleAdminClick = (admin)=>{
+    setSelectedAdmin(admin)
   }
   
 
@@ -226,7 +233,7 @@ function CreateAdmin() {
           <div
             key={admin._id}
            className=" ml-3 flex flex-col items-center p-6 h-fullw w-96 border rounded-lg shadow-lg bg-white dark:bg-white dark:border-gray-300 hover:bg-gray-50 hover:shadow-xl hover:scale-105 hover:border-blue-500 transition-all duration-300"
-          >
+           onClick={()=>handleAdminClick(admin)}>
            
             <img
               className="w-24 h-24 mb-3 rounded-full shadow-lg"
@@ -237,46 +244,18 @@ function CreateAdmin() {
             <span className="text-md text-dark dark:text-gray-800">{admin.role.roleName}</span>
             <span className="text-md text-dark dark:text-gray-800">{admin.email}</span>
 
-            {/* Dropdown Button */}
-            {/* <div className="flex justify-end px-4 pt-4">
-              <button
-                onClick={() => toggleDropdown(admin._id)}
-                className="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
-                type="button"
-              >
-                <span className="sr-only">Open dropdown</span>
-                <svg
-                  className="w-5 h-5"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 16 3"
-                >
-                  <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
-                </svg>
-              </button> */}
-              {/* {dropdowns[admin._id] && (
-                <div
-                  id="dropdown"
-                  className="z-10 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
-                >
-                  <ul className="py-2" aria-labelledby="dropdownButton">
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                      >
-                        More Info
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              )} */}
-            {/* </div> */}
+           
           </div>
         ))}
         
       </div>
+      {selectedAdmin && (
+        <AdminPopup 
+          admin={selectedAdmin} 
+          onClose={() => setSelectedAdmin(null)}
+        />
+      )}
+
       </div>
      
     </>

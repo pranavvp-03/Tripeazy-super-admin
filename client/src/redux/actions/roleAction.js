@@ -4,9 +4,9 @@ export const setPermissions = (permissions) => ({
     
 })
 
-export const getRoles=(Roles)=>({
+export const getRoles=(roles)=>({
     type:"SET_ROLES",
-    payload:{Roles}
+    payload:{roles}
 })
 export const searchAdmins=(admins)=>({
     type:"SEARCH_ADMINS",

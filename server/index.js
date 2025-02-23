@@ -6,6 +6,7 @@ const cors = require("cors")
 const authRouter = require("./routes/authRoutes");
 const roleRoutes = require("./routes/roleRoutes");
 const newAdminRouter  = require("./routes/newAdmin")
+const agency= require("./routes/agency")
 
 dotenv.config()
 app.use(express.json())
@@ -17,6 +18,7 @@ app.use(cors({
 app.use("/api",authRouter)
 app.use("/api/roles", roleRoutes);
 app.use("/api/admins",newAdminRouter)
+app.use("/api/agency",agency)
  
 mongoose
 .connect(process.env.MONGO_URI)

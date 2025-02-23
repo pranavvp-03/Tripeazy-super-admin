@@ -39,9 +39,9 @@ const AgencySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  approved:{
-    type:Boolean,
-    default:false
+ status:{
+    type:String,
+    default:"Requested"
   }
 });
 

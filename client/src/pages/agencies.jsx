@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 
 function People() {
   const [agency, setAgency] = useState([]);
+  const[status,setStatus]=useState([])
   const [acceptButton,setAcceptButton]=useState("Accept")
   const [rejectButton,setRejectButton]=useState("Reject")
 
@@ -26,22 +27,43 @@ function People() {
   }, []);
 
   console.log("Agency data fetched successfully", agency);
-  const handleButton =(e)=>{
-   
-   if( e==="Accepted"){
-    setAcceptButton("Accepted")
-    console.log("button clicked",e)
-    toast.success("Agency Accepted")
-    return
+  
+  const handleButton = async (id,value)=>{
+   console.log(id)
+   console.log(value)
+
+  //  if( e==="Accepted"){
+    try{
+       const response= await axios.put(`http://localhost:3001/api/agency/updateStatus/${id}`,{
+        status:value
+
+       })
+       console.log(response.data)
+       setAgency((prev)=>
+        prev.map((agency)=>
+          agency._id === id ?{...agency,status:value} :agency
+        )
+       )
+       
+       const data= response.data
+       console.log(data)
+       if(data.status=== "Accepted"){
+        toast.success("You Accepted Agency")
+        return
+       }
+       if(data.status === "Reject"){
+        toast.error("You Rejected Agency")
+        return 
+      } 
+         
+      
+     
+    }catch(error){
+      console.log(error)
+    } 
+
+ 
    }
-    
-    if(e==="Rejected"){
-      setRejectButton("Rejected")
-      console.log("Reject button is clicked")
-      toast.error("Agency Rejected")
-      return
-    }
-  }
 
   return (
     <>
@@ -119,14 +141,16 @@ function People() {
                     {/* <td className="px-5 py-5 bg-white text-sm text-gray-900">{agencies.registrationId}</td> */}
                     <td className="px-5 py-5 bg-white text-sm">
                       < button 
-                      value={"Accepted"}
-                      onClick={(e)=>handleButton(e.target.value)}
-                      className=" mr-4 relative inline-block px-3 py-1 font-semibold text-green-900 bg-green-200 rounded-full">{acceptButton}</button>
+                      data-id={agency?._id} 
+                      value={agencies._id}
+                      onClick={(e)=>handleButton(e.target.value,"Accepted")}
+                      className=" mr-4 relative inline-block px-3 py-1 font-semibold text-green-900 bg-green-200 rounded-full">{agencies.status === "Accepted" ? "Accepted":"Accept"}</button>
                       <button 
-                      value={"Rejected"}
-                      onClick={(e)=>handleButton(e.target.value)}
+                      data-id={agency._id}
+                      value={agencies._id}
+                      onClick={(e)=>handleButton(e.target.value,"Rejected")}
 
-                      className=" ml-4  relative inline-block px-3 py-1 font-semibold text-white bg-red-600 rounded-full">{rejectButton}</button>
+                      className=" ml-5  relative inline-block px-3 py-1 font-semibold text-white bg-red-600 rounded-full">{agencies.status ==="Rejected" ?"Rejected" :"Reject"}</button>
                     </td>
                     {/* <td className="px-5 py-5 bg-white text-sm">
                       

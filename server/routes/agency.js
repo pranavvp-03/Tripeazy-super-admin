@@ -1,9 +1,12 @@
 const express =require("express")
-const {fetchAgecy} =require("../controllers/agencyContoller")
+const {fetchAgecy,updateAgencyStatus} =require("../controllers/agencyContoller")
 
 const router=express.Router()
 
 router.get("/fetchAgency",fetchAgecy)
-console.log("Agency page")
+router.put("/updateStatus/:id", updateAgencyStatus);
+
+// console.log("agency updating")
+
 
 module.exports = router

@@ -66,6 +66,12 @@ function People() {
 
  
    }
+   const handleview= ()=>{
+    setIsOpen(true)
+   
+    }
+   
+
 
   return (
     <>
@@ -158,13 +164,15 @@ function People() {
                       
                     </td> */}
                     <button
-                    onClick={()=>setIsOpen(true)}
+                  
                     className="px-5 py-5 bg-white text-sm text-blue-600 underline">view more
                       
                     </button>
-                    {isOpen ? <ProfileModal isOpens={isOpen}  /> : null}
+                    
                   </tr>
+                  {/* {isOpen && <ProfileModal isOpens={isOpen} />} */}
                 </tbody>
+                
                  ))
                 ) : (
                   <p className="text-center text-gray-500">No agencies found</p>

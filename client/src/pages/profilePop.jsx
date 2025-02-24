@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const ProfileModal = ({isOpens}) => {
 
   const [isOpen, setIsOpen] = useState(false);
+
+useEffect(()=>{
   setIsOpen(isOpens)
+
+}),[isOpen]
+  
   return (
     <div>
       {/* Button to Open the Modal */}

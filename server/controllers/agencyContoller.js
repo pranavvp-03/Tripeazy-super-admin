@@ -1,5 +1,5 @@
 const agency = require("../model/Agency/AgencyMode")
-
+const {sentEmail} =require("../lib/acceptEmail")
 
 exports.fetchAgecy = async (req,res)=>{
 
@@ -7,6 +7,7 @@ exports.fetchAgecy = async (req,res)=>{
 
     try{
        const agencyData =  await  agency.find({}).select("-password")
+       
        res.status(200).send(agencyData)
     //    console.log(agencyData)
 
@@ -30,14 +31,17 @@ exports.updateAgencyStatus= async (req,res)=>{
 
          try{
             console.log("Agency status is updating")
-          const response=  await agency.findByIdAndUpdate(id,{status},{new:true})
+          const response=  await agency.findByIdAndUpdate(id,{status},{new:true, select:"email companyName"})
           
-
           res.status(200).json({
             message: "Agency status updated successfully",
             data: response
         });
+           sentEmail(response.companyName,response.email,status)
+        
+
          }
+
          catch(error){
            res.status(500).json({ message:"internal server error occured while updating Agency status",error})
            console.error(error)

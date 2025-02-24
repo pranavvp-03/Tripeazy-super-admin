@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import ProfileDropdown from '../components/ProfileMenu';
+import ProfileModal from './profilePop';
 import toast from 'react-hot-toast';
 
 function People() {
   const [agency, setAgency] = useState([]);
+  const [isOpen,setIsOpen] =useState(false)
   const[status,setStatus]=useState([])
   const [acceptButton,setAcceptButton]=useState("Accept")
   const [rejectButton,setRejectButton]=useState("Reject")
@@ -64,6 +66,12 @@ function People() {
 
  
    }
+   const handleview= ()=>{
+    setIsOpen(true)
+   
+    }
+   
+
 
   return (
     <>
@@ -155,9 +163,16 @@ function People() {
                     {/* <td className="px-5 py-5 bg-white text-sm">
                       
                     </td> */}
-                    <td className="px-5 py-5 bg-white text-sm text-blue-600 underline">view more</td>
+                    <button
+                  
+                    className="px-5 py-5 bg-white text-sm text-blue-600 underline">view more
+                      
+                    </button>
+                    
                   </tr>
+                  {/* {isOpen && <ProfileModal isOpens={isOpen} />} */}
                 </tbody>
+                
                  ))
                 ) : (
                   <p className="text-center text-gray-500">No agencies found</p>

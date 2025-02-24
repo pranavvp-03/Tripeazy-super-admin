@@ -19,6 +19,7 @@ import ViewProfile from "./pages/createAdminTab/ViewProfile";
 // import Navbar from "./components/Navbar"
 import NoAuthorized from "./components/NoAuthorized"
 import RestrictRoute from "./components/RestrictRoute"
+import ProfileModal from "./pages/profilePop";
 import { useEffect } from "react";
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
       <Route path ="/addrole" element={<Addrole/>}/>
       <Route path ="/commonNav" element={<CommonNav/>}/>
       <Route path ="/profileView" element={<ViewProfile/>}/>
+      <Route path ="/profile" element={<ProfileModal/>}/>
 
       {/* <Route path="/nav" element={<Navbar/>}/> */}
       </Route>

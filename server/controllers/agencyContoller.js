@@ -12,7 +12,7 @@ exports.fetchAgecy = async (req,res)=>{
 
 
     }catch(error){
-     res.status(500).send("An Error occured while fetching agencies", error)
+     res.status(500).send( error)
      console.error(error)
     }
     

@@ -1,111 +1,141 @@
-import { useEffect, useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
+import { useLocation } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import { FaPlus, FaTrash } from "react-icons/fa";
+import { Circles } from "react-loader-spinner";
+import { useNavigate } from "react-router-dom";
 
-const ProfileModal = ({isOpens}) => {
+const Profiles = () => {
+  const location=useLocation()
+  const agency=location.state?.agency
+  const navigate = useNavigate();
+  const fileInputRef = useRef(null);
+  const [loading, setLoading] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const [errors, setErrors] = useState({});
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [Profile, setProfile] = useState({
+    firstName: "",
+    lastName: "",
+    username: "",
+    country: "",
+    email: "",
+    phone: "",
+    street: "",
+    city: "",
+    gender: "",
+  });
+   console.log("this is agency from profile page",agency)
+    
+  const handleFieldChange = (e) => {
+    const { name, value } = e.target;
+    setProfile((prev) => ({ ...prev, [name]: value }));
+  };
 
-useEffect(()=>{
-  setIsOpen(isOpens)
+  const validateFields = () => {
+    let tempErrors = {};
+    if (!Profile.firstName) tempErrors.firstName = "First name is required";
+    if (!Profile.lastName) tempErrors.lastName = "Last name is required";
+    if (!Profile.username) tempErrors.username = "Username is required";
+    if (!Profile.street) tempErrors.street = "Street is required";
+    if (!Profile.country) tempErrors.country = "Country is required";
+    if (!Profile.city) tempErrors.city = "City is required";
+    if (!Profile.gender) tempErrors.gender = "Gender is required";
+    if (!Profile.phone) {
+      tempErrors.phone = "Phone number is required";
+    } else if (Profile.phone.length !== 10) {
+      tempErrors.phone = "Phone number must be exactly 10 digits";
+    }
+    setErrors(tempErrors);
+    return Object.keys(tempErrors).length === 0;
+  };
 
-}),[isOpen]
-  
+  const handleSave = async () => {
+    if (validateFields()) {
+      try {
+        // API call to save profile
+        toast.success("Profile details submitted successfully!");
+      } catch (error) {
+        toast.error("Failed to update profile");
+      }
+    }
+  };
+
   return (
-    <div>
-      {/* Button to Open the Modal */}
-      {/* <button
-        onClick={() => setIsOpen(true)}
-        className="bg-blue-600 text-white px-4 py-2 rounded-full"
-      >
-        View Profile
-      </button> */}
-
-      {/* Modal */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50"
-          onClick={() => setIsOpen(false)} // Close modal when clicking outside
-        >
+    <div className="min-h-screen p-4">
+      <h2 className="text-xl font-bold text-gray-700">Welcome, {Profile.firstName} {Profile.lastName}</h2>
+      <div className="bg-white rounded-lg shadow-lg mt-6 p-6 flex flex-col md:flex-row gap-6">
+        <div className="flex flex-col items-center md:w-1/3">
           <div
-            className="max-w-sm bg-white shadow-xl rounded-lg text-gray-900 relative"
-            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
+            className="relative h-24 w-24 md:w-32 md:h-32 rounded-full overflow-hidden border flex items-center justify-center bg-gray-200"
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
           >
-            {/* Close Button */}
-            <button
-              onClick={() => setIsOpen(false)}
-              className="absolute top-2 right-2 bg-gray-300 rounded-full px-2 py-1 text-gray-600 hover:bg-gray-400"
-            >
-              &times;
-            </button>
-
-            {/* Cover Image */}
-            <div className="rounded-t-lg h-32 overflow-hidden">
-              <img
-                className="object-cover object-top w-full"
-                src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
-                alt="Mountain"
-              />
-            </div>
-
-            {/* Profile Picture */}
-            <div className="mx-auto w-32 h-32 relative -mt-16 border-4 border-white rounded-full overflow-hidden">
-              <img
-                className="object-cover object-center h-32"
-                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
-                alt="Woman looking front"
-              />
-            </div>
-
-            {/* Profile Info */}
-            <div className="text-center mt-2">
-              <h2 className="font-semibold">Sarah Smith</h2>
-              <p className="text-gray-500">Freelance Web Designer</p>
-            </div>
-
-            {/* Stats */}
-            <ul className="py-4 mt-2 text-gray-700 flex items-center justify-around">
-              <li className="flex flex-col items-center">
-                <svg
-                  className="w-4 fill-current text-blue-900"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                >
-                  <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                </svg>
-                <div>2k</div>
-              </li>
-              <li className="flex flex-col items-center">
-                <svg
-                  className="w-4 fill-current text-blue-900"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                >
-                  <path d="M7 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0 1c2.15 0 4.2.4 6.1 1.09L12 16h-1.25L10 20H4l-.75-4H2L.9 10.09A17.93 17.93 0 0 1 7 9z" />
-                </svg>
-                <div>10k</div>
-              </li>
-              <li className="flex flex-col items-center">
-                <svg
-                  className="w-4 fill-current text-blue-900"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                >
-                  <path d="M9 12H1v6a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-6h-8v2H9v-2zm0-1H0V5c0-1.1.9-2 2-2h4V2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1h4a2 2 0 0 1 2 2v6h-9V9H9v2zm3-8V2H8v1h4z" />
-                </svg>
-                <div>15</div>
-              </li>
-            </ul>
-
-            {/* Follow Button */}
-            <div className="p-4 border-t mx-8 mt-2">
-              <button className="w-full rounded-full bg-gray-900 hover:shadow-lg font-semibold text-white px-6 py-2">
-                Follow
-              </button>
-            </div>
+            <span className="text-5xl uppercase">
+              {Profile.firstName ? Profile.firstName[0] : "?"}
+            </span>
+            {hovered && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black/50 rounded-full">
+                <FaPlus className="text-white text-3xl cursor-pointer" />
+              </div>
+            )}
           </div>
+          <h3 className="text-lg font-semibold mt-4">{Profile.firstName} {Profile.lastName}</h3>
         </div>
-      )}
+
+        <div className="flex-1">
+          {[
+            { label: "First Name", name: "firstName" },
+            { label: "Last Name", name: "lastName" },
+            { label: "Username", name: "username" },
+            { label: "Country", name: "country" },
+            { label: "City", name: "city" },
+            { label: "Street", name: "street" },
+            { label: "Phone", name: "phone", type: "tel" },
+          ].map((field) => (
+            <div key={field.name} className="mb-4">
+              <label className="block text-sm font-semibold text-gray-700">{field.label}:</label>
+              <input
+                type={field.type || "text"}
+                name={field.name}
+                value={Profile[field.name]}
+                onChange={handleFieldChange}
+                className="mt-2 block w-full p-3 rounded-lg border border-gray-300 shadow-sm focus:ring-2 focus:ring-purple-600 focus:outline-none"
+              />
+              {errors[field.name] && (
+                <p className="text-red-500 text-sm mt-1">{errors[field.name]}</p>
+              )}
+            </div>
+          ))}
+          <div className="mb-4">
+            <label className="block text-sm font-semibold text-gray-700">Gender:</label>
+            <select
+              name="gender"
+              value={Profile.gender}
+              onChange={handleFieldChange}
+              className="mt-2 block w-full p-3 rounded-lg border border-gray-300 shadow-sm focus:ring-2 focus:ring-purple-600 focus:outline-none"
+            >
+              <option value="">Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+            {errors.gender && (
+              <p className="text-red-500 text-sm mt-1">{errors.gender}</p>
+            )}
+          </div>
+
+          <button
+            onClick={handleSave}
+            className="bg-blue-500 text-white px-4 py-2 rounded mt-4 m-2 hover:bg-blue-600"
+          >
+            Save
+          </button>
+        </div>
+      </div>
+      <ToastContainer />
     </div>
   );
 };
 
-export default ProfileModal;
+export default Profiles;

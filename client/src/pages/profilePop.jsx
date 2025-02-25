@@ -1,140 +1,147 @@
-import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
-import { useLocation } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import { FaPlus, FaTrash } from "react-icons/fa";
-import { Circles } from "react-loader-spinner";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useLocation, NavLink } from "react-router-dom";
+import { FaPlus } from "react-icons/fa";
+import ProfileDropdown from "../components/ProfileMenu"; // Ensure correct path
 
 const Profiles = () => {
-  const location=useLocation()
-  const agency=location.state?.agency
-  const navigate = useNavigate();
-  const fileInputRef = useRef(null);
-  const [loading, setLoading] = useState(false);
+  const location = useLocation();
+  const agency = location.state?.agency;
   const [hovered, setHovered] = useState(false);
-  const [errors, setErrors] = useState({});
-
-  const [Profile, setProfile] = useState({
-    firstName: "",
-    lastName: "",
-    username: "",
-    country: "",
-    email: "",
-    phone: "",
-    street: "",
-    city: "",
-    gender: "",
-  });
-   console.log("this is agency from profile page",agency)
-    
-  const handleFieldChange = (e) => {
-    const { name, value } = e.target;
-    setProfile((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const validateFields = () => {
-    let tempErrors = {};
-    if (!Profile.firstName) tempErrors.firstName = "First name is required";
-    if (!Profile.lastName) tempErrors.lastName = "Last name is required";
-    if (!Profile.username) tempErrors.username = "Username is required";
-    if (!Profile.street) tempErrors.street = "Street is required";
-    if (!Profile.country) tempErrors.country = "Country is required";
-    if (!Profile.city) tempErrors.city = "City is required";
-    if (!Profile.gender) tempErrors.gender = "Gender is required";
-    if (!Profile.phone) {
-      tempErrors.phone = "Phone number is required";
-    } else if (Profile.phone.length !== 10) {
-      tempErrors.phone = "Phone number must be exactly 10 digits";
-    }
-    setErrors(tempErrors);
-    return Object.keys(tempErrors).length === 0;
-  };
-
-  const handleSave = async () => {
-    if (validateFields()) {
-      try {
-        // API call to save profile
-        toast.success("Profile details submitted successfully!");
-      } catch (error) {
-        toast.error("Failed to update profile");
-      }
-    }
-  };
+  console.log(agency)
 
   return (
-    <div className="min-h-screen p-4">
-      <h2 className="text-xl font-bold text-gray-700">Welcome, {Profile.firstName} {Profile.lastName}</h2>
-      <div className="bg-white rounded-lg shadow-lg mt-6 p-6 flex flex-col md:flex-row gap-6">
-        <div className="flex flex-col items-center md:w-1/3">
-          <div
-            className="relative h-24 w-24 md:w-32 md:h-32 rounded-full overflow-hidden border flex items-center justify-center bg-gray-200"
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-          >
-            <span className="text-5xl uppercase">
-              {Profile.firstName ? Profile.firstName[0] : "?"}
-            </span>
-            {hovered && (
-              <div className="absolute inset-0 flex items-center justify-center bg-black/50 rounded-full">
-                <FaPlus className="text-white text-3xl cursor-pointer" />
-              </div>
-            )}
-          </div>
-          <h3 className="text-lg font-semibold mt-4">{Profile.firstName} {Profile.lastName}</h3>
-        </div>
+    <>
+      
+      <nav className="bg-gray-900 border-gray-200 -mr-2 -mt-1 rounded-t-md flex flex-col items-center h-32">
 
-        <div className="flex-1">
-          {[
-            { label: "First Name", name: "firstName" },
-            { label: "Last Name", name: "lastName" },
-            { label: "Username", name: "username" },
-            { label: "Country", name: "country" },
-            { label: "City", name: "city" },
-            { label: "Street", name: "street" },
-            { label: "Phone", name: "phone", type: "tel" },
-          ].map((field) => (
-            <div key={field.name} className="mb-4">
-              <label className="block text-sm font-semibold text-gray-700">{field.label}:</label>
-              <input
-                type={field.type || "text"}
-                name={field.name}
-                value={Profile[field.name]}
-                onChange={handleFieldChange}
-                className="mt-2 block w-full p-3 rounded-lg border border-gray-300 shadow-sm focus:ring-2 focus:ring-purple-600 focus:outline-none"
+      <button type="button" class="bg-gray-800 text-white rounded-l-md border-r border-gray-100 py-2 hover:bg-red-700 hover:text-white px-3">
+      <div class="flex flex-row ">
+        <svg class="w-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path>
+        </svg>
+        <p class="">Prev</p>
+      </div>
+    </button>
+        <div className="flex items-center justify-center w-full">
+          <h1 className="text-white text-3xl mt-2"> Agency Profile</h1>
+        </div>
+        <div>
+       
+        </div>
+        <div className="flex items-center justify-between w-full px-4 mt-2">
+          <div className="flex items-center space-x-3">
+            <a href="https://flowbite.com/">
+              <img
+                src="https://flowbite.com/docs/images/logo.svg"
+                className="h-8"
+                alt="Flowbite Logo"
               />
-              {errors[field.name] && (
-                <p className="text-red-500 text-sm mt-1">{errors[field.name]}</p>
+            </a>
+            <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
+              Trippeazy
+            </span>
+          </div>
+          <div className="align-flex -mt-2">
+            <ProfileDropdown />
+          </div>
+        </div>
+        {/* <div className="flex items-center justify-center w-full">
+          <NavLink
+            to="/manage-Role"
+            className={({ isActive }) =>
+              `p-2 rounded-lg ${
+                isActive
+                  ? "text-white text-lg underline decoration-blue-400"
+                  : "text-gray-600"
+              }`
+            }
+          >
+            Existing Role
+          </NavLink>
+          <NavLink
+            to="/addrole"
+            className={({ isActive }) =>
+              `p-2 rounded-lg ${
+                isActive
+                  ? "bg-blue-500 text-white"
+                  : "text-gray-600 font-sans hover:text-white hover:text-lg hover:underline decoration-blue-500 hover:scale-105 transition duration-700"
+              }`
+            }
+          >
+            Create New One
+          </NavLink>
+        </div> */}
+      </nav>
+
+      
+      <div className="mi{/* Header */}n-h-screen p-6 bg-gray-100 flex flex-col items-center h-screen">
+        
+       {/* <h2 className="text-3xl font-bold text-gray-800 mb-6">
+       Agency Profile
+        </h2> */}
+
+       
+        <div className="bg-white rounded-lg shadow-xl p-8 grid grid-cols-3 gap-6 w-screen max-w-5xl border border-gray-200 ">
+          
+          <div className="flex flex-col items-center">
+            <div
+              className="relative h-32 w-32 rounded-full overflow-hidden border-4 border-blue-500 flex items-center justify-center bg-gray-200 shadow-lg"
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
+            >
+              <span className="text-6xl font-bold uppercase text-blue-600">
+                {agency?.companyName ? agency.companyName[0] : "?"}
+              </span>
+              {hovered && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/50 rounded-full cursor-pointer">
+                  <FaPlus className="text-white text-4xl" />
+                </div>
               )}
             </div>
-          ))}
-          <div className="mb-4">
-            <label className="block text-sm font-semibold text-gray-700">Gender:</label>
-            <select
-              name="gender"
-              value={Profile.gender}
-              onChange={handleFieldChange}
-              className="mt-2 block w-full p-3 rounded-lg border border-gray-300 shadow-sm focus:ring-2 focus:ring-purple-600 focus:outline-none"
-            >
-              <option value="">Select Gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-            </select>
-            {errors.gender && (
-              <p className="text-red-500 text-sm mt-1">{errors.gender}</p>
-            )}
+            <h3 className="text-xl font-semibold mt-4 text-gray-900">
+              {agency?.companyName}
+            </h3>
           </div>
 
-          <button
-            onClick={handleSave}
-            className="bg-blue-500 text-white px-4 py-2 rounded mt-4 m-2 hover:bg-blue-600"
-          >
-            Save
-          </button>
+          
+          <div className="border-l border-gray-300 pl-6">
+            {[
+              { label: "Company Name", value: agency?.companyName },
+              { label: "Email", value: agency?.email },
+              { label: "Country", value: agency?.countryname},
+              { label: "City", value: agency?.cityName },
+            ].map((item) => (
+              <div key={item.label} className="mb-5">
+                <p className="text-sm font-semibold text-gray-500">
+                  {item.label}:
+                </p>
+                <p className="mt-1 text-lg text-gray-900 font-medium">
+                  {item.value || "N/A"}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Third Layer: Remaining Data */}
+          <div className="border-l border-gray-300 pl-6">
+            {[
+              { label: "State", value: agency?.stateName },
+              { label: "Phone", value: agency?.contactNO },
+              { label: "Registration Id", value: agency?.registrationId },
+            ].map((item) => (
+              <div key={item.label} className="mb-5">
+                <p className="text-sm font-semibold text-gray-500">
+                  {item.label}:
+                </p>
+                <p className="mt-1 text-lg text-gray-900 font-medium">
+                  {item.value || "N/A"}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-      <ToastContainer />
-    </div>
+    </>
   );
 };
 

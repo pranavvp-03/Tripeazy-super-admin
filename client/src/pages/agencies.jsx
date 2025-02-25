@@ -6,11 +6,13 @@ import ProfileModal from './profilePop';
 import toast from 'react-hot-toast';
 
 function People() {
+  
   const [agency, setAgency] = useState([]);
   const [isOpen,setIsOpen] =useState(false)
-  const[status,setStatus]=useState([])
-  const [acceptButton,setAcceptButton]=useState("Accept")
-  const [rejectButton,setRejectButton]=useState("Reject")
+  // const [viewAgency,setViewAgency]=useState("")
+  // const[status,setStatus]=useState([])
+  // const [acceptButton,setAcceptButton]=useState("Accept")
+  // const [rejectButton,setRejectButton]=useState("Reject")
 
   useEffect(() => {
     const fetchAgencies = async () => {
@@ -34,7 +36,7 @@ function People() {
    console.log(id)
    console.log(value)
 
-  //  if( e==="Accepted"){
+
     try{
        const response= await axios.put(`http://localhost:3001/api/agency/updateStatus/${id}`,{
         status:value
@@ -66,12 +68,15 @@ function People() {
 
  
    }
-   const handleview= ()=>{
-    setIsOpen(true)
-   
-    }
-   
-
+  //  const handleViewProfile=(id)=>{
+  //   console.log(id)
+  //   const selectedAgency= agency.filter((agency)=>
+  //     agency._id===id 
+  //   )
+  //   setViewAgency(selectedAgency)
+  //   // console.log(selectedAgency,"this is the selected agency for profile viewing")
+  //  }
+  //   console.log(viewAgency,"selected agency from agencies page")
 
   return (
     <>
@@ -163,11 +168,15 @@ function People() {
                     {/* <td className="px-5 py-5 bg-white text-sm">
                       
                     </td> */}
-                    <button
-                  
-                    className="px-5 py-5 bg-white text-sm text-blue-600 underline">view more
-                      
-                    </button>
+                   <NavLink
+                     to="/profile"
+                     
+                     
+                     state={{agency:agency.find((a)=>a._id=== agencies._id)}}
+                     className="px-4 py-2 bg-white text-sm text-blue-600 underline hover:text-blue-800 transition duration-300"
+                  >
+                   View More
+                   </NavLink>  
                     
                   </tr>
                   {/* {isOpen && <ProfileModal isOpens={isOpen} />} */}

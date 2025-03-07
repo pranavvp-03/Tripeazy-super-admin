@@ -30,7 +30,7 @@ const useSearch = () => {
   };
 
   useEffect(() => {
-    console.log(searchAdmin,"searchadmin a;sdlfkjjjjjjj")
+    console.log(searchAdmin,"search admin")
     if (searchAdmin.length === 0) {
       setFilteredAdmin([]);
     }

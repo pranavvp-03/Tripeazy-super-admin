@@ -10,10 +10,12 @@ function People() {
   const [agency, setAgency] = useState([]);
   const [isOpen,setIsOpen] =useState(false)
   const [selectedStatus,setSelectedStatus]=useState("")
+  const [searchInput,setSearchInput]=useState("")
   // const [viewAgency,setViewAgency]=useState("")
   // const[status,setStatus]=useState([])
   // const [acceptButton,setAcceptButton]=useState("Accept")
   // const [rejectButton,setRejectButton]=useState("Reject")
+  
 
   useEffect(() => {
     const fetchAgencies = async () => {
@@ -76,7 +78,9 @@ function People() {
    }
    const filteredAgencies= agency.filter((agency)=>agency.status === selectedStatus)
    console.log(filteredAgencies);
-   
+   const handleSearch = ()=>{
+    
+   }
   
   return (
     <>
@@ -96,7 +100,7 @@ function People() {
               <ProfileDropdown />
             </div>
           </div>
-          <div className='flex items-center justify-center w-full'>
+          {/* <div className='flex items-center justify-center w-full'>
             <NavLink
               to="/manage-Role"
               className={({ isActive }) =>
@@ -113,20 +117,13 @@ function People() {
             >
               Create New One
             </NavLink>
-          </div>
+          </div> */}
         </nav>
       </div>
       <div className="bg-white p-8 rounded-md w-full">
         <div className="flex items-center justify-between pb-6">
-          {/* <div className="flex items-center">
-            <div className="flex bg-gray-50 items-center p-2 rounded-md">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
-              </svg>
-              <input className="bg-gray-300 rounded-r-lg outline-none ml-1 block" type="text" placeholder="Search..." />
-            </div>
-          </div> */}
-          <div className="flex items-start">
+         
+          <div className="flex items-start ">
   <select 
     className=" w-60 px-4 py-2 border border-gray-400  rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
    defaultValue=""
@@ -140,6 +137,32 @@ function People() {
 
   </select>
 </div>
+
+ <div className="flex items-end">
+ <div class="">
+  <div class="max-w-xl">
+    
+    <div class="flex space-x-2 items-center mb-4"
+    
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <p class="text-white text-lg font-semibold">Please enter something</p>
+    </div>
+
+  
+    <div class="flex w-full rounded-md overflow-hidden shadow-md">
+      <input type="text" placeholder="Search here..." class="w-full px-4 py-3 text-gray-900 border-none focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-l-md"
+      value={searchInput}
+      onChange={(e)=>{setSearchInput(e.target.value),handleSearch}}
+      />
+      <button class="bg-indigo-600 text-white px-6 text-lg font-semibold py-3 rounded-r-md hover:bg-indigo-700 transition duration-300">Go</button>
+    </div>
+  </div>
+</div>
+
+          </div>
 
         </div>
        

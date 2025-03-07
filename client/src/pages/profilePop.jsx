@@ -14,14 +14,14 @@ const Profiles = () => {
       
       <nav className="bg-gray-900 border-gray-200 -mr-2 -mt-1 rounded-t-md flex flex-col items-center h-32">
 
-      <button type="button" class="bg-gray-800 text-white rounded-l-md border-r border-gray-100 py-2 hover:bg-red-700 hover:text-white px-3">
-      <div class="flex flex-row ">
+      <a   href ="/agencies" type="button" class="self-start  bg-gray-800 text-white rounded-l-md border-r border-gray-100 py-2 hover:bg-blue-500 hover:text-white px-3">
+      <div class="flex flex-row  ">
         <svg class="w-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path>
         </svg>
         <p class="">Prev</p>
       </div>
-    </button>
+    </a>
         <div className="flex items-center justify-center w-full">
           <h1 className="text-white text-3xl mt-2"> Agency Profile</h1>
         </div>
@@ -74,7 +74,7 @@ const Profiles = () => {
       </nav>
 
       
-      <div className="mi{/* Header */}n-h-screen p-6 bg-gray-100 flex flex-col items-center h-screen">
+      <div className="mi{/* Header */}n-h-screen p-6 bg-white flex flex-col items-center h-screen">
         
        {/* <h2 className="text-3xl font-bold text-gray-800 mb-6">
        Agency Profile

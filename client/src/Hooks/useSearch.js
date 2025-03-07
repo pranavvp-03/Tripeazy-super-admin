@@ -5,8 +5,10 @@ import { useSelector } from "react-redux";
 const useSearch = () => {
   const [filteredAdmin, setFilteredAdmin] = useState([]);
   const [error, setError] = useState("");
+  const[agencySearch,setAgencySearch]=useState()
 
   const searchAdmin = useSelector((state) => state.role.Admins);
+  console.log(searchAdmin, "this is full admin from hook")
   
 
   const search = (searchQuery) => {
@@ -29,6 +31,8 @@ const useSearch = () => {
     }
   };
 
+  
+
   useEffect(() => {
     console.log(searchAdmin,"search admin")
     if (searchAdmin.length === 0) {
@@ -36,7 +40,26 @@ const useSearch = () => {
     }
   }, [searchAdmin]);
 
-  return { search, filteredAdmin, error };
+  const searchAgencies = (agency, agencyforSearch)=>{
+    if (!searchQuery.trim()) {
+      setAgencySearch([]);
+      setError("");
+      return;
+    }
+    const filteredAgency= agency.filter((agency)=>agency.toLowerCase().includes(agencyforSearch.toLowerCase()))
+
+    
+    if(filteredAgency.length === 0){
+      setError("No Agency is found")
+
+    }
+     
+    }
+
+  return { search, filteredAdmin, error ,filteredAgency ,searchAgencies};
 };
 
+
+
 export default useSearch;
+

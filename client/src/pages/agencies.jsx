@@ -9,6 +9,7 @@ function People() {
   
   const [agency, setAgency] = useState([]);
   const [isOpen,setIsOpen] =useState(false)
+  const [selectedStatus,setSelectedStatus]=useState("")
   // const [viewAgency,setViewAgency]=useState("")
   // const[status,setStatus]=useState([])
   // const [acceptButton,setAcceptButton]=useState("Accept")
@@ -30,7 +31,7 @@ function People() {
     fetchAgencies();
   }, []);
 
-  console.log("Agency data fetched successfully", agency);
+  console.log("Agency data fetched successfully",agency);
   
   const handleButton = async (id,value)=>{
    console.log(id)
@@ -50,15 +51,20 @@ function People() {
        )
        
        const data= response.data
-       console.log(data)
-       if(data.status=== "Accepted"){
+
+       console.log(data ,"after updation")
+       if(data.status === "Accepted"){
         toast.success("You Accepted Agency")
         return
-       }
-       if(data.status === "Reject"){
+       }  
+       if(data.status === "Rejected"){
         toast.error("You Rejected Agency")
         return 
       } 
+      if(data.status === "Blocked"){
+        toast.error("You Blocked the Agency")
+        return 
+      }
          
       
      
@@ -68,16 +74,10 @@ function People() {
 
  
    }
-  //  const handleViewProfile=(id)=>{
-  //   console.log(id)
-  //   const selectedAgency= agency.filter((agency)=>
-  //     agency._id===id 
-  //   )
-  //   setViewAgency(selectedAgency)
-  //   // console.log(selectedAgency,"this is the selected agency for profile viewing")
-  //  }
-  //   console.log(viewAgency,"selected agency from agencies page")
-
+   const filteredAgencies= agency.filter((agency)=>agency.status === selectedStatus)
+   console.log(filteredAgencies);
+   
+  
   return (
     <>
       <div>
@@ -118,14 +118,29 @@ function People() {
       </div>
       <div className="bg-white p-8 rounded-md w-full">
         <div className="flex items-center justify-between pb-6">
-          <div className="flex items-center">
+          {/* <div className="flex items-center">
             <div className="flex bg-gray-50 items-center p-2 rounded-md">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
               </svg>
               <input className="bg-gray-300 rounded-r-lg outline-none ml-1 block" type="text" placeholder="Search..." />
             </div>
-          </div>
+          </div> */}
+          <div className="flex items-start">
+  <select 
+    className=" w-60 px-4 py-2 border border-gray-400  rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+   defaultValue=""
+   onChange={(e)=>setSelectedStatus(e.target.value)}
+  >
+    <option className='' value="Requested" disabled hidden>Sort Agencies by</option>
+    <option value="Requested">Requested</option>
+    <option value="Accepted">Accepted</option>
+    <option value="Rejected">Rejected</option>
+    <option value="Blocked">Blocked</option>
+
+  </select>
+</div>
+
         </div>
        
             <div  className="overflow-x-auto">
@@ -139,8 +154,9 @@ function People() {
                     <th className="px-5 py-3 text-left">Status</th>
                   </tr>
                 </thead>
-                {agency.length > 0 ? (
-          agency.map((agencies) => (
+                {filteredAgencies.length > 0 ? (
+          filteredAgencies.map((agencies) => (
+
                 <tbody 
                 key={agencies._id || agencies.id}
                 className="divide-y divide-gray-100 border-t border-gray-100">
@@ -153,17 +169,39 @@ function People() {
                     <td className="px-5 py-5 bg-white text-sm text-gray-900">{agencies.country}</td>
                     {/* <td className="px-5 py-5 bg-white text-sm text-gray-900">{agencies.registrationId}</td> */}
                     <td className="px-5 py-5 bg-white text-sm">
-                      < button 
+                    { (agencies.status === "Rejected" || agencies.status === "Requested") &&
+                       < button 
                       data-id={agency?._id} 
                       value={agencies._id}
                       onClick={(e)=>handleButton(e.target.value,"Accepted")}
-                      className=" mr-4 relative inline-block px-3 py-1 font-semibold text-green-900 bg-green-200 rounded-full">{agencies.status === "Accepted" ? "Accepted":"Accept"}</button>
+                      className=" mr-4 relative inline-block px-3 py-1 font-semibold text-green-900 bg-green-200 rounded-full">Accept</button>
+                    }
+                     { agencies.status === "Requested"  &&
                       <button 
                       data-id={agency._id}
                       value={agencies._id}
                       onClick={(e)=>handleButton(e.target.value,"Rejected")}
 
-                      className=" ml-5  relative inline-block px-3 py-1 font-semibold text-white bg-red-600 rounded-full">{agencies.status ==="Rejected" ?"Rejected" :"Reject"}</button>
+                      className=" ml-5  relative inline-block px-3 py-1 font-semibold text-white bg-red-600 rounded-full">Reject</button>
+                     }
+
+                      { agencies.status === "Accepted"  &&
+                      <button 
+                      data-id={agency._id}
+                      value={agencies._id}
+                      onClick={(e)=>handleButton(e.target.value,"Blocked")}
+
+                      className=" ml-5  relative inline-block px-3 py-1 font-semibold text-white bg-red-600 rounded-full">Block</button>
+                     }
+
+                    { agencies.status === "Blocked"  &&
+                      <button 
+                      data-id={agency._id}
+                      value={agencies._id}
+                      onClick={(e)=>handleButton(e.target.value,"Accepted")}
+
+                       className=" ml-5  relative inline-block px-3 py-1 font-semibold text-white bg-blue-700 rounded-full">Un Block</button>
+                    }
                     </td>
                     {/* <td className="px-5 py-5 bg-white text-sm">
                       
@@ -184,7 +222,7 @@ function People() {
                 
                  ))
                 ) : (
-                  <p className="text-center text-gray-500">No agencies found</p>
+                  <p className="text-center text-gray-500">{`No ${selectedStatus} Agencies found 🤷‍♂️`}</p>
                 )}
               </table>
               

@@ -93,7 +93,7 @@ function PermissionList({roleName,description}) {
             
             <label
               htmlFor="vue-checkbox-list"
-              className="   w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 "
+              className="   w-full py-3 ms-2 text-sm font-medium text-white "
             >
               Home
             </label>
@@ -110,7 +110,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="vue-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               View
             </label>
@@ -127,7 +127,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="react-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               Edit
             </label>
@@ -144,7 +144,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="angular-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               Delete
             </label>
@@ -161,7 +161,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="laravel-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium  text-white"
             >
               All
             </label>
@@ -174,7 +174,7 @@ function PermissionList({roleName,description}) {
             
             <label
               htmlFor="vue-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 "
+              className="w-full py-3 ms-2 text-sm font-medium text-white "
             >
              Agencies
             </label>
@@ -191,7 +191,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="vue-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               View
             </label>
@@ -208,7 +208,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="react-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               Edit
             </label>
@@ -225,7 +225,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="angular-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               Delete
             </label>
@@ -241,7 +241,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="laravel-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               All
             </label>
@@ -254,7 +254,7 @@ function PermissionList({roleName,description}) {
             
             <label
               htmlFor="vue-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 "
+              className="w-full py-3 ms-2 text-sm font-medium text-white "
             >
               Users
             </label>
@@ -271,7 +271,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="vue-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               View
             </label>
@@ -288,7 +288,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="react-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               Edit
             </label>
@@ -305,7 +305,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="angular-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               Delete
             </label>
@@ -321,7 +321,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="laravel-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               All
             </label>
@@ -334,7 +334,7 @@ function PermissionList({roleName,description}) {
             
             <label
               htmlFor="vue-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 "
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               Packages
             </label>
@@ -351,7 +351,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="vue-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               View
             </label>
@@ -368,7 +368,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="react-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               Edit
             </label>
@@ -385,7 +385,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="angular-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               Delete
             </label>
@@ -401,7 +401,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="laravel-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               All
             </label>
@@ -414,7 +414,7 @@ function PermissionList({roleName,description}) {
             
             <label
               htmlFor="vue-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 "
+              className="w-full py-3 ms-2 text-sm font-medium text-white "
             >
               Blogs
             </label>
@@ -431,7 +431,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="vue-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               View
             </label>
@@ -448,7 +448,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="react-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               Edit
             </label>
@@ -465,7 +465,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="angular-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               Delete
             </label>
@@ -481,7 +481,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="laravel-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               All
             </label>
@@ -494,7 +494,7 @@ function PermissionList({roleName,description}) {
             
             <label
               htmlFor="vue-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 "
+              className="w-full py-3 ms-2 text-sm font-medium text-white "
             >
               Admin List 
             </label>
@@ -511,7 +511,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="vue-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               View
             </label>
@@ -528,7 +528,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="react-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               Edit
             </label>
@@ -545,7 +545,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="angular-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               Delete
             </label>
@@ -561,7 +561,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="laravel-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               All
             </label>
@@ -576,7 +576,7 @@ function PermissionList({roleName,description}) {
             
             <label
               htmlFor="vue-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 "
+              className="w-full py-3 ms-2 text-sm font-medium text-white "
             >
              Manage Role
             </label>
@@ -593,7 +593,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="vue-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               View
             </label>
@@ -610,7 +610,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="react-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               Edit
             </label>
@@ -627,7 +627,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="angular-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               Delete
             </label>
@@ -643,7 +643,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="laravel-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               All
             </label>
@@ -657,7 +657,7 @@ function PermissionList({roleName,description}) {
             
             <label
               htmlFor="vue-checkbox-list"
-              className="w-full py-3 -ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 "
+              className="w-full py-3 -ml-2 text-sm font-medium text-white "
             >
               Advertisement
             </label>
@@ -691,7 +691,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="react-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               Edit
             </label>
@@ -708,7 +708,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="angular-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               Delete
             </label>
@@ -724,7 +724,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="laravel-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               All
             </label>
@@ -737,7 +737,7 @@ function PermissionList({roleName,description}) {
             
             <label
               htmlFor="vue-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 "
+              className="w-full py-3 ms-2 text-sm font-medium text-white "
             >
               Notification
             </label>
@@ -754,7 +754,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="vue-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               View
             </label>
@@ -771,7 +771,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="react-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               Edit
             </label>
@@ -788,7 +788,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="angular-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               Delete
             </label>
@@ -804,7 +804,7 @@ function PermissionList({roleName,description}) {
             />
             <label
               htmlFor="laravel-checkbox-list"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="w-full py-3 ms-2 text-sm font-medium text-white"
             >
               All
             </label>

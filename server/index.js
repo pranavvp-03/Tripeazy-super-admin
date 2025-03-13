@@ -7,6 +7,7 @@ const authRouter = require("./routes/authRoutes");
 const roleRoutes = require("./routes/roleRoutes");
 const newAdminRouter  = require("./routes/newAdmin")
 const agency= require("./routes/agency")
+const blogRouter = require("./routes/blog.route")
 
 dotenv.config()
 app.use(express.json())
@@ -19,6 +20,7 @@ app.use("/api",authRouter)
 app.use("/api/roles", roleRoutes);
 app.use("/api/admins",newAdminRouter)
 app.use("/api/agency",agency)
+app.use("/api/blogs",blogRouter)
  
 mongoose
 .connect(process.env.MONGO_URI)

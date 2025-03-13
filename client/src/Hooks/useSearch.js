@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 
+
 const useSearch = () => {
   const [filteredAdmin, setFilteredAdmin] = useState([]);
   const [error, setError] = useState("");
@@ -40,23 +41,9 @@ const useSearch = () => {
     }
   }, [searchAdmin]);
 
-  const searchAgencies = (agency, agencyforSearch)=>{
-    if (!searchQuery.trim()) {
-      setAgencySearch([]);
-      setError("");
-      return;
-    }
-    const filteredAgency= agency.filter((agency)=>agency.toLowerCase().includes(agencyforSearch.toLowerCase()))
+  
 
-    
-    if(filteredAgency.length === 0){
-      setError("No Agency is found")
-
-    }
-     
-    }
-
-  return { search, filteredAdmin, error ,filteredAgency ,searchAgencies};
+  return { search, filteredAdmin, error };
 };
 
 

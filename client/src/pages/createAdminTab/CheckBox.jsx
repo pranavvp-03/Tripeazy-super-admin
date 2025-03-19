@@ -29,7 +29,7 @@ function CheckBox({onSelect,selectedRole}) {
               }
               const data= await response.data
               console.log(response.data)
-              
+              localStorage.setItem("role",JSON.stringify(response.data))
               dispatch(getRoles(response.data))
             
               console.log(Getroles)

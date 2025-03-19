@@ -3,6 +3,7 @@ const Admin = require("../model/Admin")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const Role = require("../model/role")
+const Contact = require("../model/contact")
 const JWT_SECRET = process.env.JWT_SECRET || "your_secret_key"
 
 
@@ -90,3 +91,37 @@ exports.loginAdmin = async (req,res)=>{
         res.status(500).json({message:"Login failed please try again later."})
     }
 }
+
+exports.getContactRequests = async (req, res) => {
+    try {
+      const { read, type } = req.query;
+  
+      let filter = {};
+      if (read) {
+        filter.read = read === "true" ? true : false;
+      }
+      if (type) {
+        filter.type = type; // Filter by user or agency (future use)
+      }
+  
+      const contactRequests = await Contact.find(filter).sort({ createdAt: -1 });
+  
+      res.status(200).json({ success: true, data: contactRequests });
+    } catch (error) {
+      console.error("Error fetching contact requests:", error);
+      res.status(500).json({ success: false, message: "Failed to fetch contact requests." });
+    }
+  };
+  
+
+exports.markAsRead = async (req, res) => {
+    try {
+        console.log("request hitted for mark as read");
+      const { id } = req.params;
+      await Contact.findByIdAndUpdate(id, { read: true });
+      res.status(200).json({ success: true, message: "Notification marked as read." });
+    } catch (error) {
+      console.error("Error marking notification as read:", error);
+      res.status(500).json({ success: false, message: "Failed to mark notification as read." });
+    }
+  };

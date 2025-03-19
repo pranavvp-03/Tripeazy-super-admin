@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from "axios";
-import { HiDotsVertical } from "react-icons/hi"; // 3-dot menu icon
-import { FaHeart } from "react-icons/fa"; // Heart icon
+import { HiDotsVertical } from "react-icons/hi"; 
+import { FaHeart } from "react-icons/fa"; 
+import { useNavigate } from "react-router-dom";
 
 function AdminBlogs() {
   const [blogs, setBlogs] = useState([]);
-  const [menuOpen, setMenuOpen] = useState(null); // To track which menu is open
+  const [menuOpen, setMenuOpen] = useState(null);
+  const menuRef = useRef(null); // Reference for menu clicks
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -14,18 +17,30 @@ function AdminBlogs() {
       .catch((error) => console.error("Error fetching blogs:", error));
   }, []);
 
+  // Close menu on outside click
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setMenuOpen(null);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
     <div className="p-6">
       <h2 className="text-2xl font-bold mb-4">Admin Blog List</h2>
 
-      {/* Responsive Grid: 1 col (mobile), 2 cols (tablet), 3 cols (desktop) */}
+      {/* Responsive Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {blogs.map((blog) => (
           <div 
             key={blog._id} 
-            className="border p-4 shadow-md rounded-lg bg-white transition-transform hover:scale-105 hover:shadow-xl relative"
+           onClick={() => navigate(`/blogs/${blog._id}`)} // Navigate to details page
+        className="cursor-pointer border p-4 shadow-md rounded-lg bg-white transition-transform hover:scale-105 hover:shadow-xl relative"
           >
-            {/* Thumbnail Image */}
+            {/* Thumbnail */}
             <img
               src={blog.thumbnail || "https://via.placeholder.com/150"}
               alt={blog.title || "No title available"}
@@ -39,7 +54,7 @@ function AdminBlogs() {
               </h3>
               
               {/* 3-Dot Menu */}
-              <div className="relative">
+              <div className="relative" ref={menuRef}>
                 <button
                   onClick={() => setMenuOpen(menuOpen === blog._id ? null : blog._id)}
                   className="text-gray-600 hover:text-black focus:outline-none"
@@ -60,23 +75,23 @@ function AdminBlogs() {
             {/* Category & Location */}
             <p className="text-sm text-gray-500"> 📍 {blog.location || "Unknown"}</p>
 
-            {/* Shortened Content */}
+            {/* Shortened Content with Proper Handling */}
             <p className="text-gray-600 mt-2 text-sm line-clamp-2">
-              {blog.content?.length > 0 && blog.content[0]?.blocks?.length > 1
-                ? blog.content[0].blocks[1].data.text.substring(0, 60) + "..."
+              {blog.content?.[0]?.blocks?.[1]?.data?.text 
+                ? blog.content[0].blocks[1].data.text.substring(0, 50) + "..."
                 : "No content available"}
             </p>
 
             {/* Author & Date */}
             <div className="text-sm text-gray-500 mt-2">
               <span>📝 {blog.author?.email || "Unknown Author"}</span> |{" "}
-              {blog.createdAtFormatted || "Unknown Date"}
+              {blog.createdAt ? new Date(blog.createdAt).toLocaleDateString() : "Unknown Date"}
             </div>
 
-            {/* Likes & Saves (Only Show, Cannot Like) */}
+            {/* Likes & Saves */}
             <div className="flex justify-between text-gray-600 mt-2 text-sm">
               <div className="flex items-center space-x-1">
-                <FaHeart className={`w-5 h-5 text-red-500`} /> 
+                <FaHeart className="w-5 h-5 text-red-500" /> 
                 <span>{blog.likes || 0} Likes</span>
               </div>
               <span>🔖 {blog.savedBy?.length || 0} Saves</span>

@@ -11,7 +11,7 @@ exports.getNewAdmin= async (req,res)=>{
   try{
     const admins = await Admin.find({ name: { $ne: "superadmin" } }).populate("role");
     res.status(200).send({message:"Admins fetched successfully",admins})
-    console.log(admins)
+    // console.log(admins)
   }
   catch(error){
      res.status(500).send(err.message)
@@ -20,8 +20,10 @@ exports.getNewAdmin= async (req,res)=>{
 }
 
 exports.updateRole = async (req, res) => {
+  
   const { id } = req.params;  // Get admin ID from URL
   const { role } = req.body;   // Get new role from request body
+  console.log(role)
 
   try {
       // Find the new role document by roleName

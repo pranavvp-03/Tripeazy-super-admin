@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
  import { useDispatch } from 'react-redux'
  import { useSelector } from 'react-redux'
- import { getRoles } from '../../redux/actions/roleAction'
+ import { getRoles,singleRole } from '../../redux/actions/roleAction'
 
 function CheckBox({onSelect,selectedRole}) {
     const [selectedOption,setSelectedOption]=useState("General manager")
@@ -10,8 +10,8 @@ function CheckBox({onSelect,selectedRole}) {
 
     const dispatch=useDispatch()
    
-    //  const Getroles=useSelector(state=>state.role.Role ?? [])
-    //  console.log(Getroles ,"this is getRole");
+     const Getrole=useSelector(state=>state.role.SingleRole)
+     console.log(Getrole ,"this is getRole");
      
    
     useEffect(() => {
@@ -51,6 +51,7 @@ function CheckBox({onSelect,selectedRole}) {
      const handleChange=(e)=>{
       const value=e.target.value
         setSelectedOption(value)
+        dispatch(singleRole(value))
       onSelect(value)
       // console.log(value)
 

@@ -10,40 +10,44 @@ function CheckBox({onSelect,selectedRole}) {
 
     const dispatch=useDispatch()
    
-     const Getroles=useSelector(state=>state.role.Role ?? [])
-     console.log(Getroles ,"this is getRole");
+    //  const Getroles=useSelector(state=>state.role.Role ?? [])
+    //  console.log(Getroles ,"this is getRole");
      
    
-    useEffect(()=>{
-      const fetchRoles= async()=>{
-        const token = localStorage.getItem("token")
-        try{
-              const response = await axios.get('http://localhost:3001/api/roles/get-role',{
-                headers:{
-                  'Authorization':`Bearer ${token}`,
-                   "Content-Type" :  'application/json',
-                }
-              })
-              if(!response){
-                console.log("no response for getting role")
-              }
-              const data= await response.data
-              console.log(response.data)
-              
-              dispatch(getRoles(response.data))
-            
-              console.log(Getroles)
-             
-
-              
-        }catch(error){
-          console.error('Error fetching roles:', error);
+    useEffect(() => {
+      const fetchRoles = async () => {
+        const token = localStorage.getItem("token");
+        try {
+          const response = await axios.get("http://localhost:3001/api/roles/get-role", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          });
+    
+          if (!response || !response.data) {
+            console.log("No response for getting roles");
+            return;
+          }
+    
+          console.log(response.data, "this is role");
+          
+          if (Array.isArray(response.data)) {
+            setRoles(response.data); 
+          } else {
+            console.log("Unexpected API response structure:", response.data);
+          }
+    
+        } catch (error) {
+          console.error("Error fetching roles:", error);
         }
-      }
-      fetchRoles()
-    },[])
+      };
+    
+      fetchRoles();
+    }, []);
+    
 
-
+    console.log(roles,"this is role form state")
      const handleChange=(e)=>{
       const value=e.target.value
         setSelectedOption(value)
@@ -58,25 +62,24 @@ function CheckBox({onSelect,selectedRole}) {
               Position
             </label>
             <select
-              name="Admin"
-              value={selectedOption}
-              onChange={handleChange}
-              className="mt-2 block w-full p-3 rounded-lg border border-gray-300 shadow-sm focus:ring-2 focus:ring-custom-purple focus:outline-none"
-            >
-             
-                 {Array.isArray(Getroles.roles) && Getroles.roles.length > 0 ? (
-                    Getroles.roles.map((role, index) => (
-                        <option key={index} value={role.roleName}>
-                            {role.roleName}
-                        </option>
-                    ))
-                ) : (
-                    <option>No roles available</option>
-                )}
-              
-              
+  name="Admin"
+  value={selectedOption}
+  onChange={handleChange}
+  className="mt-2 block w-full p-3 rounded-lg border border-gray-300 shadow-sm focus:ring-2 focus:ring-custom-purple focus:outline-none"
+>
+  <option value="" disabled>Select a role</option>
+  
+  {roles.length > 0 ? (
+    roles.map((role, index) => (
+      <option key={role._id} value={role.roleName}>
+        {role.roleName}
+      </option>
+    ))
+  ) : (
+    <option disabled>Loading roles...</option>
+  )}
+</select>
 
-        </select>
     </div>
   )
 }

@@ -33,30 +33,30 @@ const useSearch = () => {
 
   
 
-  useEffect(() => {
-    console.log(searchAdmin,"search admin")
-    if (searchAdmin.length === 0) {
-      setFilteredAdmin([]);
-    }
-  }, [searchAdmin]);
+  // useEffect(() => {
+  //   console.log(searchAdmin,"search admin")
+  //   if (searchAdmin.length === 0) {
+  //     setFilteredAdmin([]);
+  //   }
+  // }, [searchAdmin]);
 
-  const searchAgencies = (agency, agencyforSearch)=>{
-    if (!searchQuery.trim()) {
-      setAgencySearch([]);
-      setError("");
-      return;
-    }
-    const filteredAgency= agency.filter((agency)=>agency.toLowerCase().includes(agencyforSearch.toLowerCase()))
+  // const searchAgencies = (agency, agencyforSearch)=>{
+  //   if (!searchQuery.trim()) {
+  //     setAgencySearch([]);
+  //     setError("");
+  //     return;
+  //   }
+  //   const filteredAgency= agency.filter((agency)=>agency.toLowerCase().includes(agencyforSearch.toLowerCase()))
 
     
-    if(filteredAgency.length === 0){
-      setError("No Agency is found")
+  //   if(filteredAgency.length === 0){
+  //     setError("No Agency is found")
 
-    }
+  //   }
      
-    }
+  //   }
 
-  return { search, filteredAdmin, error ,filteredAgency ,searchAgencies};
+  return { search, filteredAdmin, error };
 };
 
 

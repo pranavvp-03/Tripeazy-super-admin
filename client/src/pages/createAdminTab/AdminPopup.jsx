@@ -56,9 +56,9 @@ function AdminPopup({admin,onClose}) {
        <select name="" id=""
        className="mt-2 block w-full p-3 rounded-lg border border-gray-300 shadow-sm focus:ring-2 focus:ring-custom-purple focus:outline-none">
         <option value="selectedAdmin">{selectedAdmin}(current)</option>
-        {/* <CheckBox onSelect={handleRolechanges} selectedRole={admin.role}  /> */}
+        <CheckBox/>
       
-       
+{/*        
         {Array.isArray(Getroles.roles) && Getroles.roles.length > 0 ? (
                     Getroles.roles.map((role, index) => (
                         <option key={index} value={role.roleName}>
@@ -67,7 +67,7 @@ function AdminPopup({admin,onClose}) {
                     ))
                 ) : (
                     <option>No roles available</option>
-                )}
+                )} */}
         </select>
         
 

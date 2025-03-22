@@ -5,10 +5,10 @@ import Home from './pages/Home'
 import Agencies from './pages/agencies'
 import Users from './pages/users'
 import Packages from './pages/packages'
-import Blogs from './pages/Blogs'
+import Blogs from './pages/Blog.jsx/BlogList'
 import CreateAdmin from './pages/createAdminTab/CreateAdmin'
 import Advertisements from './pages/Advertisements'
-import Notifications from './pages/Notifications'
+import Notifications from './pages/notifications/Notifications'
 import AdminDashboardLayout from './components/Admin-layout'
 import CreateNewAdmin from "./pages/createAdminTab/CreateNewAdmin"
 import Addrole from "./pages/ManageRole/Addrole";
@@ -21,6 +21,7 @@ import NoAuthorized from "./components/NoAuthorized"
 import RestrictRoute from "./components/RestrictRoute"
 import ProfileModal from "./pages/profilePop";
 import { useEffect } from "react";
+import AdminBlogDetails from "./pages/Blog.jsx/AdminBlogDetails";
 function App() {
   return (
    <Router>
@@ -41,6 +42,7 @@ function App() {
       <Route path = "/manage-Role" element = {<RestrictRoute  requiredPermission="ManageRole"> <ManageRole/></RestrictRoute>}/>
       <Route path = "/advertisments" element =  {<RestrictRoute  requiredPermission="Advertisement"> <Advertisements/></RestrictRoute>}/>
       <Route path = "/notifications" element = {<RestrictRoute  requiredPermission="Notifications"> <Notifications/></RestrictRoute>}/>
+      <Route path = "/blogs/:blogId" element = {<RestrictRoute  requiredPermission="Blogs"> <AdminBlogDetails/></RestrictRoute>}/>
       <Route path ="/createNewAdmin" element = { <CreateNewAdmin/>}/>
       <Route path ="/addrole" element={<Addrole/>}/>
       <Route path ="/commonNav" element={<CommonNav/>}/>

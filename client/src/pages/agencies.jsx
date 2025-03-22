@@ -9,8 +9,9 @@ function People() {
   
   const [agency, setAgency] = useState([]);
   const [isOpen,setIsOpen] =useState(false)
-  const [selectedStatus,setSelectedStatus]=useState("")
+  const [selectedStatus,setSelectedStatus]=useState("Requested")
   const [searchInput,setSearchInput]=useState("")
+  const [firstValue,setFirstValue]=useState([])
   // const [viewAgency,setViewAgency]=useState("")
   // const[status,setStatus]=useState([])
   // const [acceptButton,setAcceptButton]=useState("Accept")
@@ -23,6 +24,8 @@ function People() {
         const response = await axios.get("http://localhost:3001/api/agency/fetchAgency");
         if (Array.isArray(response.data)) {
           setAgency(response.data);
+          const requestedAgencies = agency.filter(item => item.status === "Requested");
+          
         } else {
           console.error("Expected an array but received:", response.data);
         }
@@ -34,7 +37,7 @@ function People() {
   }, []);
 
   console.log("Agency data fetched successfully",agency);
-  
+ console.log(firstValue,"this is requeste")
   const handleButton = async (id,value)=>{
    console.log(id)
    console.log(value)

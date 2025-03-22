@@ -35,7 +35,7 @@ function AdminPopup({ admin, onClose, onRoleUpdate, rolen }) {
         setSelectedAdmin(updateRole);
 
         if (onRoleUpdate) {
-          onRoleUpdate(); // Call the callback function to refetch admins data
+          onRoleUpdate();
         }
 
         onClose();
@@ -47,6 +47,30 @@ function AdminPopup({ admin, onClose, onRoleUpdate, rolen }) {
       setLoading(false);
     }
   };
+
+   const handleSuspend = async (status)=>{
+     try{
+      const suspendResponse = await axios.put(
+        `http://localhost:3001/api/admins/suspendAdmin/${admin._id}`,
+        { status: status },
+        { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
+      );
+      console.log(suspendResponse)
+
+      if (suspendResponse.status === 200) {
+        toast.success(`You Suspened ${admin.name}`);
+        setSelectedAdmin(updateRole);
+
+        if (onRoleUpdate) {
+          onRoleUpdate();
+        }
+
+        onClose();
+      }
+     }catch(error){
+      console.log(error,"errro occured while suspend admin")
+     }
+   }
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70">
@@ -83,12 +107,16 @@ function AdminPopup({ admin, onClose, onRoleUpdate, rolen }) {
           <button className="px-4 py-2 bg-gray-500 text-white rounded mr-2" onClick={onClose}>
             Cancel
           </button>
+          <button className='px-4 py-2 bg-red-700 text-white rounded mr-2'
+          onClick={(e)=>handleSuspend("deActive")}
+          >Suspend</button>
+
           <button
             className="px-4 py-2 bg-blue-500 text-white rounded"
             onClick={handleSave}
             disabled={loading}
           >
-            {loading ? 'Saving...' : 'Save'}
+            {loading ? 'Updating...' : 'Update'}
           </button>
         </div>
       </div>
